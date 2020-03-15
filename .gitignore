@@ -1,0 +1,56 @@
+*/node_modules/*
+ 
+#angular part
+angularpart/dist
+angularpart/tmp
+angularpart/out-tsc
+# Only exists if Bazel was run
+angularpart/bazel-out 
+
+# profiling files
+angularpart/chrome-profiler-events*.json
+angularpart/speed-measure-plugin*.json
+
+# IDEs and editors
+angularpart/.idea
+angularpart/.project
+angularpart/.classpath
+angularpart/.c9/
+angularpart/*.launch
+angularpart/.settings/
+angularpart/*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+#laravelpart
+laravelpart/public/hot
+laravelpart/public/storage
+laravelpart/storage/*.key
+laravelpart/vendor
+laravelpart/.env
+laravelpart/.env.backup
+laravelpart/.phpunit.result.cache
+laravelpart/Homestead.json
+laravelpart/Homestead.yaml
+laravelpart/npm-debug.log
+laravelpart/yarn-error.log
