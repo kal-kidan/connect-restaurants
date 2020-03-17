@@ -1,0 +1,59 @@
+.user-input{
+   padding:5px;
+   width:80%;
+   border:1px solid #242121;
+   border-radius:2px;
+}
+#loginBtn{
+  background-color:#73b862;
+  color:white;
+  border-radius:5px;
+  width:80%;
+}
+.container-div{
+  width:40%;
+  margin-left:30%;
+  padding-bottom:30px;
+  padding-top:30px;
+  border-radius:10px;
+}
+@media (max-width:601px) {
+  .container-div{
+    width:80%;
+    margin-left:10%;
+  }
+
+}
+  @media  (min-width:602px) and (max-width:992px){
+    .container-div{
+      width:50%;
+      margin-left:25%;
+    }
+
+  }
+#logInMessage{
+text-align:left;
+margin-left:20px;
+margin-bottom:10px;
+color:teal;
+}
+.signUp{
+color:#105620;
+text-align:left;
+margin-left:40px;
+margin-right:2px;
+}
+#createAccount{
+text-decoration:none;
+color:blue;
+text-align:left;
+}
+#errorMessage{
+  color:red;
+  margin-left:13%;
+  background-color:#FFBABA;
+  padding:8px;
+  display:none;
+  border-radius:5px;
+  width:74%;
+}

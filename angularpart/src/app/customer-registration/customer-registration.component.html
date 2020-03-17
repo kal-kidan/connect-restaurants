@@ -1,0 +1,83 @@
+<header id="index_header" class="w3-bar w3-top">
+    <div class="w3-bar-item  " id="logo">
+        Habesha <span id="logo_food">Food </span>
+    </div>
+</header>
+<br> <br>
+<div class="containing-div">
+    <div class=" " id="signupid">
+        <div class="w3-row  w3-center  " id="signup-card">
+            <div class=" w3-col s11 m7 l5 w3-card-4 w3-padding w3-margin-bottom w3-round-xlarge " style="z-index:1;background:#fff">
+                <h3 id="createYourAccount" class=" w3-padding">Create Your Account</h3>
+                <!-- <br> {{registrationForm.value|json}} <br>  -->
+                <form [formGroup]="registrationForm">
+
+                    <input required type="text" formControlName="firstname" class="w3-margin inputs" placeholder="First name " maxlength="30" pattern="^[a-zA-Z]*$">
+                    <div *ngIf="registrationForm.get('firstname').invalid && registrationForm.get('firstname').touched" class="error">
+              
+                        <small *ngIf="registrationForm.get('firstname').errors.required"> this field is required </small> 
+                        <small *ngIf="registrationForm.get('firstname').errors.pattern"> please enter valid name</small>
+                    </div> 
+
+                    <input required type="text" formControlName="lastname" class="w3-margin inputs" placeholder="Last name" maxlength="30" pattern="^[a-zA-Z]*$">
+                    <div *ngIf="registrationForm.get('lastname').invalid && registrationForm.get('lastname').touched" class="error">
+                        
+                        <small *ngIf="registrationForm.get('lastname').errors.required"> this field is required </small> 
+                        <small *ngIf="registrationForm.get('lastname').errors.pattern"> please enter valid name</small>
+                    </div> 
+
+                    <input required type="email" formControlName="email" class="w3-margin inputs" placeholder="Email" maxlength="255" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                    
+                    <div required *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="error">
+                        
+                        <small *ngIf="registrationForm.get('email').errors.required"> this field is required </small> 
+                        <small *ngIf="registrationForm.get('email').errors.pattern"> please enter valid email</small>
+                    </div> 
+
+                    <input required type="text" formControlName="phonenumber" placeholder="+251942793296" class="w3-margin inputs" maxlength="13" pattern="^(\+2519)[0-9]{8}$" >
+                    <div required *ngIf="registrationForm.get('phonenumber').invalid && registrationForm.get('phonenumber').touched" class="error">
+                        
+                        <small *ngIf="registrationForm.get('phonenumber').errors.required"> this field is required </small> 
+                        <small *ngIf="registrationForm.get('phonenumber').errors.pattern"> please enter valid phone number</small> 
+                    </div> 
+
+                    <div class="" >
+
+                        <span id="showpassword" class=" w3-hover-opacity w3-padding w3-text-teal w3-round w3-btn" (click)="togglePassword(password) " >{{togglePasswordValue}}</span>
+                        <input required #password type="password" formControlName="password" id="pw" class="w3-margin inputs" minlength="6" maxlength="20" placeholder="Password">
+                        <div required *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched" class="error">
+                           
+                            <small *ngIf="registrationForm.get('password').errors.required"> this field is required</small> 
+                            <small *ngIf="registrationForm.get('password').errors.minlength"> password should at least be six </small>  
+                        </div> 
+                    </div>
+
+                    <button type="submit"  (click)="onSubmit()" id="createAccount" class="w3-btn w3-text-white" [disabled]="registrationForm.invalid||disableSubmit"> 
+                      
+                      <div  style="display: inline-block;">
+                        Create Your Account
+                        <div class="lds-ring" *ngIf="startLoading">
+                            <div></div>
+                            <div></div>
+                            <div> </div>
+                            <div> </div>
+                          </div>
+                    </div>
+                    </button>
+                    <!-- <p id="or"> or</p>
+       <button type="button" class="w3-btn w3-text-white w3-margin-bottom social" id="facebook" >
+       <i class="fa fa-facebook w3-padding icons"  ></i>  Continue with Facebook</button>
+       <button type="button" class="w3-btn w3-text-white social" id="Google"  >
+       <i class="fa fa-google w3-padding icons"  > </i> Continue with Google</button> -->
+                </form>
+           
+              
+                <div id="termsAndPolicyDiv">
+                    <p> <span class="w3-large">Have an account?</span>
+                        <a href="login.php" class="w3-hover-text-teal" id="signin">Sign in</a> </p>
+                    By creating your account, you agree to
+                    <a href="#" class="w3-hover-text-teal termsAndPolicy">Terms of Use </a> the and
+                    <a href="#" class="w3-hover-text-teal termsAndPolicy">Privacy Policy. </a>
+                </div>
+            </div>
+        </div>

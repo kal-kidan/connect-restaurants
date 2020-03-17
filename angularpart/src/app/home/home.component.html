@@ -1,0 +1,232 @@
+<!-- start of header -->
+<header id="index_header" class="w3-bar">
+    <div class="w3-bar-item  " id="logo">
+        Habesha <span id="logo_food">Food</span>
+    </div>
+    <div class="" style="float:right;padding-top:5px;">
+        <a routerLink="/signup" class=" w3-bar-item  w3-round-xlarge w3-hover-text-teal w3-text-white w3-btn " style=" background-color:#82B440;margin:2px;">
+                  sign up </a>
+    </div>
+</header>
+<!-- end of header -->
+<!-- food image and h1 container -->
+<div class="w3-display-container" style="margin-top:2em;">
+    <img src="assets/images/food-image.png" width="100%" alt="">
+
+    <div class="w3-display-middle w3-hide-small " >
+        <br>
+        <div class="" style=" margin-bottom:50px;  ">
+            <!-- for larger device -->
+            <h1 id="advert-home" class="w3-text-white w3-hide-medium  " style="font-size:56px;">
+                Order Online and Enjoy Your Food Home
+            </h1>
+
+            <!-- for medium one -->
+            <h1 id="advert-home" class="w3-text-white w3-hide-large " style="font-size:30px;">
+                Pickup or delivery from restaurants near you
+            </h1>
+
+            <form class="input-icons" [formGroup]="searchForm">
+                <i class="fa fa-map-marker icon" style="color:#E93E21;"></i>
+                <input class="input-field " type="search" style="border:1px solid #E93E21;width:50%;">
+                <button type="submit" class="w3-text-white "
+                 style="background-color: #E93E21;padding:5.9px;border:1px solid #E93E21;border-radius:0px 15px 15px 0px;">
+                           Find Restuarants</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+</div>
+<!-- end of container -->
+<!-- container for small devices -->
+<div class="w3-hide-large w3-hide-medium">
+    <h1 id="advert-home" class="w3-text-teal ">
+        Pickup or delivery from restaurants near you
+    </h1>
+    <div style="max-width:400px;margin:auto">
+        <div class="input-icons">
+            <i class="fa fa-map-marker icon" style="color:#E93E21;"></i>
+            <input class="input-field " type="search" style="border:1px solid #E93E21;width:50%;"><button type="button" class="w3-text-white  " id="search-button" style="background-color: #E93E21;padding:6px;border:1px solid #E93E21;border-radius:0px 15px 15px 0px;font-size:15px;">
+                Find Restuarants</button>
+        </div>
+    </div>
+</div>
+<!-- smart delivery section -->
+<div style="margin-top:30px;">
+    <h1 class="w3-hide-small w3-center w3-large" style="color:rgb(0, 131, 138);padding: 50px;margin:0px;">
+        Habesha Food is the Smartest Way to Order Food Online</h1>
+    <h3 class="w3-hide-medium w3-hide-large " style="color:rgb(0, 131, 138);padding: 50px;margin:0px;">
+        Habesha Food is the Smartest Way to Order Food Online</h3>
+    <div class="w3-center">
+        <img src="assets/images/computer-food.png" width="60%" class=" " alt="" id="computer-image">
+    </div>
+    <br> <br>
+    <!-- services -->
+    <div class="w3-row w3-center" style="color:#4a4762;">
+        <div class="w3-col s12 m4 l4">
+            <i class="fa fa-car " style="font-size:50px;color: #E93E21;padding: 20px;  border: 6px solid #82B440;
+border-radius: 40px;"></i>
+            <h4>Quick Delivery</h4>
+            <div style="margin-left:30px;">We bring delicious eats right to your door.Get great food delivered or save time and money and preorder for pick up. Either way, order tracking and updates keep you in the know.</div>
+        </div>
+        <div class="w3-col s12 m4 l4">
+            <i class="fa fa-cutlery" style="font-size:50px;color: #E93E21;padding:20px;
+padding-left:30px;padding-right:30px;  border: 6px solid #82B440;
+border-radius: 40px;"></i>
+            <h4>Variety of Foods</h4>
+            <div style="margin-left:30px; ">lots of restaurants are here to meet your needs Satisfy any craving with delivery from popular neighborhood restaurants and chains. Reorder go-tos or find something new.</div>
+        </div>
+        <div class="w3-col s12 m4 l4">
+            <i class="fa fa-desktop" style="font-size:50px;color: #E93E21;padding:20px;
+border: 6px solid #82B440;
+border-radius: 40px;"></i>
+            <h4>Fast, Easy Ordering</h4>
+            <div style="margin-left:30px"> by pressing abutton get your food home. A mobile optimized experience that guests will love.</div>
+
+        </div>
+    </div>
+    <!-- end of service -->
+    <br> <br> <br>
+    <!-- sign up -->
+    <div class="  " style="background-image:url('assets/images/foodindex.png'); ">
+        <div class="w3-row" style="background-color:#3b3b3b;opacity:0.9">
+            <div class="w3-col s12 m6 l6  w3-leftbar w3-border-teal  " id="left-signup" style="color:rgb(250, 231, 238) ;padding:50px; ">
+                <h1>Don't you Have a User Account Yet,Sign up and Order Now
+                    <i class="fa fa-users" style="font-size:30px;color:#82B440"></i>
+                </h1>
+                <a href="customer/createaccount.php" class="w3-btn w3-round" style="background-color:#82B440;">sign up</a>
+            </div>
+            <div class="w3-col s12 m6 l6  w3-leftbar w3-border-teal " style="color:rgb(250, 231, 238); padding:50px; ">
+                <h1>Create your Cafe Online and Contact with a tons of Customers
+                    <i class="fa fa-users" style="font-size:30px;color:#E93E21"></i>
+                </h1>
+                <a href="cafeteria/registercafe.php" class="w3-btn w3-round" style="background-color:#E93E21;">sign up</a>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <br> <br>
+    <!-- on small device -->
+    <div class="w3-hide-medium w3-hide-large">
+        <!-- first row -->
+        <div class="w3-center" style="margin:0px; ">
+            <h2 style="color:#82B440;">Pickup or Delivery from Restaurants Near You</h2>
+            <img src="assets/images/home eating.jpg" width="80%" alt="" class="w3-circle">
+            <div class="" style="margin-left:20px;">
+                Explore restaurants that deliver near you, or try yummy takeout fare. With a place for every taste, it’s easy to find food you crave, and order online or through the Habesha food. Find great meals fast with lots of local menus. Enjoy eating the convenient
+                way with places that deliver to your door.
+            </div>
+
+        </div>
+        <!-- end of first row -->
+        <!-- second row -->
+        <div class=" " style="margin:0px; ">
+            <div class="w3-center">
+                <h2 style="color:#82B440;" class="w3-large"> We are Here for You </h2>
+                <img src="assets/images/phonefood.jpg" width="80%" alt="" class="w3-circle">
+            </div>
+            <div class="w3-large" style="color:#4a4762;margin-left:20px;float:left">
+                <div class="">
+                    <i class="fa fa-check " style="color: #E93E21;"></i> <span style="font-weight:bold;">Mobile-responsive site </span>
+                    <p>Guests can order from any device from the office, at home, or on the go.</p>
+                </div>
+                <div class="">
+                    <i class="fa fa-check " style="color: #E93E21;"></i> <span style="font-weight:bold;">All In One </span>
+                    <p> various restuarants are here to help Satisfy your interest</p>
+                </div>
+                <div class="">
+                    <i class="fa fa-check " style="color: #E93E21;"></i> <span style="font-weight:bold;">  Fast Delivery </span>
+                    <p> All you have to do is to order us on your mobile , your food will be delivered on time.</p>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- end of second row -->
+        <!-- third row -->
+
+        <div class=" w3-center" style="margin:0px; ">
+            <h2 style="color:#82B440;">Order From Anywhere </h2>
+            <img src="assets/images/officeimage.jpg" width="80%" alt="" class="w3-circle">
+            <div class="" style="margin-left:20px;">
+
+                A family picnic in the park. Working at Office. Your date night at home. That late-night study session. Spend more time doing the things that matter to you most — we’ll take care of the rest.
+            </div>
+        </div>
+
+        <!-- end of third row -->
+
+    </div>
+</div>
+<!-- on large and meduim device -->
+<div class="w3-hide-small">
+    <!-- first row -->
+    <div class=" w3-row" style="margin:0px; ">
+        <div class="w3-col   m5 l6" style="float:left">
+            <img src="assets/images/home eating.jpg" width="80%" alt="" class="w3-circle">
+        </div>
+        <div class="w3-col m6 l5" style="margin-left:20px;">
+            <h2 style="color:#82B440;" class="w3-large">Pickup or Delivery from Restaurants Near You</h2>
+            Explore restaurants that deliver near you, or try yummy takeout fare. With a place for every taste, it’s easy to find food you crave, and order online or through the Habesha food. Find great meals fast with lots of local menus. Enjoy eating the convenient
+            way with places that deliver to your door.
+        </div>
+
+    </div>
+    <!-- end of first row -->
+    <!-- second row -->
+    <div class=" w3-row" style="margin:0px; ">
+
+        <div class="w3-col   m6 l5 w3-large" style="color:#4a4762;margin-left:20px;">
+            <h2 style="color:#82B440;" class="w3-large"> We are Here for You </h2>
+            <div class="">
+                <i class="fa fa-check " style="color: #E93E21;"></i> <span style="font-weight:bold;">Mobile-responsive site </span>
+                <p>Guests can order from any device from the office, at home, or on the go.</p>
+            </div>
+            <div class="">
+                <i class="fa fa-check " style="color: #E93E21;"></i> <span style="font-weight:bold;">All In One </span>
+                <p> various restuarants are here to help Satisfy your interest</p>
+            </div>
+            <div class="">
+                <i class="fa fa-check " style="color: #E93E21;"></i> <span style="font-weight:bold;">  Fast Delivery </span>
+                <p> All you have to do is to order us on you mobile , your food will be delivered on time</p>
+            </div>
+
+        </div>
+        <div class="w3-col  m5 l6" style="float:left">
+            <img src="assets/images/phonefood.jpg" width="80%" alt="" class="w3-circle" style="float:right">
+        </div>
+    </div>
+    <!-- end of second row -->
+    <!-- third row -->
+
+    <div class=" w3-row" style="margin:0px; ">
+        <div class="w3-col  m5 l6" style="float:left">
+            <img src="assets/images/officeimage.jpg" width="80%" alt="" class="w3-circle">
+        </div>
+        <div class="w3-col  m6 l5 " style="margin-left:20px;">
+
+            <h2 style="color:#82B440;" class="w3-large">Order From Anywhere </h2>
+            A family picnic in the park. Working at Office. Your date night at home. That late-night study session. Spend more time doing the things that matter to you most — we’ll take care of the rest.
+        </div>
+
+
+    </div>
+
+    <!-- end of third row -->
+
+</div>
+
+<br> <br>
+<footer style="background-color: #262626;padding:20px;">
+    <div class="w3-center w3-text-white">
+        <p>Habesha Food Ordering and Delivery</p>
+        <p>&copy copy right 2019</p>
+    </div>
+
+</footer>

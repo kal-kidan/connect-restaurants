@@ -1,0 +1,62 @@
+* {
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    border: none;
+}
+
+.input-icons i {
+    position: absolute;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.icon {
+    padding: 13px;
+    min-width: 40px;
+}
+
+.input-field {
+    /* width: 100%; */
+    padding: 5.4px;
+    padding-bottom: 6px;
+    text-align: center;
+}
+
+body {
+    font-size: 1.5em;
+}
+
+@media (max-width:601px) {
+    #computer-image {
+        width: 100%;
+    }
+}
+
+@media (max-width:600px) {
+    #left-signup {
+        border-bottom: 3px solid #E93E21;
+    }
+}
+
+@media (max-width:284px) {
+    #search-button {
+        margin: 10px;
+    }
+    body {
+        font-size: 1em;
+    }
+}

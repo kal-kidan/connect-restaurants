@@ -1,0 +1,36 @@
+  #index_header{
+  background-color: #262626;
+  position:fixed;
+  z-index:1;
+  top:0;
+
+}
+ #logo_food{
+  color: #82B440;
+}
+#logo{
+ color: white;
+}
+
+#welcome_index{
+ color:#f0f0ff;
+ font-size: 16px;
+}
+
+
+
+
+ #input_container_2 {
+   position: absolute;
+   width: 100%;
+   margin-bottom: 10px;
+ }
+#input_2 {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+#input_img_2{
+  padding: 10px;
+  min-width: 40px;
+}
