@@ -28,7 +28,7 @@ class AuthController extends Controller
         'password' =>'required|min:6'
     ]);
        $user=User::create($request->all());
-       $this->login($request);
+       return $this->login($request);
     }
     /**
      * Get a JWT via given credentials.
