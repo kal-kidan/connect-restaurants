@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Validator;
 class AuthController extends Controller
 {
     /**
@@ -14,9 +15,21 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login','signup']]);
     }
 
+    public function signup(Request $request)
+    {
+       $request->validate([
+        'firstname' =>'required|regex:/[a-zA-Z]*$/|max:30',
+        'lastname' =>'required|regex:/[a-zA-Z]*$/|max:30',
+        'email' =>'required|email|unique:users|max:255',
+        'phonenumber' =>'required|regex:/^(\+2519)[0-9]{8}$/',
+        'password' =>'required|min:6'
+    ]);
+       $user=User::create($request->all());
+       $this->login($request);
+    }
     /**
      * Get a JWT via given credentials.
      *

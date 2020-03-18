@@ -4,7 +4,7 @@
         Habesha <span id="logo_food">Food</span>
     </div>
     <div class="" style="float:right;padding-top:5px;">
-        <a routerLink="/signup" class=" w3-bar-item  w3-round-xlarge w3-hover-text-teal w3-text-white w3-btn " style=" background-color:#82B440;margin:2px;">
+        <a routerLink="/customer-signup" class=" w3-bar-item  w3-round-xlarge w3-hover-text-teal w3-text-white w3-btn " style=" background-color:#82B440;margin:2px;">
                   sign up </a>
     </div>
 </header>
@@ -28,7 +28,7 @@
 
             <form class="input-icons" [formGroup]="searchForm">
                 <i class="fa fa-map-marker icon" style="color:#E93E21;"></i>
-                <input class="input-field " type="search" style="border:1px solid #E93E21;width:50%;">
+                <input class="input-field " formControlName="searchItem" type="search" style="border:1px solid #E93E21;width:50%;">
                 <button type="submit" class="w3-text-white "
                  style="background-color: #E93E21;padding:5.9px;border:1px solid #E93E21;border-radius:0px 15px 15px 0px;">
                            Find Restuarants</button>

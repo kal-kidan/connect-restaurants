@@ -1,4 +1,4 @@
-input {
+input, select {
     padding: 7px;
     border: none;
     border-bottom: 3.5px solid teal;
@@ -6,6 +6,9 @@ input {
 }
 
 input:focus {
+    outline: none;
+}
+select:focus {
     outline: none;
 }
 .error{

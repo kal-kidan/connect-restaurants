@@ -25,14 +25,26 @@
                         <small *ngIf="registrationForm.get('lastname').errors.required"> this field is required </small> 
                         <small *ngIf="registrationForm.get('lastname').errors.pattern"> please enter valid name</small>
                     </div> 
+                    <select  formControlName="gender" name="gender" id="" class="w3-margin inputs" >
+                        <option value="" disabled>select your sex</option>
+                        <option value="female" name="genderoption">female</option>
+                        <option value="male" name="genderoption">male</option>
+                    </select>
+                    <div *ngIf="registrationForm.get('gender').invalid && registrationForm.get('gender').touched" class="error">
+                        
+                        <small *ngIf="registrationForm.get('gender').invalid"> this field is required </small>    
+                    </div> 
 
                     <input required type="email" formControlName="email" class="w3-margin inputs" placeholder="Email" maxlength="255" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                     
                     <div required *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="error">
                         
                         <small *ngIf="registrationForm.get('email').errors.required"> this field is required </small> 
-                        <small *ngIf="registrationForm.get('email').errors.pattern"> please enter valid email</small>
+                        <small *ngIf="registrationForm.get('email').errors.pattern"> please enter valid email</small> 
                     </div> 
+                    <div *ngIf="this.emailError.error" class="error">
+                        <small>{{this.emailError.message}}</small>
+                    </div>
 
                     <input required type="text" formControlName="phonenumber" placeholder="+251942793296" class="w3-margin inputs" maxlength="13" pattern="^(\+2519)[0-9]{8}$" >
                     <div required *ngIf="registrationForm.get('phonenumber').invalid && registrationForm.get('phonenumber').touched" class="error">
