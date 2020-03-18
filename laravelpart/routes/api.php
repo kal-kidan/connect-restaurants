@@ -23,7 +23,7 @@ Route::group([
 
 ], function ($router) {
 
-    Route::post('login', 'AuthController@login');
+    Route::post('login', 'AuthController@login',['middleware' => 'CORS']);
     Route::post('signup', 'AuthController@signup');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');

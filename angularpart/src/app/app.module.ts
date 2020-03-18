@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import { from } from 'rxjs';
+import {HttpClientModule} from '@angular/common/http'; 
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
+import {RequestHandlerService} from './services/request-handler.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import { CustomerLoginComponent } from './customer-login/customer-login.componen
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [RequestHandlerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

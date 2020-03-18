@@ -1,7 +1,6 @@
+import { RequestHandlerService } from './../services/request-handler.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import {FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-customer-registration',
@@ -15,7 +14,7 @@ public disableSubmit=false;
 public startLoading=false;
 public emailError={error:false,message:''};
 public url="http://localhost:8000/api/auth/signup";
-  constructor(private fb: FormBuilder, private _http :HttpClient ,private router:Router){ }
+  constructor(private fb: FormBuilder, private apiRequest :RequestHandlerService ,private router:Router){ }
 
   ngOnInit() {
     this.registrationForm = this.fb.group(
@@ -41,14 +40,14 @@ public url="http://localhost:8000/api/auth/signup";
 
   onSubmit(){
       this.disableSubmit=true;
-      this.startLoading=true;
-      this._http.post(this.url,this.registrationForm.value).subscribe(
-        data=>console.log(data),
+      this.startLoading=true; 
+      this.apiRequest.customerSignUp(this.registrationForm.value).subscribe(
+         data=>console.log(data),
         error=>{ 
           this.emailError.error=true;
           this.emailError.message=error.error.errors.email[0];  
         }
-      );
+      )
       setTimeout(()=>{
        this.router.navigate(['/customer-login']);
       },4000);

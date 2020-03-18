@@ -5,9 +5,9 @@
    </header> <br> <br> <br>
    <div class="w3-center w3-card-4 container-div">
      <p id="logInMessage" class="w3-large">Habesha Food Log In</p>
-     <div class="fa fa-warning " id="errorMessage">
-      
-     </div>
+     <small*ngIf="loginError.error" class="alert alert-danger" style="margin: 25px;" >
+      {{loginError.errorMessage}}
+     </small>
      <form  [formGroup]="loginForm">
        <div class="w3-margin">
          <input required type="text" formControlName="username" [class.error]="loginForm.get('username').invalid && loginForm.get('username').touched" placeholder="Username" class="user-input" name="username" maxlength="255" >
@@ -16,7 +16,7 @@
          <input required type="password"  formControlName="password" [class.error]="loginForm.get('password').invalid && loginForm.get('password').touched " maxlength="20" class="user-input" placeholder="Password" name="password" >
        </div>
        <div class="w3-margin">
-         <input type="submit" [disabled]="loginForm.invalid" id="loginBtn" name="login" value="log in" class="w3-btn" >
+         <input type="submit" (click)="onSubmit()"   id="loginBtn" name="login" value="log in" class="w3-btn" >
        </div>
 
      </form>
