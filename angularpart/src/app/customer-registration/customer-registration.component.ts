@@ -40,8 +40,8 @@ public url="http://localhost:8000/api/auth/signup";
   }
 
   onSubmit(){
-      // this.disableSubmit=true;
-      // this.startLoading=true;
+      this.disableSubmit=true;
+      this.startLoading=true;
       this._http.post(this.url,this.registrationForm.value).subscribe(
         data=>console.log(data),
         error=>{ 
@@ -49,9 +49,9 @@ public url="http://localhost:8000/api/auth/signup";
           this.emailError.message=error.error.errors.email[0];  
         }
       );
-      // setTimeout(()=>{
-      //   // this.router.navigate(['/customer-login']);
-      // },1000);
+      setTimeout(()=>{
+       this.router.navigate(['/customer-login']);
+      },4000);
       
   }
 
