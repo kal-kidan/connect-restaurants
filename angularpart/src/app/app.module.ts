@@ -1,3 +1,4 @@
+import { TokenService } from './services/token.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,14 +9,16 @@ import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'; 
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
-import {RequestHandlerService} from './services/request-handler.service'
+import {RequestHandlerService} from './services/request-handler.service';
+import { CustomerHomeComponent } from './customer-home/customer-home.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerRegistrationComponent,
     HomeComponent,
-    CustomerLoginComponent
+    CustomerLoginComponent,
+    CustomerHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,7 @@ import {RequestHandlerService} from './services/request-handler.service'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RequestHandlerService],
+  providers: [RequestHandlerService,TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

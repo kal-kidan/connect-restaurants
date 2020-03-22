@@ -28,6 +28,7 @@ class AuthController extends Controller
         'phonenumber' =>'required|regex:/^(\+2519)[0-9]{8}$/',
         'password' =>'required|min:6'
     ]);
+    // return $$request->all();
        $user=User::create($request->all());
        return $this->login($request);
     }
@@ -91,7 +92,8 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => auth()->user()->email
         ]);
     }
 }
