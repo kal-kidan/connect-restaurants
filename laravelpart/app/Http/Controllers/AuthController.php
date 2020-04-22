@@ -27,8 +27,7 @@ class AuthController extends Controller
         'email' =>'required|email|unique:users|max:255',
         'phonenumber' =>'required|regex:/^(\+2519)[0-9]{8}$/',
         'password' =>'required|min:6'
-    ]);
-    // return $$request->all();
+    ]); 
        $user=User::create($request->all());
        return $this->login($request);
     }
@@ -93,7 +92,9 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()->email
+            'user' => auth()->user()->email,
+            'role' => auth()->user()->role,
+            'id' => auth()->user()->id
         ]);
     }
 }

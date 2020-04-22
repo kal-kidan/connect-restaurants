@@ -27,6 +27,10 @@ Route::group([
     Route::post('signup', 'AuthController@signup');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::post('me', 'AuthController@me'); 
+    Route::post('vendor/signup', 'VendorAuthController@signup');
+    Route::post('vendor/login', 'VendorAuthController@login');
+    Route::post('vendor/logout', 'VendorAuthController@logout');
+    
 
 });
