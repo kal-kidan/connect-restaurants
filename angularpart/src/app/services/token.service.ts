@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class TokenService {
   private iss={
-   login:' http://localhost:8000/auth/api/login',
-   signup:' http://localhost:8000/auth/api/signup'
+   login:'http://localhost:8000/api/auth/login',
+   signup:'http://localhost:8000/api/auth/signup'
   }
 
   constructor() { }
@@ -28,6 +28,9 @@ export class TokenService {
     if(this.get()){
       const payload=this.getPayLoad(token);
       if(payload){
+        // console.log("the payload iss ", Object.values(this.iss));
+        // console.log("\n", payload.iss);
+        // console.log("\n", Object.values(this.iss).indexOf(payload.iss));
         return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
 
       } 

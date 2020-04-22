@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width " />
+    <title>cafe registration</title>
+</head>
+
+<body>
+    <header id="index_header" class="w3-bar" style="padding:0px;margin:0px;padding-bottom:15px;">
+        <div class="" style="display:none;" id="sidebarofcafereg">
+            <div class="w3-sidebar w3-black w3-bar-block w3-animate-left w3-card" style="width:100%">
+                <div class="fa fa-wrench w3-btn w3-xxlarge w3-bar-item " style="color:#82B440;">
+                    My Account
+                    <span (click)="w3_close()" class="fa fa-times-circle-o w3-hover-text-red w3-btn w3-xlarge"
+                        style="color:teal; ">
+                    </span>
+                </div>
+                <a href="changepassword.php" class=" fa fa-key w3-btn  w3-bar-item  w3-large w3-hover-text-teal"
+                    style="color:#27b5df;">Change Password
+                </a>
+                <a href="showcafeterias.php" class=" fa fa-pencil-square w3-btn w3-large w3-bar-item w3-hover-text-teal"
+                    style="color:#27b5df">
+                    Edit</a>
+                <a href="adminlogout.php" class=" fa fa-sign-out  w3-btn w3-large w3-bar-item w3-hover-text-teal"
+                    style="color:#27b5df">
+                    log out</a>
+            </div>
+        </div>
+        <button class=" fa fa-bars w3-btn w3-xlarge w3-bar-item" style="color:#82B440;float:left "
+            (click)="w3_open()"></button>
+        <div class="w3-bar-item  " id="logo">
+            Habesha <span id="logo_food">Food </span>
+        </div>
+        <a href="adminlogout.php" class="w3-round-large " id="logout">log out</a>
+    </header>
+
+    <!-- successful message -->
+    <div id="messsagearea" [class.hideMessage]="hideMessage">
+        <div class="" id="messagebody">
+            <div id="message" style="margin-top:50px;background-color:rgba(29, 42, 49);padding:20px;">
+                <span class="w3-large w3-text-white">you successfully registered!</span>
+                <span class="w3-text-red w3-large w3-hover-text-teal" (click)="hideMessage=true"
+                 style="float:right;" id="messageX"> x </span>
+            </div>
+        </div>
+    </div>
+
+    <br /><br />
+    <form class="" [formGroup]="registrationForm" class="form">
+        <div class="w3-row ">
+            <div class="w3-col s12 m6 l6 w3-padding-large">
+                
+                <input type="text" class="w3-round-large w3-margin" placeholder=" your cafe name " name="cafename"
+                    value="" style="width:90%;" formControlName="cafename"  />
+
+                    <div *ngIf="registrationForm.get('cafename').invalid && registrationForm.get('cafename').touched" class="error">          
+                        <small *ngIf="registrationForm.get('cafename').errors.required"> this field is required </small>  
+                    </div>
+                     
+                <input type="text" name="firstname" class="w3-round-large w3-margin" value="" placeholder="first name"
+                    style="width:90%;" formControlName="firstname" pattern="^[a-zA-Z]*$" />
+
+                    <div *ngIf="registrationForm.get('firstname').invalid && registrationForm.get('firstname').touched" class="error"> 
+                        <small *ngIf="registrationForm.get('firstname').errors.required"> this field is required </small> 
+                        <small *ngIf="registrationForm.get('firstname').errors.pattern"> please enter valid name</small>
+                    </div> 
+
+                <input type="text" id="input-field" name="phonenumber" placeholder="phone number" pattern="^(\+2519)[0-9]{8}$"
+                    class="w3-round-large w3-margin" value="" style="width:90%;" formControlName="phonenumber" />
+               
+                     <div *ngIf="registrationForm.get('phonenumber').invalid && registrationForm.get('phonenumber').touched" class="error"> 
+                        <small *ngIf="registrationForm.get('phonenumber').errors.required"> this field is required </small> 
+                        <small *ngIf="registrationForm.get('phonenumber').errors.pattern"> please enter valid phonenumber</small>
+                    </div> 
+
+            </div>
+
+            <div class="w3-col s12 m6 l6 w3-padding-large">
+
+                <input type="email" name="email" class="w3-round-large w3-margin" value="" placeholder="Email"
+                    style="width:90%;" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+
+                    <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="error"> 
+                        <small *ngIf="registrationForm.get('email').errors.required"> this field is required </small> 
+                        <small *ngIf="registrationForm.get('email').errors.pattern"> please enter valid email</small>
+                    </div> 
+
+                <input type="text" class="w3-round-large w3-margin" name="lastname" value="" style="width:90%;"
+                    placeholder="last name" formControlName="lastname" pattern="^[a-zA-Z]*$"/>
+
+                    <div *ngIf="registrationForm.get('lastname').invalid && registrationForm.get('lastname').touched" class="error"> 
+                        <small *ngIf="registrationForm.get('lastname').errors.required"> this field is required </small> 
+                        <small *ngIf="registrationForm.get('lastname').errors.pattern"> please enter valid name</small>
+                    </div> 
+
+                <input type="text" class="w3-round-large w3-margin" name="id" value=""
+                 style="width:90%;"  placeholder="Id" formControlName="id"/>
+
+                <br /><span style="color:red"></span> <br />
+
+            </div>
+
+        </div>
+        <button (click)="onSubmit()" 
+            style="margin-right:30px;background-color:#E93E21;margin-bottom:20px;float:right;"
+            class="w3-btn w3-round w3-text-white " > Register </button>
+    </form>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 import { RequestHandlerService } from './../services/request-handler.service';
+import { TokenService } from './../services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,7 +15,7 @@ public disableSubmit=false;
 public startLoading=false;
 public emailError={error:false,message:''};
 public url="http://localhost:8000/api/auth/signup";
-  constructor(private fb: FormBuilder, private apiRequest :RequestHandlerService ,private router:Router){ }
+  constructor(private fb: FormBuilder, private apiRequest :RequestHandlerService ,private token: TokenService,private router:Router){ }
 
   ngOnInit() {
     this.registrationForm = this.fb.group(
@@ -41,17 +42,26 @@ public url="http://localhost:8000/api/auth/signup";
   onSubmit(){
       this.disableSubmit=true;
       this.startLoading=true; 
+      this.registrationForm.value.role = "customer";
       this.apiRequest.customerSignUp(this.registrationForm.value).subscribe(
-         data=>console.log(data),
+         data=>{
+           console.log(data);
+           this.handleResponse(data); 
+          },
         error=>{ 
+          console.log(error);
           this.emailError.error=true;
           this.emailError.message=error.error.errors.email[0];  
         }
-      )
+      ); 
       setTimeout(()=>{
-       this.router.navigate(['/customer-login']);
+        this.router.navigate(['customer-home']);
       },4000);
       
+  }
+  handleResponse(data){ 
+    this.token.handle(data.access_token);
+
   }
 
 }

@@ -11,6 +11,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import {RequestHandlerService} from './services/request-handler.service';
 import { CustomerHomeComponent } from './customer-home/customer-home.component'
+import { BeforeLoginService } from './services/before-login.service';
+import { AfterLoginService } from './services/after-login.service';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { CustomerHomeComponent } from './customer-home/customer-home.component'
     CustomerRegistrationComponent,
     HomeComponent,
     CustomerLoginComponent,
-    CustomerHomeComponent
+    CustomerHomeComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,7 @@ import { CustomerHomeComponent } from './customer-home/customer-home.component'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RequestHandlerService,TokenService],
+  providers: [RequestHandlerService,TokenService, BeforeLoginService, AfterLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
