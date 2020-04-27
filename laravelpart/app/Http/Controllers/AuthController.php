@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -19,17 +18,39 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login','signup']]);
     }
 
-    public function signup(Request $request)
-    {
-       $request->validate([
-        'firstname' =>'required|regex:/[a-zA-Z]*$/|max:30',
-        'lastname' =>'required|regex:/[a-zA-Z]*$/|max:30',
-        'email' =>'required|email|unique:users|max:255',
-        'phonenumber' =>'required|regex:/^(\+2519)[0-9]{8}$/',
-        'password' =>'required|min:6'
-    ]); 
-       $user=User::create($request->all());
-       return $this->login($request);
+    public function signup(Request $request){
+
+    if($request->role=="customer"){
+        $request->validate([
+            'firstname' =>'required|regex:/[a-zA-Z]*$/|max:30',
+            'lastname' =>'required|regex:/[a-zA-Z]*$/|max:30',
+            'email' =>'required|email|unique:users|max:255',
+            'phonenumber' =>'required|regex:/^(\+2519)[0-9]{8}$/',
+            'password' =>'required|min:6|string'
+        ]); 
+        $user=User::create($request->all());
+        return $this->login($request);
+    }
+
+    else if($request->role=="vendor"){
+        $request->validate([ 
+            'email' =>'required|email|max:255', 
+            'password' =>'required|min:6|string|same:confirmpassword'
+        ]); 
+        $user = User::where('email', $request->email)->where('role','vendor')->get();
+        if(count($user)==0){
+            return response()->json(['error' => 'this email hasn\'t been registered by admin'], 400);
+        }
+        else{
+            $user[0]->password = $request->password;
+            $user[0]->save();
+            return $this->login($request);
+        }
+       
+    }
+    
+     
+
     }
     /**
      * Get a JWT via given credentials.
@@ -55,6 +76,16 @@ class AuthController extends Controller
     public function me()
     {
         return response()->json(auth()->user());
+    }
+
+    public function user(Request $request){
+        $user = User::find($request->id);
+        if($user){
+            return response()->json($user);
+        }
+        else{
+            return response()->json("not found");
+        }   
     }
 
     /**
@@ -88,13 +119,27 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()->email,
-            'role' => auth()->user()->role,
-            'id' => auth()->user()->id
-        ]);
+        if(auth()->user()->role=="customer"){
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'bearer',
+                'expires_in' => auth()->factory()->getTTL() * 60,
+                'user' => auth()->user()->email,
+                'role' => auth()->user()->role,
+                'id' => auth()->user()->id
+            ]);
+        }
+        else if(auth()->user()->role=="vendor"){
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'bearer',
+                'expires_in' => auth()->factory()->getTTL() * 60, 
+                'id' => auth()->user()->id,
+                'role' => auth()->user()->role,  
+                'cafename' => auth()->user()->cafename,
+                'coverImage'=> auth()->user()->coverimage
+            ]);
+        }
+   
     }
 }

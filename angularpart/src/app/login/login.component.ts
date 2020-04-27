@@ -3,15 +3,16 @@ import { TokenService } from './../services/token.service';
 import { RequestHandlerService } from './../services/request-handler.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
-  selector: 'app-customer-login',
-  templateUrl: './customer-login.component.html',
-  styleUrls: ['./customer-login.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class CustomerLoginComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
+ 
 public loginForm;
+public user:{};
 public loginError={error:false,errorMessage:''};
   constructor(private apiHandler: RequestHandlerService, private token:TokenService, private router : Router) { }
 
@@ -28,8 +29,15 @@ public loginError={error:false,errorMessage:''};
       this.apiHandler.customerLogin(this.loginForm.value).subscribe(
         data=>{ 
           this.handleResponse(data);
-          this.router.navigate(['customer-home']);
-          console.log(data);
+          this.user=data;
+          if(data['role']=="customer"){
+            this.router.navigate(['customer-home']);
+          }
+          else if(data['role']=="vendor"){
+            console.log(data);
+          }
+          
+          
 
         },
         error=>{
@@ -42,8 +50,9 @@ public loginError={error:false,errorMessage:''};
      
   }
   handleResponse(data){ 
-    this.token.handle(data.access_token);
+    this.token.set(data.access_token, data);
 
   }
+
 
 }

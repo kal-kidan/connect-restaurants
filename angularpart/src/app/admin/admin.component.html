@@ -82,10 +82,12 @@
                 <input type="email" name="email" class="w3-round-large w3-margin" value="" placeholder="Email"
                     style="width:90%;" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
 
-                    <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="error"> 
+                    <div *ngIf="(registrationForm.get('email').invalid && registrationForm.get('email').touched)" class="error"> 
                         <small *ngIf="registrationForm.get('email').errors.required"> this field is required </small> 
-                        <small *ngIf="registrationForm.get('email').errors.pattern"> please enter valid email</small>
+                        <small *ngIf="registrationForm.get('email').errors.pattern"> please enter valid email</small>                 
                     </div> 
+
+                    <small *ngIf="this.emailError.error && registrationForm.get('email').valid" class="error"> {{this.emailError.message}}</small>  
 
                 <input type="text" class="w3-round-large w3-margin" name="lastname" value="" style="width:90%;"
                     placeholder="last name" formControlName="lastname" pattern="^[a-zA-Z]*$"/>
@@ -96,14 +98,22 @@
                     </div> 
 
                 <input type="text" class="w3-round-large w3-margin" name="id" value=""
-                 style="width:90%;"  placeholder="Id" formControlName="id"/>
+                 style="width:90%;"  placeholder="Id" formControlName="idnumber"/>
 
-                <br /><span style="color:red"></span> <br />
+                 <select  formControlName="gender" name="gender" class="w3-margin inputs" style="width:90%;">
+                    <option value="" disabled>gender</option>
+                    <option value="female" name="genderoption">female</option>
+                    <option value="male" name="genderoption">male</option>
+                </select>
+                <div *ngIf="registrationForm.get('gender').invalid && registrationForm.get('gender').touched" class="error">
+                    
+                    <small *ngIf="registrationForm.get('gender').invalid"> this field is required </small>    
+                </div> 
 
             </div>
 
         </div>
-        <button (click)="onSubmit()" 
+        <button (click)="onSubmit()" [disabled]="registrationForm.invalid||disableSubmit"
             style="margin-right:30px;background-color:#E93E21;margin-bottom:20px;float:right;"
             class="w3-btn w3-round w3-text-white " > Register </button>
     </form>

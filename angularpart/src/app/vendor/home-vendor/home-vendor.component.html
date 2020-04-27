@@ -1,0 +1,22 @@
+<app-header></app-header> 
+
+<body>
+    <div class="w3-display-container" style="margin-top:55.5px;" id="coverPicContainer" >
+
+        <img src="{{coverImage}}"  width="100%"  id="coverImage">
+    
+        <div class="w3-display-middle" >
+    <button type="button" id="changeCover" #changeCover type="file" (click)="showForm(uploadform, changeCover)" >Change Cover </button>
+    <div class="" id="uploadImage" #uploadform style="display:none">
+       
+     <form class="" [formGroup]="uploadFile" enctype="multipart/form-data" (ngSubmit)="upload()">
+        <input type="file" name="file"  formControlName="file"  id="fileInput" (change)="fileChange($event.target.files)">
+        <input type="submit" name="upload" value="Upload" id="uploadFile" [disabled]="uploadFile.invalid" >
+     </form>
+    </div>
+        </div>
+    
+    </div>
+      
+</body>
+ 

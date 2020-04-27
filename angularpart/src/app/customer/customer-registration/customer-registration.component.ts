@@ -1,5 +1,5 @@
-import { RequestHandlerService } from './../services/request-handler.service';
-import { TokenService } from './../services/token.service';
+import { RequestHandlerService } from './../../services/request-handler.service';
+import { TokenService } from './../../services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,8 +13,7 @@ public togglePasswordValue = 'show';
 public registrationForm;
 public disableSubmit=false;
 public startLoading=false;
-public emailError={error:false,message:''};
-public url="http://localhost:8000/api/auth/signup";
+public emailError={error:false,message:''}; 
   constructor(private fb: FormBuilder, private apiRequest :RequestHandlerService ,private token: TokenService,private router:Router){ }
 
   ngOnInit() {
@@ -43,7 +42,7 @@ public url="http://localhost:8000/api/auth/signup";
       this.disableSubmit=true;
       this.startLoading=true; 
       this.registrationForm.value.role = "customer";
-      this.apiRequest.customerSignUp(this.registrationForm.value).subscribe(
+      this.apiRequest.signup(this.registrationForm.value).subscribe(
          data=>{
            console.log(data);
            this.handleResponse(data); 
@@ -54,14 +53,16 @@ public url="http://localhost:8000/api/auth/signup";
           this.emailError.message=error.error.errors.email[0];  
         }
       ); 
-      setTimeout(()=>{
-        this.router.navigate(['customer-home']);
-      },4000);
+    
       
   }
   handleResponse(data){ 
-    this.token.handle(data.access_token);
-
+    this.token.set(data.access_token, data); 
+    if(data.role == "customer"){
+      setTimeout(()=>{
+        this.router.navigate(['customer-home']);
+      },4000);
+    }
   }
 
 }

@@ -26,7 +26,7 @@
                         <small *ngIf="registrationForm.get('lastname').errors.pattern"> please enter valid name</small>
                     </div> 
                     <select  formControlName="gender" name="gender" id="" class="w3-margin inputs" >
-                        <option value="" disabled>select your sex</option>
+                        <option value="" disabled>gender</option>
                         <option value="female" name="genderoption">female</option>
                         <option value="male" name="genderoption">male</option>
                     </select>
@@ -37,11 +37,11 @@
 
                     <input required type="email" formControlName="email" class="w3-margin inputs" placeholder="Email" maxlength="255" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                     
-                    <div required *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="error">
-                        
+                    <div required *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="error">   
                         <small *ngIf="registrationForm.get('email').errors.required"> this field is required </small> 
                         <small *ngIf="registrationForm.get('email').errors.pattern"> please enter valid email</small> 
                     </div> 
+
                     <div *ngIf="this.emailError.error" class="error">
                         <small>{{this.emailError.message}}</small>
                     </div>
@@ -57,16 +57,16 @@
 
                         <span id="showpassword" class=" w3-hover-opacity w3-padding w3-text-teal w3-round w3-btn" (click)="togglePassword(password) " >{{togglePasswordValue}}</span>
                         <input required #password type="password" formControlName="password" id="pw" class="w3-margin inputs" minlength="6" maxlength="20" placeholder="Password">
-                        <div required *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched" class="error">
-                           
+                        <div required *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched" class="error">     
                             <small *ngIf="registrationForm.get('password').errors.required"> this field is required</small> 
                             <small *ngIf="registrationForm.get('password').errors.minlength"> password should at least be six </small>  
                         </div> 
                     </div>
 
                     <button type="submit"  (click)="onSubmit()" id="createAccount" class="w3-btn w3-text-white"
-                     > 
-                     <!-- [disabled]="registrationForm.invalid||disableSubmit" -->
+                    [disabled]="registrationForm.invalid||disableSubmit"
+                    > 
+                    
                       
                       <div  style="display: inline-block;">
                         Create Your Account

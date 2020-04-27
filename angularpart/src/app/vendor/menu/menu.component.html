@@ -1,0 +1,31 @@
+<app-header></app-header> 
+<div class="" id="menuDetail" style="margin-bottom:80px;"  >
+    <div class="w3-center" style="margin-bottom:20px;"  >
+      <p id="menuExist" style="color:teal;font-size:25px;display:none">You do not Have any Food added Yet ...</p>
+      <span style="color:red;display:none;" id="errorMessage"></span>
+    <input type="text" name="foodItem" placeholder="Enter Food Here"
+    value="" id="foodItem"  >
+    <input type="number" name="price" placeholder="price" value="" id="priceInput">
+    <br> <br>
+    <input type="text" name="details" id="details" placeholder="Add Details (optional)"  >
+     <br><br>
+    <select id="selectCategory" class="" name="selectCategory">
+      <option  value="" disabled selected>Select Category</option>
+      <option value="">Break Fast</option>
+      <option value="">Lunch</option>
+      <option value="">Dinner</option>
+      <option value="">Soft Drinks</option>
+      <option value=""> Drinks</option>
+      <option value=""> Foods</option>
+    </select> <br><br>
+    <input type="submit" name="addFood" value="Add" id="addFood" onclick="addFood()">
+  
+    </div>
+  <div class="" id="menuItems">
+        <h2 class="w3-center w3-text-teal" id="listOfMenu"  >List of Your menu</h2>
+      <div class="w3-row">
+        <ul class="w3-col m6 l6 s10" id="menusList" >  </ul>
+        <ul  class="w3-col m6 l6 s10" id="menusList2">  </ul>
+      </div>
+    </div>
+  </div>

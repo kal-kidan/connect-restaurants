@@ -5,18 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class TokenService {
   private iss={
-   login:'http://localhost:8000/api/auth/login',
-   signup:'http://localhost:8000/api/auth/signup'
+   login:'http://localhost:8000/api/login',
+   signup:'http://localhost:8000/api/signup' 
   }
 
   constructor() { }
-  handle(token){
-    this.set(token);
-
-  }
-  set(token){
+ 
+  set(token, data){
     localStorage.setItem('token',token);
+    localStorage.setItem('data',JSON.stringify(data));
   }
+ 
   get(){
     return localStorage.getItem('token');
   }
@@ -27,10 +26,7 @@ export class TokenService {
     const token=this.get();
     if(this.get()){
       const payload=this.getPayLoad(token);
-      if(payload){
-        // console.log("the payload iss ", Object.values(this.iss));
-        // console.log("\n", payload.iss);
-        // console.log("\n", Object.values(this.iss).indexOf(payload.iss));
+      if(payload){ 
         return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
 
       } 
@@ -41,9 +37,13 @@ export class TokenService {
   getPayLoad(token){
       var payload= token.split('.')[1];
       payload=JSON.parse(atob(payload));
-      return payload; 
-
+      return payload;  
   }
+  getData(){
+    return localStorage.getItem('data');
+  }
+
+
   loggedIn(){
     return this.isValid();
   }
