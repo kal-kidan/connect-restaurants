@@ -8,7 +8,6 @@ import { CustomerRegistrationComponent } from './customer/customer-registration/
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'; 
-import { CustomerLoginComponent } from './customer/customer-login/customer-login.component';
 import {RequestHandlerService} from './services/request-handler.service';
 import { CustomerHomeComponent } from './customer/customer-home/customer-home.component'
 import { BeforeLoginService } from './services/before-login.service';
@@ -24,8 +23,7 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     CustomerRegistrationComponent,
-    HomeComponent,
-    CustomerLoginComponent,
+    HomeComponent, 
     CustomerHomeComponent,
     AdminComponent,
     HomeVendorComponent,

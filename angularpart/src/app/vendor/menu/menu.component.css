@@ -1,72 +1,24 @@
-#logout{
-    float:right;
-    background-color:#82B440;
-    margin:5px;
-    padding:4px;
-    cursor:pointer;
-    color:white;
-    text-decoration: none;
-}
-#logo:hover{
-opacity:0.8;
-cursor: pointer;
-}
-  #logout:hover{
-    opacity:0.7;
-  }
-#cafeName:hover{
-  background-color:transparent ;
-  /* opacity:0.8; */
-}
+ input:focus{
+   border: 1px solid grey;
+   border-radius: 20px;
+ }
+ input{
+  border: 1px solid grey;
+  border-radius: 20px; 
+ }
 a{
   text-decoration:none;
 }
 #dropDownContent{
 background-color:#f8f8f8;
 position: fixed;
-}
-#changeCover:hover{
-border:3px solid black;
-}
-#changeCover{
-  cursor:pointer;
-  font-weight: bold;
-   background-color:rgba(0,0,0,1);
-   color:white ;
-   border:3px solid #3f854e;
-   outline:none;
-   padding:7px;
-   border-radius:7px;
-}
+} 
 #overlay{
 background-color:rgba(0,0,0,0.5);
 padding-left:100%;
 padding-right:100%;
 }
-#fileInput{
-cursor:pointer;
-font-weight: bold;
-background-color:rgba(0,0,0,1);
-color:white ;
-border:3px solid #3f854e;
-outline:none;
-padding:4px;
-border-radius:7px;
-
-}
-#uploadFile{
-cursor:pointer;
-font-weight: bold;
-background-color:rgba(0,0,0,1);
-color:white ;
-border:3px solid #3f854e;
-outline:none;
-padding:8px;
-border-radius:7px;
-}
-#uploadFile:hover{
-border:3px solid black;
-}
+ 
 #addFood{
 width:100px;
 background-color:teal;
@@ -128,56 +80,8 @@ border:1px solid #a5c78d;
 margin:10px;
 border-radius:20px;
 }
-#addTime{
-background-color:teal;
-color:white;
-outline:none;
-border:2px solid  #55b4ac ;
-border-radius:4px;
-padding:4px;
-padding-right:7px;
-padding-left:7px;
-cursor:pointer;
-}
-#addTime:hover{
-border:2px solid #82B440;
-}
-#updateStatus{
-background-color:teal;
-color:white;
-outline:none;
-border:2px solid  #55b4ac ;
-border-radius:4px;
-padding:2px;
-padding-right:5px;
-padding-left:5px;
-cursor:pointer;
-}
-#updateStatus:hover{
-border:2px solid #82B440;
-}
-#deliveryTime{
-padding:4px;
-color:teal;
-}
-#status{
-padding:4px;
-}
-.scheduleLists{
-padding:10px 0px 10px 0px;
-list-style-type: none;
-border-bottom:4px solid #a5c78d;
-margin:10px;
-border-radius:20px;
-color:#43527a;
-}
-.deleteScheduleSpans{
-float:right;
-margin-right:30px;
-cursor:pointer;
-font-size: 20px;
-color:#db581a;
-}
-.deleteScheduleSpans:hover{
-color:#2e434d;
+ 
+.error{
+  border: 1px solid red;
+  border-radius: 20px; 
 }

@@ -1,3 +1,5 @@
+import { RequestHandlerService } from './../../services/request-handler.service';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private fb: FormBuilder, private requestHandler: RequestHandlerService) { }
+  public menuForm;
   ngOnInit() {
+    this.menuForm = this.fb.group(
+      {
+        name: ['', [Validators.required]],
+        price: ['', [Validators.required]],
+        category: ['', [Validators.required]],
+        details: [''],
+      } 
+    );
+  }
+
+  addMenu(){
+    this.requestHandler.addMenu(this.menuForm.value).
+      subscribe((data)=>{
+        console.log(data);
+      },
+      (error)=>{
+        console.log(error);
+      })
   }
 
 }

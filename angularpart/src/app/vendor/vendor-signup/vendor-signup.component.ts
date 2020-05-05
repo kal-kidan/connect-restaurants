@@ -48,11 +48,7 @@ export class VendorSignupComponent implements OnInit {
   }
 
   handleResponse(data){ 
-    this.token.set(data.access_token, data); 
-    if(data.role == "vendor"){
-      // setTimeout(()=>{
-      //   this.router.navigate(['customer-home']);
-      // },4000);
-    }
+    this.token.set(data.access_token, data.id); 
+    this.router.navigate(['vendor-home']);
   }
 }

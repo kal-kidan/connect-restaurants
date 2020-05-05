@@ -5,13 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RequestHandlerService {
-public rootUrl="http://localhost:8000/api";
-public user;
+public rootUrl="http://localhost:8000/api"; 
   constructor(private _http:HttpClient, private token: TokenService) { }
   
    signup(data){
-    return this._http.post(`${this.rootUrl}/signup`,data);
-    this.user=this.getUser();
+    return this._http.post(`${this.rootUrl}/signup`,data); 
   }
   customerLogin(data){
     return this._http.post(`${this.rootUrl}/login`,data);
@@ -27,30 +25,28 @@ public user;
   }
 
   setUser(){
-    this.getUser().subscribe(
-      (data)=>{
-        this.user=data;
-      }
-    )
+ 
   }
-  requestUser(){
-    let id = JSON.parse(this.token.getData()).id;
+  getUser(){
+    let id =  this.token.getData().id;
     let token = this.getToken();
     return this._http.post(`${this.rootUrl}/me`, {id}, {headers:{
       Authorization: `Bearer ${token}`
     }});
   }
 
-  getUser(){
-    return this.user;
-  }
+   
   
   postFile(fileToUpload: File){
-    const id = JSON.parse(this.token.getData()).id;
+    const id = this.token.getData().id;
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
     formData.append('id',id);
     return this._http.post(`${this.rootUrl}/vendor/updatecover`, formData);
+  }
+
+  addMenu(menu){
+    return this._http.post(`${this.rootUrl}/vendor/addmenu`, menu);
   }
 
 

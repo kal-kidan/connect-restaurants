@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { RequestHandlerService } from './../../services/request-handler.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TokenService } from './../../services/token.service';
@@ -16,19 +17,26 @@ export class HomeVendorComponent implements OnInit {
   public fileToUpload: File;
   constructor(private token: TokenService, private fb: FormBuilder, private requestHandler: RequestHandlerService) { }
 
-  ngOnInit() {
-    this.Data =this.requestHandler.getUser();
+   ngOnInit() {
+    this.requestHandler.getUser().
+    subscribe((data)=>{
+        this.Data =data;
+        if(this.Data.coverimage!=null && this.Data.coverimage!=''){
+          this.coverImage = "http://localhost:8000/" + this.Data.coverimage.toString();    
+        } 
+        else{
+          this.coverImage="./../../../assets/images/coverPic.png"; 
+        } 
+     },
+     (error)=>{
+       console.log(error);
+      }
+     );
     this.uploadFile = this.fb.group(
       {
         file: ['', [Validators.required]]
       } 
-    );
-  
-   this.coverImage="./../../../assets/images/coverPic.png"; 
-    if(this.Data.coverImage!=null && this.Data.coverImage!=''){
-      this.coverImage = "http://localhost:8000/" + this.Data.coverImage.toString();    
-    } 
-    
+    );    
   }
   showForm($uploadForm, $changeCover){
     $uploadForm.style.display="block";

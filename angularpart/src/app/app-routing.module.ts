@@ -2,8 +2,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; 
 import { CustomerRegistrationComponent } from './customer/customer-registration/customer-registration.component';
-import { HomeComponent } from './home/home.component';
-import { CustomerLoginComponent } from './customer/customer-login/customer-login.component';
+import { HomeComponent } from './home/home.component'; 
 import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
 import { BeforeLoginService } from './services/before-login.service';
 import { AfterLoginService } from './services/after-login.service';
@@ -19,7 +18,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate:[BeforeLoginService]},
   {path: 'customer-home', component: CustomerHomeComponent, canActivate:[AfterLoginService]},
   {path: 'admin', component: AdminComponent},
-   {path: 'vendor-home', component: HomeVendorComponent, canActivate:[AfterLoginService]},
+  {path: 'vendor-home', component: HomeVendorComponent, canActivate:[AfterLoginService]},
   {path: 'menu', component: MenuComponent, canActivate:[AfterLoginService]},
   {path: 'vendor-signup', component: VendorSignupComponent }
 ];

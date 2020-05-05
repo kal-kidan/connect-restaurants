@@ -1,4 +1,4 @@
-import { TokenService } from './../../services/token.service';
+import { RequestHandlerService } from './../../services/request-handler.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,15 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit { 
-  constructor(private token: TokenService) { }
+  constructor( private requestHandler: RequestHandlerService) { }
   public vendor = {};
   public cafename;
-  public data;
+  public Data;
   public id;
   ngOnInit() {
-    this.data = JSON.parse(this.token.getData());
-    this.cafename = this.data.cafename;
-    this.id = this.data.id;
+     this.requestHandler.getUser().
+        subscribe((data)=>{
+            this.Data =data;
+            this.cafename = this.Data.cafename; 
+         },
+         (error)=>{
+           console.log(error);
+          }
+         );
+    
   }
   w3_open() {
     document.getElementById("sidebarofcafereg").style.display = "block";

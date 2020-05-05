@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+ import { RequestHandlerService } from './../services/request-handler.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,9 +11,9 @@ export class TokenService {
 
   constructor() { }
  
-  set(token, data){
+  set(token, id){
     localStorage.setItem('token',token);
-    localStorage.setItem('data',JSON.stringify(data));
+    localStorage.setItem('id',id);   
   }
  
   get(){
@@ -39,8 +39,10 @@ export class TokenService {
       payload=JSON.parse(atob(payload));
       return payload;  
   }
-  getData(){
-    return localStorage.getItem('data');
+  getData(){ 
+    const id = localStorage.getItem('id');;
+    let data={id};
+    return data;
   }
 
 

@@ -11,10 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
  
-public loginForm;
-public user:{};
+public loginForm; 
 public loginError={error:false,errorMessage:''};
-  constructor(private apiHandler: RequestHandlerService, private token:TokenService, private router : Router) { }
+  constructor(private requestHandler: RequestHandlerService, private token:TokenService, private router : Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -26,18 +25,15 @@ public loginError={error:false,errorMessage:''};
   onSubmit(){
    
     if(this.loginForm.valid){ 
-      this.apiHandler.customerLogin(this.loginForm.value).subscribe(
+      this.requestHandler.customerLogin(this.loginForm.value).subscribe(
         data=>{ 
-          this.handleResponse(data);
-          this.user=data;
-          if(data['role']=="customer"){
+          this.handleResponse(data);   
+          if(data['role']=="customer"){ 
             this.router.navigate(['customer-home']);
           }
-          else if(data['role']=="vendor"){
-            console.log(data);
-          }
-          
-          
+          else if(data['role']=="vendor"){     
+            this.router.navigate(['vendor-home']);
+          } 
 
         },
         error=>{
@@ -50,8 +46,8 @@ public loginError={error:false,errorMessage:''};
      
   }
   handleResponse(data){ 
-    this.token.set(data.access_token, data);
-
+    this.token.set(data.access_token, data.id);
+    this.requestHandler.setUser();
   }
 
 

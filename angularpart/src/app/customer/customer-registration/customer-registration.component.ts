@@ -57,7 +57,7 @@ public emailError={error:false,message:''};
       
   }
   handleResponse(data){ 
-    this.token.set(data.access_token, data); 
+    this.token.set(data.access_token, data.id); 
     if(data.role == "customer"){
       setTimeout(()=>{
         this.router.navigate(['customer-home']);
