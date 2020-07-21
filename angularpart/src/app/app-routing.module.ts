@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'customer-signup', component: CustomerRegistrationComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'login', component: LoginComponent, canActivate:[BeforeLoginService]},
+  {path: 'customer-login', component: LoginComponent, canActivate:[BeforeLoginService]},
   {path: 'customer-home', component: CustomerHomeComponent, canActivate:[AfterLoginService]},
   {path: 'admin', component: AdminComponent},
   {path: 'vendor-home', component: HomeVendorComponent, canActivate:[AfterLoginService]},

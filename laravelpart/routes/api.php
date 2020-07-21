@@ -33,5 +33,7 @@ Route::group([
     Route::post('vendor/logout', 'VendorAuthController@logout');
     Route::post('vendor/register', 'RegisterVendorController@register');
     Route::post('vendor/updatecover', 'UpdateVendorController@updateCover');
+    Route::post('vendor/addmenu', 'MenuController@addMenu');
+    Route::post('vendor/getmenu', 'MenuController@getMenu');
 
 });

@@ -2,7 +2,7 @@
    border: 1px solid grey;
    border-radius: 20px;
  }
- input{
+ input, select{
   border: 1px solid grey;
   border-radius: 20px; 
  }
@@ -32,9 +32,14 @@ padding:5px;font-size:18px;
 border:2px solid #82B440;
 }
 #foodItem{
-max-width:400px;
-padding:10px;
+max-width:400px;padding:10px; 
 }
+
+.foodItem{
+  color: teal;
+  font-size: 16px;
+}
+
 #priceInput{
 max-width:100px;
 padding:10px;
@@ -49,21 +54,17 @@ padding:5px;
 .delete-icon:hover{
 color:#2e434d;
 }
-.delete-icon  {
-margin-right: 10px;
-cursor:pointer;
-font-size: 20px;
-color:#db581a;
-}
+
 
 .categorySpan{
-padding:11px;
+padding:12px;
 max-width: 150px;
 background-color: #2e434d;
 color:white;
 border:1px solid #a5c78d;
 border-radius:20px 0px 0px 20px;
 margin-right: 20px;
+font-size: 16px;
 }
 .priceSpan{
 padding:2px;
@@ -71,17 +72,28 @@ max-width: 70px;
 background-color: #2d502f;
 color:white;
 margin-right:20px;
+float: right;
+font-size: 16px;
+}
 
-}
-.menuList{
-padding:10px 0px 10px 0px;
-list-style-type: none;
-border:1px solid #a5c78d;
-margin:10px;
-border-radius:20px;
-}
+.delete-icon  {
+  margin-right: 10px;
+  cursor:pointer;
+  font-size: 20px;
+  color:#db581a;
+  float: right;
+  }
+  
  
 .error{
   border: 1px solid red;
   border-radius: 20px; 
+}
+
+.containerSpan{ 
+  border:2px solid #a5c78d; border-radius:20px; padding:11px 0px 11px 0px;  width: 85%;
+}
+
+li{
+  list-style-type: none;
 }

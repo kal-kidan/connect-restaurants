@@ -1,34 +1,55 @@
-<app-header></app-header>  <br><br><br>
-<div class="" id="menuDetail" style="margin-bottom:80px;"  >
-    <div class="w3-center" style="margin-bottom:20px;"  >
-      <p id="menuExist" style="color:teal;font-size:25px;display:none">You do not Have any Food added Yet ...</p>
-      <span style="color:red;display:none;" id="errorMessage"></span>
-      <form [formGroup]="menuForm" (ngSubmit)="addMenu()" >
-        <input type="text" [class.error]="menuForm.get('name').invalid && menuForm.get('name').touched" formControlName="name" placeholder="Enter Item Here"
-        value="" id="foodItem"  >
-        <input type="number" [class.error]="menuForm.get('price').invalid && menuForm.get('price').touched"  formControlName="price" placeholder="price" value="" id="priceInput">
-        <br> <br>
-        <input type="text" [class.error]="menuForm.get('price').invalid && menuForm.get('price').touched" formControlName="details" id="details" placeholder="Add Details (optional)"  >
-         <br><br>
-        <select id="selectCategory" class="" formControlName="category">
-          <option value="" name="category" selected disabled>Select Category</option>
-          <option value="Break Fast" name="category">Break Fast</option>
-          <option value="Lunch" name="category">Lunch</option>
-          <option value="Dinner" name="category">Dinner</option>
-          <option value="Soft Drinks" name="category">Soft Drinks</option>
-          <option value="Drinks" name="category"> Drinks</option>
-          <option value="Foods" name="category"> Foods</option>
-        </select> <br><br>
-        <input type="submit" name="addFood" value="Add" id="addFood" [disabled]="menuForm.invalid" >
-      
-      </form>
+<app-header></app-header> <br><br><br>
+<div class="" id="menuDetail" style="margin-bottom:80px;">
+  <div class="w3-center" style="margin-bottom:20px;">
+
+    <p id="menuExist" style="color:teal;font-size:25px;display:none">You Do Not Have Any Menu added Yet ...</p>
+
+    <form [formGroup]="menuForm" (ngSubmit)="addMenu(list)">
+      <input type="text" [class.error]="menuForm.get('name').invalid && menuForm.get('name').touched"
+        formControlName="name" placeholder="Enter Item Here" value="" id="foodItem">
+      <input type="number" [class.error]="menuForm.get('price').invalid && menuForm.get('price').touched"
+        formControlName="price" placeholder="price" value="" id="priceInput">
+      <br> <br>
+      <input type="text" formControlName="detail" id="details" placeholder="Add Details (optional)">
+      <br><br>
+      <select id="selectCategory" class="" formControlName="category"
+        [class.error]="menuForm.get('category').invalid && menuForm.get('category').touched">
+        <option value="" name="category" selected disabled>Select Category</option>
+        <option value="Break Fast" name="category">Break Fast</option>
+        <option value="Lunch" name="category">Lunch</option>
+        <option value="Dinner" name="category">Dinner</option>
+        <option value="Soft Drinks" name="category">Soft Drinks</option>
+        <option value="Drinks" name="category"> Drinks</option>
+        <option value="Foods" name="category"> Foods</option>
+      </select> <br><br>
+      <input type="submit" name="addFood" value="Add" id="addFood" [disabled]="menuForm.invalid">
+    </form>
+
+  </div> <br>
+  <div class="" id="menuItems" >
+    <!-- <h2 class="w3-center w3-text-teal" id="listOfMenu"  >List of Your menu</h2> -->
+    <div class="w3-row "#list>
+
+      <ul class="w3-col m10 l6 s12"   *ngFor="let menu of menus" >
+        <li class="containerSpan" >
+          <span class="categorySpan">{{menu.category}}</span>
+          <span class="foodItem">{{menu.name}}</span>
+          <span class="fa fa-trash delete-icon" (click)="deleteMenu(menu.id)"></span>
+          <span class="priceSpan">{{menu.price}} birr</span>
+        </li>
+      </ul>  
  
     </div>
-  <div class="" id="menuItems">
-        <h2 class="w3-center w3-text-teal" id="listOfMenu"  >List of Your menu</h2>
-      <div class="w3-row">
-        <ul class="w3-col m6 l6 s10" id="menusList" >  </ul>
-        <ul  class="w3-col m6 l6 s10" id="menusList2">  </ul>
-      </div>
-    </div>
+
+     <!-- added menus goes here -->
+  <div class="w3-row ">
+    <ul class="w3-col m10 l6 s12" id="listone"   >
+    </ul>
+    <ul class="w3-col m10 l6 s12" id="listtwo">
+    </ul>
   </div>
+
+  </div>
+
+ 
+</div>

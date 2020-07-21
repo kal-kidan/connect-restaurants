@@ -28,10 +28,9 @@ public rootUrl="http://localhost:8000/api";
  
   }
   getUser(){
-    let id =  this.token.getData().id;
-    let token = this.getToken();
+    let id =  this.token.getData().id; 
     return this._http.post(`${this.rootUrl}/me`, {id}, {headers:{
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${this.getToken()}`
     }});
   }
 
@@ -42,13 +41,30 @@ public rootUrl="http://localhost:8000/api";
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
     formData.append('id',id);
-    return this._http.post(`${this.rootUrl}/vendor/updatecover`, formData);
+    return this._http.post(`${this.rootUrl}/vendor/updatecover`, formData,   
+      {headers:{
+        Authorization: `Bearer ${this.getToken()}`
+      }});
   }
 
-  addMenu(menu){
-    return this._http.post(`${this.rootUrl}/vendor/addmenu`, menu);
+  addMenu(menu){  
+    return this._http.post(`${this.rootUrl}/vendor/addmenu`, menu, {headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }});
   }
 
+  getMenu(){
+    const id = this.token.getData().id;
+    return this._http.post(`${this.rootUrl}/vendor/getmenu`, {id}, {headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }});
+  }
+ 
+  deleteMenu(id){
+     return this._http.post(`${this.rootUrl}/vendor/deletemenu`,{id},{headers:{
+      Authorization: `Bearer ${this.getToken()}`
+     }});
+  }
 
 
  

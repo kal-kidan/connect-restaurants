@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 class UpdateVendorController extends Controller
 {
     public function updateCover(Request $request){
-        // $this->validate(
-        //     $request,
-        //     ['file'=>'required|image|max:2048']
-        // );
-
+        $this->validate(
+            $request,
+            ['file'=>'required|image|max:2048']
+        ); 
          $user = User::find($request->id);
          $image=$request->file('file');
          $uploadedImage=time().$image->getClientOriginalName() ; 
