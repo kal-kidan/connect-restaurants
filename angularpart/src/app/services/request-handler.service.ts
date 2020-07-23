@@ -66,6 +66,36 @@ public rootUrl="http://localhost:8000/api";
      }});
   }
 
+  addSchedule(schedule){
+    return this._http.post(`${this.rootUrl}/vendor/addschedule`,schedule,{
+      headers:{
+        Authorization: `Bearer ${this.getToken()}`
+      }
+    });
+  }
 
+  updateVendorStatus(status){
+    const id = this.token.getData().id;
+    return this._http.patch(`${this.rootUrl}/vendor/updatestatus`,{id,status},{
+      headers:{
+        Authorization: `Bearer ${this.getToken()}`
+      }
+    });
+  }
+
+ getSchedule(){
+  const id = this.token.getData().id;
+  return this._http.get(`${this.rootUrl}/vendor/schedule`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    },
+    params:{id,status}
+  },
+  );
+ }
+
+ deleteSchedule(id){
+
+ }
  
 }

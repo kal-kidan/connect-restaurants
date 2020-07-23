@@ -10,17 +10,19 @@ import { HomeVendorComponent } from './vendor/home-vendor/home-vendor.component'
 import { MenuComponent } from './vendor/menu/menu.component';
 import { VendorSignupComponent } from './vendor/vendor-signup/vendor-signup.component';
 import { LoginComponent } from './login/login.component';
+import { ScheduleComponent } from './vendor/schedule/schedule.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'customer-signup', component: CustomerRegistrationComponent},
+  {path: 'signup', component: CustomerRegistrationComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'customer-login', component: LoginComponent, canActivate:[BeforeLoginService]},
+  {path: 'signin', component: LoginComponent, canActivate:[BeforeLoginService]},
   {path: 'customer-home', component: CustomerHomeComponent, canActivate:[AfterLoginService]},
   {path: 'admin', component: AdminComponent},
   {path: 'vendor-home', component: HomeVendorComponent, canActivate:[AfterLoginService]},
   {path: 'menu', component: MenuComponent, canActivate:[AfterLoginService]},
-  {path: 'vendor-signup', component: VendorSignupComponent }
+  {path: 'vendor-signup', component: VendorSignupComponent },
+  {path:'schedule',component:ScheduleComponent}
 ];
 
 @NgModule({

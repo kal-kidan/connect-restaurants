@@ -53,21 +53,16 @@ export class MenuComponent implements OnInit {
           console.log("error", error);
         })
   }
-
-  menuList(): String {
-    return "";
-  }
+ 
 
   deleteMenu(id, list) {
-    console.log(id);
     this.requestHandler.deleteMenu(id).
-      subscribe((data) => {
-        console.log("data", data);
+      subscribe((data) => { 
         this.hideList(list);
         this.getMenu();
       },
         (error) => {
-          console.log("error", error);
+          console.log("error deleting data", error);
         });
   }
   hideList(list) {

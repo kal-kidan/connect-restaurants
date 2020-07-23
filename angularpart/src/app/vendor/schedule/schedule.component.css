@@ -1,0 +1,59 @@
+
+#addTime{
+    background-color:teal;
+    color:white;
+    outline:none;
+    border:2px solid  #55b4ac ;
+    border-radius:4px;
+    padding:4px;
+    padding-right:7px;
+    padding-left:7px;
+    cursor:pointer;
+    }
+    #addTime:hover{
+    border:2px solid #82B440;
+    }
+    #updateStatus{
+    background-color:teal;
+    color:white;
+    outline:none;
+    border:2px solid  #55b4ac ;
+    border-radius:4px;
+    padding:2px;
+    padding-right:5px;
+    padding-left:5px;
+    cursor:pointer;
+    }
+    #updateStatus:hover{
+    border:2px solid #82B440;
+    }
+    #deliveryTime{
+    padding:4px;
+    color:teal;
+    }
+    #status{
+    padding:4px;
+    }
+    .scheduleLists{
+    padding:10px 0px 10px 0px;
+    list-style-type: none;
+    border-bottom:4px solid #a5c78d;
+    margin:10px;
+    border-radius:20px;
+    color:#43527a;
+    }
+    .deleteScheduleSpans{
+    float:right;
+    margin-right:30px;
+    cursor:pointer;
+    font-size: 20px;
+    color:#db581a;
+    }
+    .deleteScheduleSpans:hover{
+    color:#2e434d;
+    }
+    .error{
+        color: red;
+/*       
+        margin-left: 20px; */
+    }

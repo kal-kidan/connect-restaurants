@@ -18,6 +18,7 @@ import { MenuComponent } from './vendor/menu/menu.component';
 import { HeaderComponent } from './vendor/header/header.component';
 import { VendorSignupComponent } from './vendor/vendor-signup/vendor-signup.component';
 import { LoginComponent } from './login/login.component';
+import { ScheduleComponent } from './vendor/schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoginComponent } from './login/login.component';
     MenuComponent,
     HeaderComponent,
     VendorSignupComponent,
-    LoginComponent
+    LoginComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,

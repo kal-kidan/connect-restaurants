@@ -34,22 +34,13 @@
         <li class="containerSpan" >
           <span class="categorySpan">{{menu.category}}</span>
           <span class="foodItem">{{menu.name}}</span>
-          <span class="fa fa-trash delete-icon" (click)="deleteMenu(menu.id)"></span>
+          <span class="fa fa-trash delete-icon" (click)="deleteMenu(menu.id,list)"></span>
           <span class="priceSpan">{{menu.price}} birr</span>
         </li>
       </ul>  
  
     </div>
 
-     <!-- added menus goes here -->
-  <div class="w3-row ">
-    <ul class="w3-col m10 l6 s12" id="listone"   >
-    </ul>
-    <ul class="w3-col m10 l6 s12" id="listtwo">
-    </ul>
   </div>
-
-  </div>
-
  
 </div>

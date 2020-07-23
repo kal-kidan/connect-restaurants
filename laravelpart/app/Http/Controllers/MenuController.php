@@ -31,8 +31,16 @@ class MenuController extends Controller
       }
    }
 
-   function deleteMenu(){
-
+   function deleteMenu(Request $request){
+      $id=$request->id;
+      $destroyedMenu=Menu::destroy($id);
+      if($destroyedMenu){
+         return response()->json($destroyedMenu);
+        }
+        else{
+         return response()->json(["error"=>"can not delete the menu",401]);
+        }
+      
    }
 
    function updateMenu(){
@@ -47,7 +55,7 @@ class MenuController extends Controller
          return response()->json($menus);
       }
       else{
-         return response()->json(false);
+         return response()->json(["error"=>"can not fetch menus"],404);
       }
    }
 }
