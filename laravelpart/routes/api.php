@@ -37,7 +37,8 @@ Route::group([
     Route::post('vendor/getmenu', 'MenuController@getMenu');
     Route::post('vendor/deletemenu', 'MenuController@deleteMenu');
     Route::post('vendor/addschedule', 'ScheduleController@addSchedule');
-    Route::post('vendor/deleteschedule', 'ScheduleController@deleteSchedule');
+    Route::delete('vendor/deleteschedule', 'ScheduleController@deleteSchedule');
     Route::patch('vendor/updatestatus', 'ScheduleController@updateStatus');
     Route::get('vendor/schedule', 'ScheduleController@getSchedules');
+    Route::get('vendor/getstatus', 'ScheduleController@getStatus');
 });

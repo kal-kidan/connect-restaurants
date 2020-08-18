@@ -15,6 +15,7 @@ export class ScheduleComponent implements OnInit {
    private user;
    private vendor_id;
    public schedules;
+   public status;
   ngOnInit() {
     this.scheduleForm = this.fb.group(
       { 
@@ -40,11 +41,13 @@ export class ScheduleComponent implements OnInit {
         this.getSchedules();
   }
 
-  addDeliveryTime(){
+  addDeliveryTime(list){
     this.scheduleForm.value.vendor_id=this.vendor_id;
       this.requestHandler.addSchedule( this.scheduleForm.value).subscribe(
             (data)=>{
-              console.log(data);
+              this.hideList(list);
+              this.getSchedules();
+
             },
             (error)=>{
               console.log("error adding schedule", error)
@@ -55,12 +58,23 @@ export class ScheduleComponent implements OnInit {
     this.requestHandler.getSchedule().subscribe(
       (data)=>{
         this.schedules=data;
-        console.log(data);
+   
       },
       (error)=>{
         console.log("error adding schedule", error)
       }
 )
+  }
+
+  getStatus(){
+    this.requestHandler.getStatus().subscribe(
+      (data)=>{
+        console.log("updated user", data);
+      },
+      (error)=>{
+        console.log("error updating status", error);
+      }
+    )
   }
   updateStatus(){
     this.requestHandler.updateVendorStatus(this.statusForm.value.status).subscribe(
@@ -73,8 +87,16 @@ export class ScheduleComponent implements OnInit {
     )
   }
 
-  deleteSchedule(){
-    
+  deleteSchedule(scheduleId, list){
+    this.requestHandler.deleteSchedule(scheduleId).subscribe(
+     (data)=>{
+      this.hideList(list);
+      this.getSchedules();
+     },
+     (error)=>{
+       console.log("error occured deleting schedule",error)
+     }
+    )
   }
 
   hideList(list) {

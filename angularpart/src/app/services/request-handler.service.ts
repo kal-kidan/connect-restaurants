@@ -93,9 +93,24 @@ public rootUrl="http://localhost:8000/api";
   },
   );
  }
-
+ getStatus(){
+  const id = this.token.getData().id;
+  return this._http.get(`${this.rootUrl}/vendor/getstatus`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    },
+    params:{id}
+  },
+  );
+ }
  deleteSchedule(id){
-
+  return this._http.delete(`${this.rootUrl}/vendor/deleteschedule`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    },
+    params:{id}
+  },
+  );
  }
  
 }

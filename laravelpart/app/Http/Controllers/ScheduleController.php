@@ -55,7 +55,27 @@ class ScheduleController extends Controller
           return response()->json(["error"=>"can not fetch schedules"],404);
        }
     }
+    function deleteSchedule(Request $request){
+      $id=$request->id;
+      $destroyedSchedule=Schedule::destroy($id);
+      if($destroyedSchedule){
+         return response()->json(true);
+      }
+      else{
+         return response()->json(["error"=>"can not delete the schedule"],401);
+      }
+    }
 
+    function getStatus(Request $request){
+      $id=$request->id;
+       $user=User::find($id);
+      if($user){
+         return response()->json($user->status);
+      }
+      else{
+         return response()->json(["error"=>"can not find the user"],404);
+      }
+    }
     function updateStatus(Request $request){
         $this->validate($request,
        [
