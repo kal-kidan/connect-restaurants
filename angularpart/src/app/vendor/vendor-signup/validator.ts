@@ -4,6 +4,6 @@ export function passwordValidator (control: AbstractControl) {
                         return null;
               }
               else {
-                return control.get('password').value !== control.get('confirmpassword').value? {'notMatch':true}: {'notMatch':false};
+                return control.get('password').value !== control.get('confirmpassword').value? {'notMatch':true}: null;
               }
 }

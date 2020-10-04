@@ -18,7 +18,7 @@ export class VendorSignupComponent implements OnInit {
   public emailError ={error: false, message:''};
   ngOnInit() {
     this.registrationForm = this.fb.group(
-      { 
+      {
         email:['', [Validators.required]],
         password:['', [Validators.required]],
         confirmpassword:['', [Validators.required]]
@@ -26,7 +26,7 @@ export class VendorSignupComponent implements OnInit {
       {validator: passwordValidator}
     );
   }
-  
+
   closeMessage(){
     document.getElementById('register_message').style.display='none';
   }
@@ -39,16 +39,18 @@ export class VendorSignupComponent implements OnInit {
       data=>{
         this.handleResponse(data);
         this.requestHandler.setUser();
-        console.log(data);
       },
       error=>{
-        console.log(error);
+        this.emailError.error = true;
+        this.emailError.message = error.error.error;
+
       }
     )
+
   }
 
-  handleResponse(data){ 
-    this.token.set(data.access_token, data.id); 
+  handleResponse(data){
+    this.token.set(data.access_token, data.id);
     this.router.navigate(['vendor-home']);
   }
 }

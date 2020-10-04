@@ -1,53 +1,30 @@
-<app-header></app-header>
-<br><br><br><br><br><br>
-<!-- schedule div -->
-<div class="w3-center" id="schedule">
-    <!-- status -->
-    <div>
-        <p>you are {{}}</p>
+<div class="w3-center" id="schedule" style="display: none">
+  <span class="w3-round" id="statusText" style="color: white; margin-right: 30px; padding: 4px">status</span>
+  <select class="" name="" id="status">
+    <option value="" disabled selected>status</option>
+    <option value="">open</option>
+    <option value="">closed</option>
+  </select>
+  <button type="button" id="updateStatus" onclick="updateStatus()"> Update </button> <br /> <br />
+  <span style="color: teal; font-size: 18px">Delivery Time: </span>
+
+  <form  [formGroup]="scheduleForm" (ngSubmit)="addDeliveryTime()">
+    <input type="text"  id="deliveryTime" formControlName = "deliveryTime"
+    [class.error]="scheduleForm.get('deliveryTime').invalid && scheduleForm.get('deliveryTime').touched" value="" placeholder="2:00 - 4:30 am" />
+    <input type="submit" value="Add" id="addTime" >
+    <p *ngIf="scheduleForm.get('deliveryTime').invalid && scheduleForm.get('deliveryTime').touched" class="error"> invalid input</p>
+    <br /><br /><br />
+  </form>
+
+
+  <div class="w3-row">
+    <div class="w3-col s10 m6 l6 w3-round w3-margin w3-padding-large">
+      <p class="w3-padding-large w3-round w3-text-white w3-large" style="background-color: #222c27"
+        id="scheduleMessage">
+        Added Time Spans
+      </p>
+      <ul class=" " id="scheduleList"></ul>
     </div>
-    <span class="w3-round " id="statusText" style="color:white;margin-right:30px;padding:4px;">status</span>
-    <form action="" [formGroup]="statusForm">
-        <select class=""   formControlName="status" required id="status">
-            <option value="" disabled selected>status</option>
-            <option value="open">open</option>
-            <option value="closed">closed</option>
-        </select>
-        <button type="submit" id="updateStatus" (click)="updateStatus()" value="Update"
-            [disabled]="statusForm.invalid">Update</button><br>
-            <div *ngIf="statusForm.get('status').invalid && statusForm.get('status').touched" class="error">
-                <small *ngIf="statusForm.get('status').errors.required"> enter a value </small>
-            </div>
-             <br>
-    </form>
-    <span style="color:teal;font-size:18px;">Delivery Time: </span>
-    <form action="" [formGroup]="scheduleForm">
-        <input id="deliveryTime" formControlName="timespan" type="text" value="" placeholder="2:00 - 4:30 am"
-            pattern="^[0-9]+(:)?[0-9]*(\s)?(-)+(\s)?[0-9]+(:)?[0-9]*\s(AM|PM|am|pm)$" required>
-        <button type="submit" id="addTime" (click)="addDeliveryTime(list)" value="Add"
-            [disabled]="scheduleForm.invalid">Add</button>
-        <div *ngIf="scheduleForm.get('timespan').invalid && scheduleForm.get('timespan').touched" class="error">
-            <small *ngIf="scheduleForm.get('timespan').errors.required"> enter a value </small>
-            <small *ngIf="scheduleForm.get('timespan').errors.pattern">
-                enter valid format (e.g: 2:00 - 4:30 am)
-            </small>
-        </div>
+  </div>
 
-    </form>
-    <br> <br> <br>
-    <div class="w3-row">
-        <div class="w3-col s10 m6 l6 w3-round w3-margin w3-padding-large">
-            <p class="w3-padding-large w3-round w3-text-white w3-large" style="background-color:#222c27"
-                id="scheduleMessage">Added Time Spans</p>
-            <ul class="" #list>
-                  <li id="scheduleList" *ngFor="let schedule of schedules">
-                      <span>{{schedule.timespan}}</span>
-                      <span class="fa fa-trash delete-icon" (click)="deleteSchedule(schedule.id,list)"></span>
-                  </li>
-            </ul>
-        </div>
-
-    </div>
-
-    <br> <br> <br> <br>
 </div>

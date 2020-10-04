@@ -14,7 +14,7 @@
       Habesha <span id="logo_food">Food </span>
     </div>
     <div class="" style="float:right;padding-top:5px;">
-      <a href="login.php" class=" w3-bar-item  w3-round-xlarge w3-hover-text-teal w3-text-white w3-btn "
+      <a href="/login" class=" w3-bar-item  w3-round-xlarge w3-hover-text-teal w3-text-white w3-btn "
         style=" background-color:#82B440;margin:2px;">
         sign in </a>
     </div>
@@ -45,6 +45,31 @@
     </div>
     <div class="w3-col l6 s10 m6" style="float:right;">
       <br>
+    <p style="color:blue">  </p>
+      <div class="alert alert-danger w3-col l6 s12 m6" role="alert" *ngIf="(registrationForm.invalid || this.emailError.error) && registrationForm.touched && registrationForm.get('confirmpassword').touched " >
+        <div required *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">
+          <small *ngIf="registrationForm.get('email').errors.required"> email is required </small>
+          <small *ngIf="registrationForm.get('email').errors.pattern"> please enter valid email</small>
+          <br>
+        </div>
+        <div *ngIf="this.emailError.error"  >
+          <small>{{this.emailError.message}}</small>
+          <br>
+        </div>
+        <div required *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched">
+          <small *ngIf="registrationForm.get('password').errors.required"> password field is required</small>
+          <small *ngIf="registrationForm.get('password').errors.minlength"> password should at least be six </small>
+          <br>
+        </div>
+        <div required *ngIf="registrationForm.get('confirmpassword').invalid && registrationForm.get('confirmpassword').touched">
+          <small *ngIf="registrationForm.get('confirmpassword').errors.required"> password doesn't not match</small>
+          <br>
+        </div>
+        <div *ngIf="registrationForm.errors!=null">
+          <small *ngIf="registrationForm.errors.notMatch" >password doesn't not match</small>
+          <br>
+        </div>
+      </div>
       <form name="form" [formGroup]="registrationForm">
 
         <div class="">
@@ -52,39 +77,17 @@
             placeholder="Email" maxlength="255" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
           <br>
 
-          <div required *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched"
-            class="error">
-            <small *ngIf="registrationForm.get('email').errors.required"> this field is required </small>
-            <small *ngIf="registrationForm.get('email').errors.pattern"> please enter valid email</small>
-            <br>
-          </div>
-
-          <div *ngIf="this.emailError.error" class="error">
-            <small>{{this.emailError.message}}</small>
-            <br>
-          </div>
-
           <input type="password" formControlName="password" id="password" name="password"
             class="w3-round  w3-margin-bottom inputs" placeholder="Password" minlength="6">
           <br>
 
-          <div required *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched"
-            class="error">
-            <small *ngIf="registrationForm.get('password').errors.required"> this field is required</small>
-            <small *ngIf="registrationForm.get('password').errors.minlength"> password should at least be six </small>
-            <br>
-          </div>
-
           <input type="password" id="confirmpassword" formControlName="confirmpassword"
-            class="w3-round  w3-margin-bottom inputs" name="confirmpassword" placeholder="Confirm Password">
+            class="w3-round w3-margin-bottom inputs" name="confirmpassword" placeholder="Confirm Password">
           <br>
-          <div class="error" *ngIf="registrationForm.errors!=null">
-            <small *ngIf="registrationForm.errors.notMatch" style="color:red">password do not match</small>
-            <br>
-          </div>
+
 
           <button id="submit_acc" type="submit" name="submit" value="Register" style="margin-left:20px;"
-            (click)="onSubmit()" class="w3-btn w3-round w3-teal" [disabled]="false">
+            (click)="onSubmit()" class="w3-btn w3-round w3-teal" [disabled]="registrationForm.invalid">
             Register</button>
 
         </div>
