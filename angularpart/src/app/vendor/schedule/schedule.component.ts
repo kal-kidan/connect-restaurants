@@ -17,16 +17,17 @@ export class ScheduleComponent implements OnInit {
    public schedules;
    public status;
   ngOnInit() {
+
     this.scheduleForm = this.fb.group(
-      { 
+      {
         timespan:['', [Validators.required]],
-      } 
+      }
     );
 
     this.statusForm = this.fb.group(
-      { 
+      {
         status:['', [Validators.required]],
-      } 
+      }
     );
 
     this.requestHandler.getUser().
@@ -58,7 +59,7 @@ export class ScheduleComponent implements OnInit {
     this.requestHandler.getSchedule().subscribe(
       (data)=>{
         this.schedules=data;
-   
+
       },
       (error)=>{
         console.log("error adding schedule", error)

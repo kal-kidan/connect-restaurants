@@ -1,30 +1,43 @@
-<div class="w3-center" id="schedule" style="display: none">
-  <span class="w3-round" id="statusText" style="color: white; margin-right: 30px; padding: 4px">status</span>
-  <select class="" name="" id="status">
-    <option value="" disabled selected>status</option>
-    <option value="">open</option>
-    <option value="">closed</option>
-  </select>
-  <button type="button" id="updateStatus" onclick="updateStatus()"> Update </button> <br /> <br />
-  <span style="color: teal; font-size: 18px">Delivery Time: </span>
+<app-header></app-header>
+<div class="" id="schedule"  style="margin-top:100px;">
+  <form [formGroup]="statusForm" (ngSubmit)="updateStatus()">
+    <span class="w3-round" id="statusText" style="color: white;  padding: 4px">status</span>
+    <select id="status" formControlName="status" style="width: 190px; margin-right: 7px;">
+      <option value="" disabled selected>status</option>
+      <option value="open">open</option>
+      <option value="closed">closed</option>
+    </select>
+    <input type="submit" id="updateStatus"  value="Update">   <br/> <br/>
+  </form>
 
-  <form  [formGroup]="scheduleForm" (ngSubmit)="addDeliveryTime()">
-    <input type="text"  id="deliveryTime" formControlName = "deliveryTime"
-    [class.error]="scheduleForm.get('deliveryTime').invalid && scheduleForm.get('deliveryTime').touched" value="" placeholder="2:00 - 4:30 am" />
+  <form  [formGroup]="scheduleForm" (ngSubmit)="addDeliveryTime(scheduleList)" style="margin-left: 40px; ">
+    <span style="color: teal; font-size: 18px">Delivery Time: </span> <br>
+    <input type="text"  id="deliveryTime" formControlName = "timespan" style="margin-right: 7px;"
+    [class.error]="scheduleForm.get('timespan').invalid && scheduleForm.get('timespan').touched" value="" placeholder="2:00 - 4:30 am" />
     <input type="submit" value="Add" id="addTime" >
-    <p *ngIf="scheduleForm.get('deliveryTime').invalid && scheduleForm.get('deliveryTime').touched" class="error"> invalid input</p>
+    <p *ngIf="scheduleForm.get('timespan').invalid && scheduleForm.get('timespan').touched" class="error"> invalid input</p>
     <br /><br /><br />
   </form>
 
 
-  <div class="w3-row">
+  <div class="w3-row" >
     <div class="w3-col s10 m6 l6 w3-round w3-margin w3-padding-large">
       <p class="w3-padding-large w3-round w3-text-white w3-large" style="background-color: #222c27"
         id="scheduleMessage">
-        Added Time Spans
+        Added Delivery Times
       </p>
-      <ul class=" " id="scheduleList"></ul>
+      <div #scheduleList>
+        <ul *ngFor="let schedule of schedules" id="scheduleList" >
+          <li class="scheduleLists" >
+            <span class="categorySpan">{{schedule.timespan}}</span>
+            <span class="fa fa-trash deleteScheduleSpans" (click)="deleteSchedule(schedule.id,scheduleList)"></span>
+          </li>
+        </ul>
+      </div>
+
+
     </div>
   </div>
+  <!-- <ul class=" " id="scheduleList" ></ul> -->
 
 </div>

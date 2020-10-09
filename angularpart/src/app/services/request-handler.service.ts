@@ -113,4 +113,13 @@ public rootUrl="http://localhost:8000/api";
   );
  }
 
+ getVendorInfo(id){
+  return this._http.get(`${this.rootUrl}/vendor/${id}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  },
+  );
+ }
+
 }

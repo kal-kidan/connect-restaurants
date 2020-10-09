@@ -6,40 +6,41 @@ import { Injectable } from '@angular/core';
 export class TokenService {
   private iss={
    login:'http://localhost:8000/api/login',
-   signup:'http://localhost:8000/api/signup' 
+   signup:'http://localhost:8000/api/signup'
   }
 
   constructor() { }
- 
+
   set(token, id){
     localStorage.setItem('token',token);
-    localStorage.setItem('id',id);   
+    localStorage.setItem('id',id);
   }
- 
+
   get(){
     return localStorage.getItem('token');
   }
   romove(){
-    localStorage.removeItem('token');
+    localStorage.clear();
+    // localStorage.removeItem('token');
   }
   isValid(){
     const token=this.get();
     if(this.get()){
       const payload=this.getPayLoad(token);
-      if(payload){ 
+      if(payload){
         return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
 
-      } 
+      }
     }
-    return false; 
+    return false;
   }
 
   getPayLoad(token){
       var payload= token.split('.')[1];
       payload=JSON.parse(atob(payload));
-      return payload;  
+      return payload;
   }
-  getData(){ 
+  getData(){
     const id = localStorage.getItem('id');;
     let data={id};
     return data;
@@ -49,5 +50,5 @@ export class TokenService {
   loggedIn(){
     return this.isValid();
   }
-   
+
 }

@@ -27,29 +27,30 @@ class AuthController extends Controller
             'email' =>'required|email|unique:users|max:255',
             'phonenumber' =>'required|regex:/^(\+2519)[0-9]{8}$/',
             'password' =>'required|min:6|string'
-        ]); 
+        ]);
         $user=User::create($request->all());
         return $this->login($request);
     }
 
     else if($request->role=="vendor"){
-        $request->validate([ 
-            'email' =>'required|email|max:255', 
+        $request->validate([
+            'email' =>'required|email|max:255',
             'password' =>'required|min:6|string|same:confirmpassword'
-        ]); 
+        ]);
         $user = User::where('email', $request->email)->where('role','vendor')->get();
         if(count($user)==0){
             return response()->json(['error' => 'this email hasn\'t been registered by admin'], 400);
         }
         else{
             $user[0]->password = $request->password;
+            $user[0]->coverimage = "/images/coverPic.png";
             $user[0]->save();
             return $this->login($request);
         }
-       
+
     }
-    
-     
+
+
 
     }
     /**
@@ -84,8 +85,8 @@ class AuthController extends Controller
             return response()->json($user);
         }
         else{
-            return response()->json("not found");
-        }   
+            return response()->json(['error' => 'user not found'], 400);
+        }
     }
 
     /**
@@ -133,13 +134,13 @@ class AuthController extends Controller
             return response()->json([
                 'access_token' => $token,
                 'token_type' => 'bearer',
-                'expires_in' => auth()->factory()->getTTL() * 60, 
+                'expires_in' => auth()->factory()->getTTL() * 60,
                 'id' => auth()->user()->id,
-                'role' => auth()->user()->role,  
+                'role' => auth()->user()->role,
                 'cafename' => auth()->user()->cafename,
                 'coverImage'=> auth()->user()->coverimage
             ]);
         }
-   
+
     }
 }

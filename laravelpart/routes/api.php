@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +16,7 @@ use Illuminate\Http\Request;
 // });
 Route::group([
 
-    'middleware' => ['api'] 
+    'middleware' => ['api']
 
 ], function ($router) {
 
@@ -26,8 +24,8 @@ Route::group([
     Route::post('signup', 'AuthController@signup');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me'); 
-    Route::get('user', 'AuthController@user'); 
+    Route::post('me', 'AuthController@me');
+    Route::get('user', 'AuthController@user');
     Route::post('vendor/signup', 'VendorAuthController@signup');
     Route::post('vendor/login', 'VendorAuthController@login');
     Route::post('vendor/logout', 'VendorAuthController@logout');
@@ -41,4 +39,5 @@ Route::group([
     Route::patch('vendor/updatestatus', 'ScheduleController@updateStatus');
     Route::get('vendor/schedule', 'ScheduleController@getSchedules');
     Route::get('vendor/getstatus', 'ScheduleController@getStatus');
+    Route::get('vendor/{id}', 'VendorController@getAllInfo');
 });

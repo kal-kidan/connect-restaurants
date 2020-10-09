@@ -19,6 +19,9 @@ import { HeaderComponent } from './vendor/header/header.component';
 import { VendorSignupComponent } from './vendor/vendor-signup/vendor-signup.component';
 import { LoginComponent } from './login/login.component';
 import { ScheduleComponent } from './vendor/schedule/schedule.component';
+import { LogoutComponent } from './logout/logout.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ProfileComponent } from './vendor/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { ScheduleComponent } from './vendor/schedule/schedule.component';
     HeaderComponent,
     VendorSignupComponent,
     LoginComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    LogoutComponent,
+    PagenotfoundComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

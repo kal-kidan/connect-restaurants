@@ -1,0 +1,94 @@
+<head>
+  <meta charset="utf-8">
+  <title>{{ vendor.cafeName }}></title>
+
+</head>
+
+
+<header id="header" class="w3-bar">
+  <nav class=" w3-center" id="nav">
+    <span id="logo_food"> {{ vendor.cafename }} </span>
+    <a href="#menuContainer" class="w3-margin-right">Menu</a>
+    <a href="#deliveryTime" class="w3-margin-right">Delivery Time</a>
+    <a href="#about" class="w3-margin-right">About</a>
+  </nav>
+</header>
+
+<div class="" id="coverImage">
+  <img src="{{url+vendor.coverimage}}" alt="" width="100%">
+</div>
+
+<div class="w3-center w3-border-bottom  " id="about">
+  <div>
+    <h1>{{ vendor.cafename }} </h1>
+
+    <span> <i (click)="like() " class="fa fa-thumbs-up " [ngStyle] ="likeStyle" id="like-icon"></i>
+      <span id="likes"> {{totalLikes}}</span> </span>
+    <span class=" {{statusClass}}">{{ vendor.status }}</span>
+
+  </div>
+  <small *ngIf="vendor.address"> Address: {{ vendor.address }} |</small>
+  <small *ngIf="vendor.phonenumber">  PhoneNumber: {{ vendor.phonenumber }}</small>
+  <br>
+</div>
+
+<div class="w3-row" id="deliveryTime">
+
+  <div class="w3-col l3 s3 m3">
+    <img src="./assets/images/food-delivery.png" alt="the image" width="100%" class="w3-center">
+  </div>
+  <div class="w3-col l6 s9 m6">
+    <h2 class="w3-center">Delivery Time</h2>
+    <!-- <div class='w3-text-teal w3-center'  *ngIf="!vendor.schedules">
+      No Delivery Time Added Yet ...
+    </div> -->
+
+    <ul class='w3-center' *ngFor="let schedule of schedules">
+      <li>
+        {{schedule.timespan}} <i class='fa fa-clock-o'> </i>
+      </li>
+
+    </ul>
+  </div>
+
+
+</div>
+
+<div id="menuContainer">
+  <h1 class="w3-center" id="menuTitle"> <i class="fa fa-cutlery"></i> Menus</h1>
+
+  <!-- <div  class='w3-text-teal w3-card-4 w3-padding-large' *ngIf="!vendor.menus" style=' width:70%;margin-left:15%;'>
+    No Menus Added Yet
+  </div> -->
+
+  <div class='w3-row w3-margin-right'>
+
+    <ul class='w3-col m6 l6 s11 menuList' *ngFor="let menu of menus">
+
+      <li class='w3-padding '>
+
+        <div class='category w3-text-teal'>
+          {{ menu.category }}
+        </div>
+
+        <i class='fa fa-cutlery foodIcon'> </i>
+        <span class='menu'>
+          <span >
+            {{ menu.category }}
+          </span>
+              <span class='price w3-margin-right' class='foodName'>
+                {{ menu.name }}
+              </span>
+              <i class='fa fa-cart-plus w3-margin-right cart' id='' (click)="addToCart(menu)"> </i>
+            </span>
+            <div class='' style='display:none' id='detail{{menu.id}}'>
+              {{ menu.detail }}
+            </div>
+            <div><button id='button{{menu.id}}' type='button' class='showDetails w3-round-small' (click)="toggleDetails(menu.id)">Show Details</button>
+            </div>
+      </li>
+    </ul>
+  </div>
+  <a href="/carts" class="w3-btn w3-margin  w3-large w3-teal w3-round" style="color:white;float:right;padding:3px">go to
+    cart</a>
+
