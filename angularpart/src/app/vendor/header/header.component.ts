@@ -16,7 +16,8 @@ export class HeaderComponent implements OnInit {
      this.requestHandler.getUser().
         subscribe((data)=>{
             this.Data =data;
-            this.cafename = this.Data.cafename; 
+            this.cafename = this.Data.cafename;
+            this.id = this.Data.id; 
          },
          (error)=>{
            console.log(error);

@@ -14,6 +14,7 @@ import { ScheduleComponent } from './vendor/schedule/schedule.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './vendor/profile/profile.component';
+import { CartComponent } from './customer/cart/cart.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -28,6 +29,8 @@ const routes: Routes = [
   {path: 'vendor-signup', component: VendorSignupComponent },
   {path:'schedule',component:ScheduleComponent},
   {path:'vendor/:id',component:ProfileComponent},
+  {path:'cart',component: CartComponent},
+  { path: 'pagenotfound', component: PagenotfoundComponent },
   { path: '**', component: PagenotfoundComponent }
 ];
 

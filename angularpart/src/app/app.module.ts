@@ -22,6 +22,8 @@ import { ScheduleComponent } from './vendor/schedule/schedule.component';
 import { LogoutComponent } from './logout/logout.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProfileComponent } from './vendor/profile/profile.component';
+import { CartComponent } from './customer/cart/cart.component';
+import { CustomerHeaderComponent } from './customer/customer-header/customer-header.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ProfileComponent } from './vendor/profile/profile.component';
     ScheduleComponent,
     LogoutComponent,
     PagenotfoundComponent,
-    ProfileComponent
+    ProfileComponent,
+    CartComponent,
+    CustomerHeaderComponent
   ],
   imports: [
     BrowserModule,

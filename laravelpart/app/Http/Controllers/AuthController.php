@@ -85,7 +85,7 @@ class AuthController extends Controller
             return response()->json($user);
         }
         else{
-            return response()->json(['error' => 'user not found'], 400);
+            return response()->json(['error' => 'user not found'], 404);
         }
     }
 

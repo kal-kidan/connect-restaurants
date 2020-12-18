@@ -13,9 +13,7 @@ export class HomeComponent implements OnInit {
 public searchForm;
   ngOnInit() {
 
-    this.searchForm = new FormGroup({
-      searchItem: new FormControl('')
-   });
+   
   }
 
 }

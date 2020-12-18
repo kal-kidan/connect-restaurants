@@ -121,5 +121,51 @@ public rootUrl="http://localhost:8000/api";
   },
   );
  }
+ getCarts(){
+  const userId = this.token.getData().id;
+  return this._http.get(`${this.rootUrl}/cart/user/${userId}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  },
+  );
+ }
 
+ getTotal(){
+  const userId = this.token.getData().id;
+  return this._http.get(`${this.rootUrl}/cart/totalprice/user/${userId}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  },
+  );
+ }
+ addToCart(data){
+  const id = this.token.getData().id;
+  data.user_id = parseInt(id);
+  console.log(data)
+  return this._http.post(`${this.rootUrl}/user/cart`, data,
+  {
+    headers:{
+    Authorization: `Bearer ${this.getToken()}`
+  }});
+ }
+
+ updateQuantity(id, quantity){
+   console.log('id', id)
+   console.log("\n event", quantity)
+  // return this._http.patch(`${this.rootUrl}/user/cart/id`, quantity,
+  // {
+  //   headers:{
+  //   Authorization: `Bearer ${this.getToken()}`
+  // }});
+ }
+
+ deleteCart(id){
+  return this._http.delete(`${this.rootUrl}/user/cart/${id}`,
+  {
+    headers:{
+    Authorization: `Bearer ${this.getToken()}`
+  }});
+ }
 }

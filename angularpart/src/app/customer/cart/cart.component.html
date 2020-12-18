@@ -1,0 +1,35 @@
+                <app-customer-header></app-customer-header>
+                <br> <br> <br>  
+                <table class='w3-center'>
+                 <thead style='background:green;color:white'>
+                 <th>Name of Item </th>
+                 <th>Price</th> 
+                 <th>Quantity</th> 
+                 <th>Remove</th>
+                </thead>
+                   <tr *ngFor = "let cart of menus; index as i">
+                   <td> {{cart.name}} </td>
+                   <td class="prices"> {{cart.price}} birr </td>
+                  <td> 
+                  <input type='number' min="1" (change)="updateQuantity(menus,$event)" id="quantity{{cart.id}}" value='{{cart.quantity}}' style='border:none;width:50px' min='1'
+                   class='quantitys'  >  
+                  </td>
+                  <td>
+                      <button style='cursor:pointer' (click)="deleteCart(cart.id, i)" id="delete-btn{{cart.id}}">
+                        <i class='fa fa-trash trashs'>  </i>
+                      </button>
+                  </td>
+                  <tr>
+                 <tr style='background-color:#fef6f2;'> <td style='border:none;' id="total-price" >
+                  Total: <span id='total'></span> {{totalPrice}} birr </td> </tr>
+                </table>
+                <input type="submit" id="order-button" name="order" value="Order" >
+ 
+                <!-- <form>
+                    <div class="w3-margin-left w3-text-red">
+                        error
+                    </div>
+                     <textarea name="note" rows="4" id="note" placeholder="notes" ></textarea>
+                     <input type="hidden" name="quantity" value="" id="quantity">
+                     <input type="submit" id="order-button" name="order" value="Order" >
+                 </form>  -->

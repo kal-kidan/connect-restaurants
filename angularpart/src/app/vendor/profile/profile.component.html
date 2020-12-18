@@ -3,7 +3,7 @@
   <title>{{ vendor.cafeName }}></title>
 
 </head>
-
+<div  *ngIf="display" id="body">
 
 <header id="header" class="w3-bar">
   <nav class=" w3-center" id="nav">
@@ -79,7 +79,7 @@
               <span class='price w3-margin-right' class='foodName'>
                 {{ menu.name }}
               </span>
-              <i class='fa fa-cart-plus w3-margin-right cart' id='' (click)="addToCart(menu)"> </i>
+              <i class='fa fa-cart-plus w3-margin-right cart' id='cart-plus{{menu.id}}' (click)="addToCart(menu)"> </i>
             </span>
             <div class='' style='display:none' id='detail{{menu.id}}'>
               {{ menu.detail }}
@@ -89,6 +89,8 @@
       </li>
     </ul>
   </div>
-  <a href="/carts" class="w3-btn w3-margin  w3-large w3-teal w3-round" style="color:white;float:right;padding:3px">go to
+  <a routerLink="/cart" class="w3-btn w3-margin  w3-large w3-teal w3-round" style="color:white;float:right;padding:3px">go to
     cart</a>
 
+
+</div>

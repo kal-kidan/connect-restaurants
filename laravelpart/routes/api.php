@@ -16,7 +16,7 @@
 // });
 Route::group([
 
-    'middleware' => ['api']
+    'middleware' => ['api', 'CORS']
 
 ], function ($router) {
 
@@ -40,4 +40,8 @@ Route::group([
     Route::get('vendor/schedule', 'ScheduleController@getSchedules');
     Route::get('vendor/getstatus', 'ScheduleController@getStatus');
     Route::get('vendor/{id}', 'VendorController@getAllInfo');
+    Route::post('user/cart', 'CartController@add');
+    Route::delete('user/cart/{id}', 'CartController@delete');
+    Route::get('cart/user/{id}', 'CartController@getCarts');
+    Route::get('cart/totalprice/user/{id}', 'CartController@getTotalPrice');
 });

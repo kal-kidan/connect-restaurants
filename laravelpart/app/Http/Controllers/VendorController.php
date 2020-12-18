@@ -10,9 +10,18 @@ class VendorController extends Controller
 
 {
     public function getAllInfo($id){
-
-        $user = User::find($id, ['address','cafename', 'coverimage','aboutus','status']);
-        $schedules = Schedule::where('vendor_id', $id)->get();
+        $user = User::where([
+            ['id', '=', $id],
+            ['role', '=', 'vendor']
+        ],
+         ['address','cafename', 'coverimage','aboutus','status'])->get();
+        //  return response()->json($user);
+         if(count($user)===0 || empty($user)){
+            return response()->json(["error"=>"vendor not found"],404);
+        }
+        $schedules = Schedule::where([
+            ['vendor_id', '=', $id]
+        ])->get();
         $menus = Menu::where('vendorid', $id)->get();
         $vendor = new Vendor($user, $schedules, $menus);
         return response()->json($vendor);

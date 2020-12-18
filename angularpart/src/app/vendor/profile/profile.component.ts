@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
 
 @Component({
@@ -7,29 +8,32 @@ import { RequestHandlerService } from 'src/app/services/request-handler.service'
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  url="http://localhost:8000"
+  url="http://localhost:8000/"
   vendor={}
   schedules=[]
   menus=[]
+  display = false
   id: Number
   likeStyle={'font-size':'18px', 'cursor': 'pointer'}
   totalLikes;
   statusClass = "w3-green w3-round  w3-text-white" || "closed w3-round w3-text-white"
-  constructor(private request: RequestHandlerService) {
+  constructor(private request: RequestHandlerService,private ativatedRouter: ActivatedRoute, private router: Router) {
 
   }
 
   ngOnInit() {
-      this.request.getVendorInfo(2).subscribe(
+   this.ativatedRouter.paramMap.subscribe(params=>{
+    this.id=parseInt(params.get('id'))
+   })
+      this.request.getVendorInfo(this.id).subscribe(
         (data: any)=>{
-          this.vendor = data.user
+          this.vendor = data.user[0]
           this.schedules = data.schedules
           this.menus = data.menus
-          console.log(data.user)
+          this.display = true;
         },
         (err)=>{
-          console.log("error fetching vendor info", err)
-
+            return this.router.navigateByUrl('/pagenotfound')
         }
       )
   }
@@ -48,6 +52,27 @@ export class ProfileComponent implements OnInit {
       button.innerHTML = "Show Details"
     }
 
+  }
+
+
+  addToCart(menu){
+    let datas:any = {}
+    let addCartButton: any = document.getElementById(`cart-plus${menu.id}`); 
+    addCartButton.disabled  = true;
+    addCartButton.className = "fa fa-spinner w3-margin-right cart";
+    datas.vendor_id = menu.vendorid;
+    datas.menu_id = menu.id;
+    this.request.addToCart(datas).subscribe(
+      (data)=>{
+        addCartButton.disabled  = false;
+        addCartButton.className = "fa fa-spinner w3-margin-right cart";
+        console.log(data)
+      }, (err)=>{
+        addCartButton.disabled  = false;
+        addCartButton.className = "fa fa-cart-plus w3-margin-right cart";
+        console.log("error adding cart", err)
+      }
+    )
   }
 
 }

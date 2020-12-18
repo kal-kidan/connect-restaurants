@@ -15,6 +15,7 @@ export class HomeVendorComponent implements OnInit {
   public Data;
   public uploadFile;
   public fileToUpload: File;
+  public url = 'http://localhost:8000/'
   constructor(private token: TokenService, private fb: FormBuilder, private requestHandler: RequestHandlerService) { }
 
    ngOnInit() {
@@ -22,11 +23,12 @@ export class HomeVendorComponent implements OnInit {
     subscribe((data)=>{
         this.Data =data;
         if(this.Data.coverimage!=null && this.Data.coverimage!=''){
-          this.coverImage = "http://localhost:8000/" + this.Data.coverimage.toString();    
-        } 
+          this.coverImage = this.url + this.Data.coverimage.toString();
+          console.log(this.coverImage);
+        }
         else{
-          this.coverImage="./../../../assets/images/coverPic.png"; 
-        } 
+          this.coverImage="./../../../assets/images/coverPic.png";
+        }
      },
      (error)=>{
        console.log(error);
@@ -35,20 +37,20 @@ export class HomeVendorComponent implements OnInit {
     this.uploadFile = this.fb.group(
       {
         file: ['', [Validators.required]]
-      } 
-    );    
+      }
+    );
   }
   showForm($uploadForm, $changeCover){
     $uploadForm.style.display="block";
-    $changeCover.hidden = true; 
+    $changeCover.hidden = true;
   }
   fileChange(files: FileList){
     this.fileToUpload = files.item(0);
   }
-  upload(){  
+  upload(){
     this.requestHandler.postFile(this.fileToUpload).
       subscribe((data)=>{
-       this.coverImage = "http://localhost:8000/" + data.toString(); 
+       this.coverImage = "http://localhost:8000/" + data.toString();
       },
       (error)=>{
         console.log(error);

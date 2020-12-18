@@ -1,0 +1,25 @@
+.body-container{
+    margin-top:55.5px;
+  }
+   #search{
+   float:right;
+   margin-right:10px;
+   margin-top:3px;
+   background:none;
+   cursor:pointer;
+  }
+  #searchInput{
+  border-bottom:1px solid white;
+  background:#262626;
+  float:right;
+  color:white; 
+  }
+  #searchKeywords{
+     float:right;
+     min-width:270px;
+     margin-right:10px;
+
+  }
+  #searchKeywords ul{
+    list-style-type: none;
+  }

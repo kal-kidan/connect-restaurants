@@ -43,10 +43,9 @@
       <!-- register your cafe -->
 
     </div>
-    <div class="w3-col l6 s10 m6" style="float:right;">
-      <br>
+    <div class="" style="float: right; margin-right: 10px;">
     <p style="color:blue">  </p>
-      <div class="alert alert-danger w3-col l6 s12 m6" role="alert" *ngIf="(registrationForm.invalid || this.emailError.error) && registrationForm.touched && registrationForm.get('confirmpassword').touched " >
+      <div class="alert alert-danger"  role="alert" *ngIf="(registrationForm.invalid || this.emailError.error) && registrationForm.touched && registrationForm.get('confirmpassword').touched " >
         <div required *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">
           <small *ngIf="registrationForm.get('email').errors.required"> email is required </small>
           <small *ngIf="registrationForm.get('email').errors.pattern"> please enter valid email</small>
@@ -69,9 +68,9 @@
           <small *ngIf="registrationForm.errors.notMatch" >password doesn't not match</small>
           <br>
         </div>
-      </div>
-      <form name="form" [formGroup]="registrationForm">
-
+      </div> 
+      <br>  
+      <form name="form" [formGroup]="registrationForm" style="float: right;">
         <div class="">
           <input type="email" formControlName="email" id="email" class="w3-round w3-margin-bottom inputs"
             placeholder="Email" maxlength="255" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
