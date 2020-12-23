@@ -44,4 +44,5 @@ Route::group([
     Route::delete('user/cart/{id}', 'CartController@delete');
     Route::get('cart/user/{id}', 'CartController@getCarts');
     Route::get('cart/totalprice/user/{id}', 'CartController@getTotalPrice');
+    Route::post('user/order', 'OrderController@placeOrder'); 
 });

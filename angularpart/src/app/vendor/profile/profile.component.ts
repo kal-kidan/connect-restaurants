@@ -65,7 +65,7 @@ export class ProfileComponent implements OnInit {
     this.request.addToCart(datas).subscribe(
       (data)=>{
         addCartButton.disabled  = false;
-        addCartButton.className = "fa fa-spinner w3-margin-right cart";
+        addCartButton.className = "fa fa-cart-plus w3-margin-right cart";
         console.log(data)
       }, (err)=>{
         addCartButton.disabled  = false;

@@ -27,7 +27,7 @@ class MenuController extends Controller
          return response()->json($menu);
       }
       else{
-         return response()->json(["error" => "can not add menu"], 401);
+         return response()->json(["error" => "couldn't add menu"], 400);
       }
    }
 
@@ -38,7 +38,7 @@ class MenuController extends Controller
          return response()->json($destroyedMenu);
         }
         else{
-         return response()->json(["error"=>"can not delete the menu",401]);
+         return response()->json(["error"=>"can not delete the menu",400]);
         }
       
    }
