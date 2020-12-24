@@ -9,8 +9,8 @@ export class VistorService {
 
   constructor(private http: HttpClient) { }
   getGEOLocation(latitude, longitude) {
-    let GOOGLE_MAP_KEY = "AIzaSyBS2f3nJUz8S45ykYEeFb2a0dOBUPc2lDI";
-    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAP_KEY}`; 
+    let API_KEY = "AIzaSyBJHZnm_l-gm06jJc2-D-l3oxdMCv776Oo";
+    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`; 
     return this.http
     .get(url)
     .pipe(
