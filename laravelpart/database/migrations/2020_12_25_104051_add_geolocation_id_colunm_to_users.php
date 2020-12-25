@@ -26,7 +26,7 @@ class AddGeolocationIdColunmToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('geo_location_id');
         });
     }
 }
