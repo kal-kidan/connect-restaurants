@@ -24,7 +24,7 @@ class CreateGeoLocationsTable extends Migration
             $table->string('regionName')->nullable();
             $table->string('countryCode')->nullable();
             $table->string('isp')->nullable();
-            $table->string('zip')->nullable();
+            $table->string('postalCode')->nullable();
             $table->string('timezone')->nullable();
             $table->integer('latitude');
             $table->integer('longitude');

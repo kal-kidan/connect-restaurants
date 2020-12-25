@@ -2,6 +2,7 @@ import { AfterViewInit, ViewChild, ElementRef, Component, OnInit } from '@angula
 import { FormControl, FormGroup } from '@angular/forms';
 import  * as L from 'leaflet';
 import 'mapbox-gl-leaflet';
+import { VistorService } from 'src/app/services/vistor.service';
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
@@ -30,9 +31,9 @@ private map: L.Map;
 
 @ViewChild('map', {static: false})
 private mapContainer: ElementRef<HTMLElement>;
-latitude:number;
-longitude:number;
-  constructor() { }
+public latitude;
+public longitude;
+  constructor(private visitorService: VistorService) { }
 
   ngOnInit() {
     this.locationForm = new FormGroup({
@@ -53,10 +54,11 @@ longitude:number;
     const myAPIKey = "fe647d3830ed4021b3f8a9dfcd31076b";
     const mapStyle = "https://maps.geoapify.com/v1/styles/osm-carto/style.json";
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position)=>{
-        console.log(position);
+      navigator.geolocation.getCurrentPosition((position)=>{ 
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
+        localStorage.setItem("latitude", this.latitude);
+        localStorage.setItem("longitude", this.longitude);
         const initialState = { 
           lng: this.longitude,
           lat: this.latitude,
@@ -86,7 +88,9 @@ longitude:number;
           var coord = String(marker.getLatLng()).split(','); 
           this.latitude = coord[0].split('(')[1];
           this.longitude = coord[1].split(')')[0]; 
-          marker.bindPopup("Moved to: " + this.latitude + ", " + this.longitude + ".");
+          localStorage.setItem("latitude", this.latitude);
+          localStorage.setItem("longitude", this.longitude);
+          marker.bindPopup("Moved to: " + this.latitude + ", " + this.longitude + "."); 
         });
     ;
         var popup = marker.bindPopup('<b>Hello !</b><br />you want to change your location? please move the marker and click update location.');
@@ -94,7 +98,11 @@ longitude:number;
       
       });
     }
-  
+}
 
+updateLocation(){  
+  this.visitorService.getGEOLocation(localStorage.getItem("latitude"), localStorage.getItem("longitude")).subscribe((res)=>{
+    console.log(res);
+  })
 }
 }
