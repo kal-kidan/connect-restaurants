@@ -16,7 +16,7 @@ class CreateGeoLocationsTable extends Migration
         Schema::create('geo_locations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->integer('user_type');
+            $table->string('user_type');
             $table->string('address_line1');
             $table->string('address_line2');
             $table->string('country');
@@ -24,10 +24,10 @@ class CreateGeoLocationsTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('street');
-            $table->string('country_code');
-            $table->string('postalCode'); 
-            $table->integer('latitude');
-            $table->integer('longitude');
+            $table->string('county');
+            $table->string('country_code'); 
+            $table->double('latitude');
+            $table->double('longitude');
             $table->timestamps();
         });
     }

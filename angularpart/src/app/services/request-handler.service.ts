@@ -143,7 +143,6 @@ public rootUrl="http://localhost:8000/api";
  addToCart(data){
   const id = this.token.getData().id;
   data.user_id = parseInt(id);
-  console.log(data)
   return this._http.post(`${this.rootUrl}/user/cart`, data,
   {
     headers:{
@@ -151,16 +150,7 @@ public rootUrl="http://localhost:8000/api";
   }});
  }
 
- updateQuantity(id, quantity){
-   console.log('id', id)
-   console.log("\n event", quantity)
-  // return this._http.patch(`${this.rootUrl}/user/cart/id`, quantity,
-  // {
-  //   headers:{
-  //   Authorization: `Bearer ${this.getToken()}`
-  // }});
- }
-
+ 
  deleteCart(id){
   return this._http.delete(`${this.rootUrl}/user/cart/${id}`,
   {
@@ -168,4 +158,17 @@ public rootUrl="http://localhost:8000/api";
     Authorization: `Bearer ${this.getToken()}`
   }});
  }
+ addLocaton(data){
+   data.user_id = this.token.getData().id;
+   data.user_type = localStorage.getItem("role");
+   data.latitude = localStorage.getItem("latitude");
+   data.longitude = localStorage.getItem("longitude"); 
+  // console.log(data);
+  return this._http.patch(`${this.rootUrl}/user/location`,data,
+  {
+    headers:{
+    Authorization: `Bearer ${this.getToken()}`
+  }});
+ }
+
 }

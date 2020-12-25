@@ -36,6 +36,7 @@ class LocationController extends Controller
             }
             $location->save();
         }
+        return response()->json(["success"=>true, "message"=>"you have updated your location successfully"], 200); 
       } catch (Excepton $e) {
         return response()->json(["error"=>true, "message"=>"please enter valid data"], 400); 
       }

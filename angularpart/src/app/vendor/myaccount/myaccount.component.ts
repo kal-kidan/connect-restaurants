@@ -2,6 +2,7 @@ import { AfterViewInit, ViewChild, ElementRef, Component, OnInit } from '@angula
 import { FormControl, FormGroup } from '@angular/forms';
 import  * as L from 'leaflet';
 import 'mapbox-gl-leaflet';
+import { RequestHandlerService } from 'src/app/services/request-handler.service';
 import { VistorService } from 'src/app/services/vistor.service';
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -33,7 +34,7 @@ private map: L.Map;
 private mapContainer: ElementRef<HTMLElement>;
 public latitude;
 public longitude;
-  constructor(private visitorService: VistorService) { }
+  constructor(private visitorService: VistorService, private request: RequestHandlerService) { }
 
   ngOnInit() {
     this.locationForm = new FormGroup({
@@ -92,8 +93,7 @@ public longitude;
           localStorage.setItem("longitude", this.longitude);
           marker.bindPopup("Moved to: " + this.latitude + ", " + this.longitude + "."); 
         });
-    ;
-        var popup = marker.bindPopup('<b>Hello !</b><br />you want to change your location? please move the marker and click update location.');
+        var popup = marker.bindPopup('<b>Hello !</b><br />do you want to change your location? please move the marker and click update location.');
         popup.openPopup();
       
       });
@@ -101,8 +101,11 @@ public longitude;
 }
 
 updateLocation(){  
-  this.visitorService.getGEOLocation(localStorage.getItem("latitude"), localStorage.getItem("longitude")).subscribe((res)=>{
-    console.log(res);
+  this.visitorService.getGEOLocation(localStorage.getItem("latitude"), localStorage.getItem("longitude")).subscribe((res:any)=>{
+    this.request.addLocaton(res.features[0].properties).subscribe((res)=>{
+      console.log(res);
+    })
+    
   })
 }
 }

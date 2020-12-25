@@ -46,6 +46,7 @@ public loginError={error:false,errorMessage:''};
      
   }
   handleResponse(data){ 
+    localStorage.setItem("role", data.role);
     this.token.set(data.access_token, data.id);
     this.requestHandler.setUser();
   }
