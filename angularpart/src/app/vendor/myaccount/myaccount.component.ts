@@ -2,7 +2,20 @@ import { AfterViewInit, ViewChild, ElementRef, Component, OnInit } from '@angula
 import { FormControl, FormGroup } from '@angular/forms';
 import  * as L from 'leaflet';
 import 'mapbox-gl-leaflet';
-
+const iconRetinaUrl = 'assets/marker-icon-2x.png';
+const iconUrl = 'assets/marker-icon.png';
+const shadowUrl = 'assets/marker-shadow.png';
+const iconDefault = L.icon({
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+});
+L.Marker.prototype.options.icon = iconDefault
 @Component({
   selector: 'app-myaccount',
   templateUrl: './myaccount.component.html',
@@ -17,7 +30,8 @@ private map: L.Map;
 
 @ViewChild('map', {static: false})
 private mapContainer: ElementRef<HTMLElement>;
-
+latitude:number;
+longitude:number;
   constructor() { }
 
   ngOnInit() {
@@ -33,33 +47,54 @@ private mapContainer: ElementRef<HTMLElement>;
    this.aboutForm = new FormGroup({
     aboutCafe: new FormControl()
    });
+ 
   }
   ngAfterViewInit() {
     const myAPIKey = "fe647d3830ed4021b3f8a9dfcd31076b";
     const mapStyle = "https://maps.geoapify.com/v1/styles/osm-carto/style.json";
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position)=>{
+        console.log(position);
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        const initialState = { 
+          lng: this.longitude,
+          lat: this.latitude,
+          zoom: 12
+        };
+    
+        const map = new L.Map(this.mapContainer.nativeElement).setView(
+          [initialState.lat, initialState.lng],
+          initialState.zoom
+        );
+      
+        // the attribution is required for the Geoapify Free tariff plan
+        map.attributionControl
+          .setPrefix("")
+          .addAttribution(
+            'Powered by <a href="https://www.geoapify.com/" target="_blank">Geoapify</a> | © OpenStreetMap <a href="https://www.openstreetmap.org/copyright" target="_blank">contributors</a>'
+          );
+    
+        L.mapboxGL({
+          style: `${mapStyle}?apiKey=${myAPIKey}`,
+          accessToken: "pk.eyJ1Ijoia2Fsa2lkYW50IiwiYSI6ImNrajQ4ZGZhNTJqNHcydG54ZHk0aWw5enEifQ.Ay5QkbatF1jMzgMlMOSIZA"
+        }).addTo(map);
+        
+        let marker = L.marker([initialState.lat, initialState.lng],{title: `you are on ${this.latitude}, ${this.longitude}`, draggable: true}).
+        addTo(map).
+        on('dragend', function() {
+          var coord = String(marker.getLatLng()).split(','); 
+          this.latitude = coord[0].split('(')[1];
+          this.longitude = coord[1].split(')')[0]; 
+          marker.bindPopup("Moved to: " + this.latitude + ", " + this.longitude + ".");
+        });
+    ;
+        var popup = marker.bindPopup('<b>Hello !</b><br />you want to change your location? please move the marker and click update location.');
+        popup.openPopup();
+      
+      });
+    }
+  
 
-    const initialState = {
-      lng: 11,
-      lat: 49,
-      zoom: 4
-    };
-
-    const map = new L.Map(this.mapContainer.nativeElement).setView(
-      [initialState.lat, initialState.lng],
-      initialState.zoom
-    );
-
-    // the attribution is required for the Geoapify Free tariff plan
-    map.attributionControl
-      .setPrefix("")
-      .addAttribution(
-        'Powered by <a href="https://www.geoapify.com/" target="_blank">Geoapify</a> | © OpenStreetMap <a href="https://www.openstreetmap.org/copyright" target="_blank">contributors</a>'
-      );
-
-    L.mapboxGL({
-      style: `${mapStyle}?apiKey=${myAPIKey}`,
-      accessToken: "pk.eyJ1Ijoia2Fsa2lkYW50IiwiYSI6ImNrajQ4ZGZhNTJqNHcydG54ZHk0aWw5enEifQ.Ay5QkbatF1jMzgMlMOSIZA"
-    }).addTo(map);
-  }
-
+}
 }
