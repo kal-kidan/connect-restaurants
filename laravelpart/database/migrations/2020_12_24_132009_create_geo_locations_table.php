@@ -16,6 +16,7 @@ class CreateGeoLocationsTable extends Migration
         Schema::create('geo_locations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
+            $table->integer('user_type');
             $table->string('street');
             $table->string('country');
             $table->string('full_format');

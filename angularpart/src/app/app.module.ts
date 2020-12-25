@@ -24,6 +24,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProfileComponent } from './vendor/profile/profile.component';
 import { CartComponent } from './customer/cart/cart.component';
 import { CustomerHeaderComponent } from './customer/customer-header/customer-header.component';
+import { MyaccountComponent } from './vendor/myaccount/myaccount.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CustomerHeaderComponent } from './customer/customer-header/customer-hea
     PagenotfoundComponent,
     ProfileComponent,
     CartComponent,
-    CustomerHeaderComponent
+    CustomerHeaderComponent,
+    MyaccountComponent
   ],
   imports: [
     BrowserModule,

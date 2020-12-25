@@ -15,6 +15,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './vendor/profile/profile.component';
 import { CartComponent } from './customer/cart/cart.component';
+import { MyaccountComponent } from './vendor/myaccount/myaccount.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path:'schedule',component:ScheduleComponent},
   {path:'vendor/:id',component:ProfileComponent},
   {path:'cart',component: CartComponent},
+  {path:'account',component: MyaccountComponent},
   { path: 'pagenotfound', component: PagenotfoundComponent },
   { path: '**', component: PagenotfoundComponent }
 ];

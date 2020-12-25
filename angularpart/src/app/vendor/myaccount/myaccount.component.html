@@ -1,0 +1,52 @@
+<app-header>
+</app-header>>
+
+<div style="background-color:#0000000d">
+    <br><br><br>
+    <div class="map-container" #map style="padding: 100px;">
+
+    </div>
+    <div class="updateData">
+        <div class="errorMessage" id="errorMessage">
+            <span class="errorSpan"> </span>
+        </div><br>
+        <form [formGroup]="locationForm">
+            <input type="text" formControlName="location" value="" placeholder="add your location here" class="inputs"> <br> <br>
+            <input type="submit" name="updateLocation" value="update" class="updateButton">
+        </form>
+    </div>
+
+    <div class="updateData">
+        <div class="errorMessage" id="errorMessage">
+            <span class="errorSpan"></span>
+        </div><br>
+        <form [formGroup]="nameForm">
+            <input type="text" formControlName="cafeName" value="" placeholder="enter you cafe name" class="inputs"> <br> <br>
+            <input type="submit" name="updateCafeName" value="update" class="updateButton">
+        </form>
+    </div>
+
+    <div class="updateData">
+        <div class="errorMessage" id="errorMessage">
+            <span class="errorSpan"> </span>
+        </div><br>
+        <form [formGroup]="accountForm">
+            <input type="text" formControlName="bankAccount" value="" placeholder="add bank account number" class="inputs"> <br>
+            <br>
+            <input type="submit" name="updateAccountNumber" value="update" class="updateButton">
+        </form>
+    </div>
+
+    <div class="updateData">
+        <div class="errorMessage" id="errorMessage">
+            <span class="errorSpan"> </span>
+        </div><br>
+        <form [formGroup]="aboutForm">
+            <textarea id="aboutCafe" formControlName="aboutCafe" rows="3" cols="40" placeholder="about your cafe up to 255 charachters " class="inputs">
+            </textarea>
+            <br> <br>
+            <input type="submit" name="updateAboutCafe" value="update" class="updateButton">
+        </form>
+    </div>
+
+</div>
