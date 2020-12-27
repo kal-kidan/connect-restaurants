@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\GeoLocation;
 use App\User;
+use Illuminate\Support\Facades\DB;
 class LocationController extends Controller
 {
     public function addLocation(Request $request){ 
@@ -29,10 +30,11 @@ class LocationController extends Controller
             GeoLocation::create($request->all());
         }
         else{
+          $columns =[ 'address_line1','address_line2','country','formatted','city','state','country_code','latitude','longitude', 'street', 'county'];
             $id = $location->id;
             $location = GeoLocation::find($id);
-            foreach ($request->all() as $key => $value) {
-                $location[$key] = $value;
+            foreach ($columns as $key ) {
+                $location[$key] = $request[$key];
             }
             $location->save();
         }
@@ -40,5 +42,21 @@ class LocationController extends Controller
       } catch (Excepton $e) {
         return response()->json(["error"=>true, "message"=>"please enter valid data"], 400); 
       }
+    }
+
+   public function getNearestLocation($lat, $lon){ 
+    $users = DB::table("geo_locations")
+            ->join('users', 'users.id', '=', 'geo_locations.user_id')
+            ->select(["geo_locations.*", "users.cafename", "users.address", "users.phonenumber",
+             "users.coverimage", "users.aboutus", "users.status"
+            ,DB::raw("(6371 * acos(cos(radians(" . $lat . ")) 
+            * cos(radians(geo_locations.latitude)) 
+            * cos(radians(geo_locations.longitude) - radians(" . $lon . ")) 
+            + sin(radians(" .$lat. ")) 
+            * sin(radians(geo_locations.latitude)))) as distance")])
+            ->havingRaw('distance < ?', [100])
+            ->orderByRaw('distance')
+            ->get() ; 
+            return response()->json($users);
     }
 }

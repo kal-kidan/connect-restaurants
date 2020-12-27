@@ -33,7 +33,8 @@ export class ProfileComponent implements OnInit {
           this.display = true;
         },
         (err)=>{
-            return this.router.navigateByUrl('/pagenotfound')
+          console.log(err);
+          return this.router.navigateByUrl('/pagenotfound')
         }
       )
   }

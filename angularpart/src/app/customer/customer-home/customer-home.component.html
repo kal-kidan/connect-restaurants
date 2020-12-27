@@ -1,49 +1,30 @@
-<header id="index_header" class="w3-bar" style="padding:0px;padding-bottom:15px;margin:0px; ">
-    <div class=""  id="sidebarofcafereg" *ngIf="showSideBar">
-      <div class="w3-sidebar w3-black w3-bar-block w3-animate-left w3-card"
-       style="width:50%"   >
-       <div class=" w3-btn w3-large w3-bar-item w3-text-white" style="color:#82B440;">
-           <i class="fa fa-user w3-padding-small  w3-text-teal  w3-circle"></i>
-           
-           <span (click)="closeSideBar()" class="fa fa-times w3-hover-text-red w3-btn w3-large" style="color:red;float:right; ">
-            </span>
+<app-customer-header></app-customer-header>
+<br><br><br>
+
+<div id="searchKeywords">
+    <ul id="autocompleteList" class="w3-card">
+        <li id="list1" onclick="setInput('list1')"></li>
+        <li id="list2" onclick="setInput('list2')"></li>
+        <li id="list3" onclick="setInput('list3')"></li>
+        <li id="list4" onclick="setInput('list4')"></li>
+        <li id="list5" onclick="setInput('list5')"></li>
+    </ul>
+</div>
+<span id="breakspan"></span>
+<h2 class="w3-text-teal w3-margin-left">Restaurants Near You</h2>
+<div class="" *ngFor="let vendor of vendors">
+    <div class='w3-row w3-card-4 w3-margin'>
+        <div class='w3-col s10 l4 m4 w3-margin '>
+            <img src='{{routeUrl}}{{vendor.coverimage}}' width='100%' alt='no'>
         </div>
-        <a href="orders.php" class="fa fa-cutlery w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> Orders</a>
-       <a href="myaccount.php" class=" fa fa-pencil-square w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df">My account</a>
-        <a href="changepassword.php" class=" fa fa-key w3-btn  w3-bar-item  w3-large w3-hover-text-teal" style="color:#27b5df;">Change Password </a>
-       <a href="logout.php" class=" fa fa-sign-out  w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> log out</a>
+        <div class='w3-col s10 l7 m7 w3-margin-left'>
+            <h3 class='w3-text-teal'>{{vendor.cafename.toUpperCase()}} </h3>
+            <p> {{vendor.aboutus}}</p>
+            <!-- <p style='font-size:14px'> <i class='fa fa-thumbs-up w3-text-blue'> </i>  likes </p> -->
+            <small> Address:- {{vendor.formatted}} </small> <br>
+            <small> Phone Number:- {{vendor.phonenumber}} </small> <br>
+            <i class="fa fa-heart" title="add to favorite" id="add-to-favorite"></i>
+            <a routerLink='/vendor/{{vendor.user_id}}' style='color:blue'> Visit Profile </a>
         </div>
     </div>
-<button class=" fa fa-bars w3-btn w3-xlarge w3-bar-item" style="color:#82B440;float:left " (click)="showsideBar()">  </button>
-
-      <div class="w3-bar-item" id="logo">
-        <a routerLink="/cart"><i class="fa fa-cart-plus w3-text-teal "> </i></a>
-
-      </div>
-      <div class="w3-bar-item w3-text-white " id="cafeName" (click)="list()"  >
-    <i class="fa fa-user w3-padding-small w3-text-teal  w3-circle"></i>
-    
-
-      </div>
-      <form [formGroup]="searchForm">
-        <button type="button" class="w3-bar-item" id="search"  (click)="showSearchInput()" >
-            <i class="fa fa-search w3-text-white" ></i>
-           </button>
-         <input *ngIf="searchInputVisible" type="search" formControlName="searchedItem"  class="w3-bar-item w3-animate-top"
-          id="searchInput" onkeyup="showResults()" placeholder="search" autocomplete="off">
-      </form>
-  </header>
-<br><br><br>
-  <div>
-    <h3> My public IP address is </h3> 
-<p>{{ipaddress}}</p>
-
-<h4>IP Address Info</h4>
-<p>latitude : {{latitude}}</p>
-<p>longitude : {{longitude}}</p>
-<p>currency : {{currency}}</p>
-<p>currencysymbol : {{currencysymbol}}</p>
-<p>city : {{city}}</p>
-<p>country : {{country}}</p>
-<p>isp : {{isp}}</p>
-  </div>
+</div>

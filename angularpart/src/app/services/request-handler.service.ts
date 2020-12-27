@@ -164,11 +164,20 @@ public rootUrl="http://localhost:8000/api";
    data.latitude = localStorage.getItem("latitude");
    data.longitude = localStorage.getItem("longitude"); 
   // console.log(data);
-  return this._http.patch(`${this.rootUrl}/user/location`,data,
+  return this._http.put(`${this.rootUrl}/user/location`,data,
   {
     headers:{
     Authorization: `Bearer ${this.getToken()}`
   }});
+ }
+
+ getNearestVendors(latitude, longitude){
+  return this._http.get(`${this.rootUrl}/user/nearest-vendor/${latitude}/${longitude}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  },
+  );
  }
 
 }

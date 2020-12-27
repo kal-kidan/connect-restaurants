@@ -1,6 +1,7 @@
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { VistorService } from 'src/app/services/vistor.service';
+import { RequestHandlerService } from 'src/app/services/request-handler.service';
 
 @Component({
   selector: 'app-customer-home',
@@ -11,18 +12,13 @@ export class CustomerHomeComponent implements OnInit {
 
   showSideBar = false;
   searchInputVisible = false;
-  searchForm;
-  name = 'Front';
-  ipaddress:string = '';
-  latitude:number;
-  longitude:number;
-  currency:string = '';
-  currencysymbol:string = '';
-  isp:string= '';
-  city:string = '';
-  country:string ='';
-  constructor(private visitorService: VistorService) { }
-
+  searchForm; 
+  vendors;
+  latitude;
+  longitude;  
+  routeUrl = "http://127.0.0.1:8000/";  
+  constructor(private request: RequestHandlerService) { }
+ 
   ngOnInit() {
     this.searchForm = new FormGroup({
       searchedItem: new FormControl('')
@@ -32,10 +28,11 @@ export class CustomerHomeComponent implements OnInit {
       console.log(position);
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
-      this.visitorService.getGEOLocation(this.latitude, this.longitude).subscribe(res => {
-      console.log(res);
-    
-})
+      this.request.getNearestVendors(this.latitude, this.longitude).subscribe((res: any) => {
+        this.vendors = res; 
+      console.log(res); 
+
+  })
     });
   }
  
