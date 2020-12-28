@@ -1,33 +1,49 @@
-  th,table,td{
-        /* border:1px solid black;
+  th,
+  table,
+  td {
+      /* border:1px solid black;
         border-collapse: collapse; */
-        padding:4px;
+      padding: 4px;
+  }
+  
+  table {
+      width: 98%;
+      margin: 10px;
+  }
+  
+  tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+  
+  #note {
+      width: 30%;
+      margin-left: 15px;
+      border: 1px solid grey;
+      border-radius: 10px;
+  }
+  
+  @media (max-width:601px) {
+      #note {
+          width: 80%;
+          margin-left: 10%;
       }
-      table{
-        width:98%;
-        margin:10px;
-      }
-       tr:nth-child(even){
-          background-color:#f2f2f2;
-        }
-        #note{
-          width:30%;
-          margin-left:15px;
-          border:1px solid grey;
-          border-radius:10px;
-        }
-        @media (max-width:601px) {
-          #note{
-             width:80%;
-             margin-left:10%;
-          }
-        }
-        #order-button{
-          background:teal;
-          padding:5px 20px 5px 20px;
-          color:white;
-          border: 1px solid teal;
-          border-radius:10px;
-          cursor: pointer;
-          margin-left:15px;
-        }
+  }
+  
+  #order-button {
+      background: teal;
+      padding: 5px 20px 5px 20px;
+      color: white;
+      border: 1px solid teal;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-left: 15px;
+  }
+  
+  .select-box {
+      background-color: white;
+      border: 1px solid rgb(84, 134, 84, 0.5);
+      padding: 2px;
+      margin-left: 5px;
+      border-radius: 3px;
+      font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+  }

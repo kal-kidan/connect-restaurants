@@ -1,7 +1,9 @@
 import { TokenService } from './services/token.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerRegistrationComponent } from './customer/customer-registration/customer-registration.component';
@@ -25,6 +27,7 @@ import { ProfileComponent } from './vendor/profile/profile.component';
 import { CartComponent } from './customer/cart/cart.component';
 import { CustomerHeaderComponent } from './customer/customer-header/customer-header.component';
 import { MyaccountComponent } from './vendor/myaccount/myaccount.component';
+import { ChooseLocationComponent } from './customer/choose-location/choose-location.component';
 
 @NgModule({
   declarations: [
@@ -44,13 +47,17 @@ import { MyaccountComponent } from './vendor/myaccount/myaccount.component';
     ProfileComponent,
     CartComponent,
     CustomerHeaderComponent,
-    MyaccountComponent
+    MyaccountComponent,
+    ChooseLocationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot() 
   ],
   providers: [RequestHandlerService,TokenService, BeforeLoginService, AfterLoginService],
   bootstrap: [AppComponent]
