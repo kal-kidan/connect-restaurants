@@ -19,9 +19,12 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id');
             $table->integer('total');
             $table->integer('order_delivered')->default(0);
+            $table->string('order_type');
+            $table->integer('latitude');
+            $table->integer('logitude');
             $table->integer('sub_total');//without taxes, discount, shipping, etc.
             $table->integer('payment_type')->nullable();
-            $table->integer('status')->nullable();;//paid, checkout, canceled, failed, expired
+            $table->integer('status')->nullable();//paid, checkout, canceled, failed, expired
             $table->text('note')->nullable();
             $table->timestamps();
         });
