@@ -65,9 +65,9 @@ class OrderController extends Controller
         ->get();
         return response()->json($orders);
     }
-    public function getVendorOrderItems($orderId){ 
+    public function getOrderItems($orderId){ 
          $orderItems = OrderItem::where('order_id', $orderId)->get();
-         return response()->json($orders);
+         return response()->json($orderItems);
      }
 }
 
