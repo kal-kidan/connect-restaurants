@@ -4,21 +4,17 @@
             <div class=" w3-btn w3-large w3-bar-item  w3-text-white" style="color:#82B440;">
                 <i class="fa fa-coffee w3-padding-small w3-border w3-border-teal w3-circle"></i> {{cafename}}
                 <span (click)="w3_close()" class="fa fa-times  w3-hover-text-red w3-btn w3-large" style="float:right">
-        </span>
+            </span>
             </div>
-            <a href="/orders" class=" fa fa-cutlery w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df">
-        Orders</a>
+            <a href="/orders" class=" fa fa-cutlery w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> Orders</a>
             <a href="/account" class=" fa fa-pencil-square w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> My account</a>
             <a routerLink="/vendor/{{id}}" class="fa fa-user w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> Profile</a>
-            <a href="/password" class=" fa fa-key w3-btn  w3-bar-item  w3-large w3-hover-text-teal" style="color:#27b5df;">
-        Change Password </a>
-            <a href="/logout" class=" fa fa-sign-out  w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df">
-        log out</a>
-        </div>
+            <a href="/password" class=" fa fa-key w3-btn  w3-bar-item  w3-large w3-hover-text-teal" style="color:#27b5df;"> Change Password </a>
+            <a href="/logout" class=" fa fa-sign-out  w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> log out</a>
 
-        <button class=" fa fa-bars w3-btn w3-xlarge w3-bar-item" style="color:#82B440;float:left " (click)="w3_open()">
-    </button>
+        </div>
     </div>
+    <button class=" fa fa-bars w3-btn w3-xlarge w3-bar-item" style="color:#82B440;float:left " (click)="w3_open()">  </button>
     <!-- notification -->
     <div class="w3-bar-item w3-dropdown-click w3-hover-none " id="logo" onclick="notificationSeen()">
         <span id="notification-tag" style="position:absolute;top:3px;font-size:12px;padding:0px 4px 0px 4px;display:none" class="w3-circle w3-green"></span>
