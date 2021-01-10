@@ -20,6 +20,7 @@ class CreateOrderItemsTable extends Migration
             $table->integer('menu_id');
             $table->integer('quantity');
             $table->double('price');
+            $table->string('name');
             $table->timestamps();
         });
     }
