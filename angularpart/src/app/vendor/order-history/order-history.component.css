@@ -1,0 +1,38 @@
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:nth-child(odd) {
+    background-color: #31438526;
+}
+
+table thead {
+    background-color: #2e6d3fc7;
+    ;
+    color: white;
+}
+
+.showOrder,
+.seen-orders-buttons {
+    background: teal;
+    padding: 5px 20px 5px 20px;
+    color: white;
+    border: 1px solid teal;
+    border-radius: 1000px;
+    cursor: pointer;
+}
+
+.seen-button {
+    background: green;
+    color: white;
+    border: 1px solid teal;
+    cursor: pointer;
+}
+
+.order-list {
+    color: #2e5b5d;
+}
+
+.nono {
+    color: #4e9ea2;
+}

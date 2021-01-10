@@ -41,7 +41,7 @@ export class TokenService {
       return payload;
   }
   getData(){
-    const id = localStorage.getItem('id');;
+    const id = localStorage.getItem('id');
     let data={id};
     return data;
   }

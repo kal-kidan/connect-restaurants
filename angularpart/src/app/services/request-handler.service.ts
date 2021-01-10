@@ -184,4 +184,12 @@ public rootUrl="http://localhost:8000/api";
   return this._http.post(`${this.rootUrl}/user/order`,{order, orderItems});
  }
 
+ getVendorOrders(vendor_id){
+  return this._http.get(`${this.rootUrl}/vendor/order-history/${vendor_id}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  },
+  );
+ }
 }

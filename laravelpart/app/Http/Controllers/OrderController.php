@@ -60,7 +60,8 @@ class OrderController extends Controller
     public function getVendorOrders($vendor_id){
         $orders = Order::where('vendor_id', $vendor_id)
         ->join('order_items', 'orders.id', '=', 'order_items.order_id')
-        ->select('orders.*','order_items.*')
+        ->join('users', 'users.id', '=', 'orders.user_id')
+        ->select('orders.*','order_items.*', 'users.firstName', 'users.lastName', 'users.address', 'users.phoneNumber', 'users.email')
         ->get();
         return response()->json($orders);
     }
