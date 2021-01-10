@@ -1,45 +1,45 @@
 <header id="index_header" class="w3-bar" style="padding:0px;margin:0px;padding-bottom:15px; ">
     <div class="" style="display:none;" id="sidebarofcafereg">
-      <div class="w3-sidebar w3-black w3-bar-block w3-animate-left w3-card" style="width:50%" >
-       <div class=" w3-btn w3-large w3-bar-item  w3-text-white" style="color:#82B440;">
-           <i class="fa fa-coffee w3-padding-small w3-border w3-border-teal w3-circle"></i>
-           {{cafename}}
-           <span (click)="w3_close()" class="fa fa-times  w3-hover-text-red w3-btn w3-large" style="float:right" >
-            </span>
+        <div class="w3-sidebar w3-black w3-bar-block w3-animate-left w3-card" style="width:50%">
+            <div class=" w3-btn w3-large w3-bar-item  w3-text-white" style="color:#82B440;">
+                <i class="fa fa-coffee w3-padding-small w3-border w3-border-teal w3-circle"></i> {{cafename}}
+                <span (click)="w3_close()" class="fa fa-times  w3-hover-text-red w3-btn w3-large" style="float:right">
+        </span>
+            </div>
+            <a href="/orders" class=" fa fa-cutlery w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df">
+        Orders</a>
+            <a href="/account" class=" fa fa-pencil-square w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> My account</a>
+            <a routerLink="/vendor/{{id}}" class="fa fa-user w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> Profile</a>
+            <a href="/password" class=" fa fa-key w3-btn  w3-bar-item  w3-large w3-hover-text-teal" style="color:#27b5df;">
+        Change Password </a>
+            <a href="/logout" class=" fa fa-sign-out  w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df">
+        log out</a>
         </div>
-       <a href="/orders" class=" fa fa-cutlery w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> Orders</a>
-       <a href="/account" class=" fa fa-pencil-square w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> My account</a>
-        <a routerLink="/vendor/{{id}}" class="fa fa-user w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> Profile</a>
-       <a href="/password" class=" fa fa-key w3-btn  w3-bar-item  w3-large w3-hover-text-teal" style="color:#27b5df;"> Change Password </a>
-       <a href="/logout" class=" fa fa-sign-out  w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> log out</a>
 
-        </div>
-    </div>
-<button class=" fa fa-bars w3-btn w3-xlarge w3-bar-item" style="color:#82B440;float:left " (click)="w3_open()">  </button>
+        <button class=" fa fa-bars w3-btn w3-xlarge w3-bar-item" style="color:#82B440;float:left " (click)="w3_open()">
+    </button>
         <!-- notification -->
-      <div class="w3-bar-item w3-dropdown-click w3-hover-none " id="logo" onclick="notificationSeen()">
-        <span id="notification-tag" style="position:absolute;top:3px;font-size:12px;padding:0px 4px 0px 4px;display:none"
-         class="w3-circle w3-green"></span>
-         <i class="fa fa-bell w3-text-teal" style="margin-left:5px;"> </i>
-         <span class="w3-hide-small">notiffication</span>
-         <div class="w3-dropdown-content w3-card w3-white w3-hide w3-hover-white" style="position:fixed;padding: 0px 6px 0px 6px;" id="notificationCard">
-              <span id="notificatin-detail" style="color:#2e2b5d"></span>
-             <a href="/orders" id="notificatin-link" style="color:blue;text-decoration:underline"  >see orders</a>
-         </div>
-      </div>
+        <div class="w3-bar-item w3-dropdown-click w3-hover-none " id="logo" onclick="notificationSeen()">
+            <span id="notification-tag" style="position:absolute;top:3px;font-size:12px;padding:0px 4px 0px 4px;display:none" class="w3-circle w3-green"></span>
+            <i class="fa fa-bell w3-text-teal" style="margin-left:5px;"> </i>
+            <span class="w3-hide-small">notiffication</span>
+            <div class="w3-dropdown-content w3-card w3-white w3-hide w3-hover-white" style="position:fixed;padding: 0px 6px 0px 6px;" id="notificationCard">
+                <span id="notificatin-detail" style="color:#2e2b5d"></span>
+                <a href="/orders" id="notificatin-link" style="color:blue;text-decoration:underline">see orders</a>
+            </div>
+        </div>
 
         <!-- cafe name -->
-      <div class="w3-bar-item w3-dropdown-click w3-text-white " id="cafeName" (click)="list()" style="cursor:pointer;">
-    <i class="fa fa-coffee w3-padding-small w3-border  w3-text-teal w3-border-teal w3-circle"></i>
-    {{cafename}}
-     <i class="fa fa-caret-down"  id="dropDown" ></i>
-     <div class="w3-dropdown-content w3-bar-block" id="dropDownContent">
+        <div class="w3-bar-item w3-dropdown-click w3-text-white " id="cafeName" (click)="list()" style="cursor:pointer;">
+            <i class="fa fa-coffee w3-padding-small w3-border  w3-text-teal w3-border-teal w3-circle"></i> {{cafename}}
+            <i class="fa fa-caret-down" id="dropDown"></i>
+            <div class="w3-dropdown-content w3-bar-block" id="dropDownContent">
 
-      <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/menu"  >Menu</a>
-      <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/schedule"  >Schedule</a>
-      <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/vendor-home"  >change Cover</a>
+                <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/menu">Menu</a>
+                <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/schedule">Schedule</a>
+                <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/vendor-home">change Cover</a>
 
-     </div>
-      </div>
+            </div>
+        </div>
         <a href="/logout" class="w3-round-large w3-hide-small" id="logout">log out</a>
-  </header>
+</header>

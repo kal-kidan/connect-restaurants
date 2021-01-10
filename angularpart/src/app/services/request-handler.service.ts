@@ -180,4 +180,8 @@ public rootUrl="http://localhost:8000/api";
   );
  }
 
+ placeOrder(order, orderItems){
+  return this._http.post(`${this.rootUrl}/user/order`,{order, orderItems});
+ }
+
 }
