@@ -18,28 +18,29 @@
 
         <button class=" fa fa-bars w3-btn w3-xlarge w3-bar-item" style="color:#82B440;float:left " (click)="w3_open()">
     </button>
-        <!-- notification -->
-        <div class="w3-bar-item w3-dropdown-click w3-hover-none " id="logo" onclick="notificationSeen()">
-            <span id="notification-tag" style="position:absolute;top:3px;font-size:12px;padding:0px 4px 0px 4px;display:none" class="w3-circle w3-green"></span>
-            <i class="fa fa-bell w3-text-teal" style="margin-left:5px;"> </i>
-            <span class="w3-hide-small">notiffication</span>
-            <div class="w3-dropdown-content w3-card w3-white w3-hide w3-hover-white" style="position:fixed;padding: 0px 6px 0px 6px;" id="notificationCard">
-                <span id="notificatin-detail" style="color:#2e2b5d"></span>
-                <a href="/orders" id="notificatin-link" style="color:blue;text-decoration:underline">see orders</a>
-            </div>
+    </div>
+    <!-- notification -->
+    <div class="w3-bar-item w3-dropdown-click w3-hover-none " id="logo" onclick="notificationSeen()">
+        <span id="notification-tag" style="position:absolute;top:3px;font-size:12px;padding:0px 4px 0px 4px;display:none" class="w3-circle w3-green"></span>
+        <i class="fa fa-bell w3-text-teal" style="margin-left:5px;"> </i>
+        <span class="w3-hide-small">notiffication</span>
+        <div class="w3-dropdown-content w3-card w3-white w3-hide w3-hover-white" style="position:fixed;padding: 0px 6px 0px 6px;" id="notificationCard">
+            <span id="notificatin-detail" style="color:#2e2b5d"></span>
+            <a href="/orders" id="notificatin-link" style="color:blue;text-decoration:underline">see orders</a>
         </div>
+    </div>
 
-        <!-- cafe name -->
-        <div class="w3-bar-item w3-dropdown-click w3-text-white " id="cafeName" (click)="list()" style="cursor:pointer;">
-            <i class="fa fa-coffee w3-padding-small w3-border  w3-text-teal w3-border-teal w3-circle"></i> {{cafename}}
-            <i class="fa fa-caret-down" id="dropDown"></i>
-            <div class="w3-dropdown-content w3-bar-block" id="dropDownContent">
+    <!-- cafe name -->
+    <div class="w3-bar-item w3-dropdown-click w3-text-white " id="cafeName" (click)="list()" style="cursor:pointer;">
+        <i class="fa fa-coffee w3-padding-small w3-border  w3-text-teal w3-border-teal w3-circle"></i> {{cafename}}
+        <i class="fa fa-caret-down" id="dropDown"></i>
+        <div class="w3-dropdown-content w3-bar-block" id="dropDownContent">
 
-                <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/menu">Menu</a>
-                <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/schedule">Schedule</a>
-                <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/vendor-home">change Cover</a>
+            <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/menu">Menu</a>
+            <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/schedule">Schedule</a>
+            <a class="w3-bar-item w3-btn w3-hover-text-teal" href="/vendor-home">change Cover</a>
 
-            </div>
         </div>
-        <a href="/logout" class="w3-round-large w3-hide-small" id="logout">log out</a>
+    </div>
+    <a href="/logout" class="w3-round-large w3-hide-small" id="logout">log out</a>
 </header>

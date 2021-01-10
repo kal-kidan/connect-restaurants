@@ -1,4 +1,4 @@
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {RequestHandlerService} from './../services/request-handler.service';
 
@@ -9,10 +9,14 @@ import {RequestHandlerService} from './../services/request-handler.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private requestHandler: RequestHandlerService) { }
+  constructor(private requestHandler: RequestHandlerService, private fb: FormBuilder) { }
 public searchForm;
   ngOnInit() {
-
+    this.searchForm = this.fb.group(
+      {
+        searchItem: ['', [Validators.required]]
+      }
+    );
    
   }
 

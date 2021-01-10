@@ -13,7 +13,7 @@
 <div class="w3-display-container" style="margin-top:2em;">
     <img src="assets/images/food-image.png" width="100%" alt="">
 
-    <div class="w3-display-middle w3-hide-small " >
+    <div class="w3-display-middle w3-hide-small ">
         <br>
         <div class="" style=" margin-bottom:50px;  ">
             <!-- for larger device -->
@@ -28,9 +28,8 @@
 
             <form class="input-icons" [formGroup]="searchForm">
                 <i class="fa fa-map-marker icon" style="color:#E93E21;"></i>
-                <input class="input-field " type="search" style="border:1px solid #E93E21;width:50%;">
-                <button type="submit" class="w3-text-white "
-                 style="background-color: #E93E21;padding:5.9px;border:1px solid #E93E21;border-radius:0px 15px 15px 0px;">
+                <input class="input-field " formControlName="searchItem" type="search" style="border:1px solid #E93E21;width:50%;">
+                <button type="submit" class="w3-text-white " style="background-color: #E93E21;padding:5.9px;border:1px solid #E93E21;border-radius:0px 15px 15px 0px;">
                            Find Restuarants</button>
             </form>
 
@@ -97,13 +96,13 @@ border-radius: 40px;"></i>
                 <h1>Don't you Have a User Account Yet,Sign up and Order Now
                     <i class="fa fa-users" style="font-size:30px;color:#82B440"></i>
                 </h1>
-                <a routerLink = "/signup" class="w3-btn w3-round" style="background-color:#82B440;">sign up</a>
+                <a routerLink="/signup" class="w3-btn w3-round" style="background-color:#82B440;">sign up</a>
             </div>
             <div class="w3-col s12 m6 l6  w3-leftbar w3-border-teal " style="color:rgb(250, 231, 238); padding:50px; ">
                 <h1>Create your Cafe Online and Contact with a tons of Customers
                     <i class="fa fa-users" style="font-size:30px;color:#E93E21"></i>
                 </h1>
-                <a  routerLink = "/vendor-signup" class="w3-btn w3-round" style="background-color:#E93E21;">sign up</a>
+                <a routerLink="/vendor-signup" class="w3-btn w3-round" style="background-color:#E93E21;">sign up</a>
 
             </div>
         </div>
