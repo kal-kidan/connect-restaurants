@@ -28,6 +28,7 @@ import { CartComponent } from './customer/cart/cart.component';
 import { CustomerHeaderComponent } from './customer/customer-header/customer-header.component';
 import { MyaccountComponent } from './vendor/myaccount/myaccount.component';
 import { ChooseLocationComponent } from './customer/choose-location/choose-location.component';
+import { OrderHistoryComponent } from './vendor/order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ChooseLocationComponent } from './customer/choose-location/choose-locat
     CartComponent,
     CustomerHeaderComponent,
     MyaccountComponent,
-    ChooseLocationComponent
+    ChooseLocationComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,

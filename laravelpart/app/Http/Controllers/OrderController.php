@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use App\Order;
 use App\OrderItem;
 class OrderController extends Controller
@@ -54,6 +55,14 @@ class OrderController extends Controller
         } catch (Exception $e) {
             return response()->json(["error" => $e->getMessage(), "status"=>false], 500);
         }
+    }
+
+    public function getOrders($vendor_id){
+        $orders = Order::where('vendor_id', $vendor_id)
+        ->join('order_items', 'order.id', '=', 'order_items.order_id')
+        ->select('order_items.*','order_items.*')
+        ->get();
+        return response()->json($orders);
     }
 }
 
