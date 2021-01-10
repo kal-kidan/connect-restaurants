@@ -9,7 +9,8 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class OrderHistoryComponent implements OnInit {
   public orders;
-  public vendor_id;
+  public vendor_id; 
+  public orderItems = {};
   constructor(private request: RequestHandlerService, private tokenService: TokenService) { }
 
   ngOnInit() {
@@ -20,5 +21,37 @@ export class OrderHistoryComponent implements OnInit {
       console.log(err);  
     })
   }
+
+  getOrderItems(orderId){
+    let orderItems;
+    this.request.getOrderItems(orderId).subscribe((data)=>{ 
+      orderItems = data;  
+    }, (err)=>{
+      console.log(err);  
+    });
+    return orderItems;
+  }
+
+  showOrders(orderId){
+    this.request.getOrderItems(orderId).subscribe((data)=>{ 
+      let propertyName = "orderId" + orderId;
+      this.orderItems[propertyName] = data; 
+      console.log(this.orderItems[propertyName]);
+      
+      let chosenButton=document.getElementById("button"+orderId);
+      if (chosenButton.innerHTML=="Show Order") {
+           chosenButton.innerHTML="Hide Order";
+           document.getElementById("div"+orderId).style.display='block';
+      }
+      else {
+           chosenButton.innerHTML="Show Order";
+           document.getElementById("div"+orderId).style.display='none';
+      } 
+    }, (err)=>{
+      console.log(err);  
+    }); 
+
+  }
+   
 
 }
