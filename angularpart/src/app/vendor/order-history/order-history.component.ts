@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
 import { TokenService } from 'src/app/services/token.service';
+import { VistorService } from 'src/app/services/vistor.service';
 
 @Component({
   selector: 'app-order-history',
@@ -11,15 +12,23 @@ export class OrderHistoryComponent implements OnInit {
   public orders;
   public vendor_id; 
   public orderItems = {};
-  constructor(private request: RequestHandlerService, private tokenService: TokenService) { }
+  public address: any;
+  constructor(private request: RequestHandlerService, private tokenService: TokenService, private visitorService: VistorService) { }
 
   ngOnInit() {
     this.vendor_id = this.tokenService.getData().id; 
-    this.request.getVendorOrders(this.vendor_id).subscribe((data)=>{ 
+    this.request.getVendorOrders(this.vendor_id).subscribe((data: any)=>{ 
       this.orders = data;  
     }, (err)=>{
       console.log(err);  
     })
+  }
+
+  getLocation(latitude,longitude){
+    this.visitorService.getGEOLocation(latitude, longitude).subscribe((res:any)=>{
+      console.log(res.features[0].properties) 
+    })
+    return "loc loc hey"
   }
 
   getOrderItems(orderId){
@@ -34,7 +43,11 @@ export class OrderHistoryComponent implements OnInit {
 
   showOrders(orderId, seen){
     if(!seen){
-        console.log("not seen");
+        this.request.updateSeen(orderId).subscribe((data)=>{
+          console.log(data);
+        }, (err)=>{
+          console.log(err);
+        })
     }
     this.request.getOrderItems(orderId).subscribe((data)=>{ 
       let propertyName = "orderId" + orderId;
