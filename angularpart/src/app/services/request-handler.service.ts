@@ -212,4 +212,13 @@ public rootUrl="http://localhost:8000/api";
     }
   });
  }
+
+ getOrderCount(vendor_id){
+  return this._http.get(`${this.rootUrl}/vendor/countorders/${vendor_id}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  },
+  );
+ }
 }

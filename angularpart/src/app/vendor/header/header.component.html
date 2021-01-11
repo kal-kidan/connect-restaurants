@@ -17,7 +17,7 @@
     <button class=" fa fa-bars w3-btn w3-xlarge w3-bar-item" style="color:#82B440;float:left " (click)="w3_open()">  </button>
     <!-- notification -->
     <div class="w3-bar-item w3-dropdown-click w3-hover-none " id="logo" onclick="notificationSeen()">
-        <span id="notification-tag" style="position:absolute;top:3px;font-size:12px;padding:0px 6px 0px 6px;display:none" class="w3-circle w3-green"></span>
+        <span id="notification-tag" style="position:absolute;top:3px;font-size:12px;padding:0px 6px 0px 6px" class="w3-circle w3-green">{{notificationNumber}}</span>
         <i class="fa fa-bell w3-text-teal" style="margin-left:5px;"> </i>
         <span class="w3-hide-small">notiffication</span>
         <div class="w3-dropdown-content w3-card w3-white w3-hide w3-hover-white" style="position:fixed;padding: 0px 6px 0px 6px;" id="notificationCard">

@@ -12,18 +12,29 @@ export class HeaderComponent implements OnInit {
   public cafename;
   public Data;
   public id;
+  public notificationNumber;
   ngOnInit() {
      this.requestHandler.getUser().
-        subscribe((data)=>{
+        subscribe((data:any)=>{
             this.Data =data;
             this.cafename = this.Data.cafename;
             this.id = this.Data.id; 
+            setInterval(this.updateNotification, 5000, data.id);
          },
          (error)=>{
            console.log(error);
           }
          );
     
+  }
+  updateNotification(vendor_id){ 
+    // this.requestHandler.getOrderCount(vendor_id).subscribe((orderCount)=>{ 
+    //   if(orderCount>0){ 
+    //     this.notificationNumber = orderCount;
+    //   } 
+    // }, (err)=>{
+    //   console.log(err);  
+    // })
   }
   w3_open() {
     document.getElementById("sidebarofcafereg").style.display = "block";
