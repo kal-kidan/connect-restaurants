@@ -1,52 +1,58 @@
 <app-customer-header></app-customer-header> <br />
 <br />
 <br />
-<ng-template #template>
-    <div class="modal-header" style="padding:15px">
-        <h4 class="modal-title pull-left" style="color:red; font-size:22px">Error!</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
-    <div class="modal-body">
-        {{message}}
-    </div>
-</ng-template>
-<table class="w3-center">
-    <thead style="background: green; color: white">
-        <th>Name of Item</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Remove</th>
-    </thead>
-    <tr *ngFor="let cart of menus; index as i;">
-        <td>{{ cart.name }}</td>
-        <td class="prices">{{ cart.price }} birr</td>
-        <td>
-            <input type="number" min="1" (change)="updateQuantity(menus, $event)" id="quantity{{ cart.id }}" value="{{ cart.quantity }}" style="border: none; width: 50px" min="1" class="quantitys" />
-        </td>
-        <td>
-            <button style="cursor: pointer" (click)="deleteCart(cart.id, i)" id="delete-btn{{ cart.id }}">
-                <i class="fa fa-trash trashs"> </i>
-            </button>
-        </td>
-    </tr>
-    <tr style="background-color: #fef6f2">
-        <td style="border: none" id="total-price">
-            Total: <span id="total"></span> {{ totalPrice }} birr
-        </td>
-    </tr>
-</table>
-<form (ngSubmit)="placeOrder(template)" [formGroup]="orderForm">
-    <select name="order-type" formControlName="orderType" id="" class="select-box" style="margin-right: 20px;" (change)="onOrderTypeSelect($event.target.value)">
-        <option value="" selected disabled>Order Type</option>
-        <option value="takeaway">Take Away</option>
-        <option value="inperson">In Person</option>
-    </select> <br><br>
-    <select name="location" formControlName="location" id="location-select" class="select-box" (change)="onLocationSelect($event.target.value)" style="margin-right: 20px;display: none;">
-        <option value="" selected disabled>Choose Delivered Location</option>
-        <option value="current-location">Get Current Location</option>
-        <option value="another-location">Choose An Other Location</option>
-    </select><br>
-    <input type="submit" id="order-button" name="order" value="Order" style="float: right;margin-right:10px" />
-</form>
+<div *ngIf="menus.length > 0">
+    <ng-template #template>
+        <div class="modal-header" style="padding:15px">
+            <h4 class="modal-title pull-left" style="color:red; font-size:22px">Error!</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            {{message}}
+        </div>
+    </ng-template>
+    <table class="w3-center">
+        <thead style="background: green; color: white">
+            <th>Name of Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+        </thead>
+        <tr *ngFor="let cart of menus; index as i;">
+            <td>{{ cart.name }}</td>
+            <td class="prices">{{ cart.price }} birr</td>
+            <td>
+                <input type="number" min="1" (change)="updateQuantity(menus, $event)" id="quantity{{ cart.id }}" value="{{ cart.quantity }}" style="border: none; width: 50px" min="1" class="quantitys" />
+            </td>
+            <td>
+                <button style="cursor: pointer" (click)="deleteCart(cart.id, i)" id="delete-btn{{ cart.id }}">
+                    <i class="fa fa-trash trashs"> </i>
+                </button>
+            </td>
+        </tr>
+        <tr style="background-color: #fef6f2">
+            <td style="border: none" id="total-price">
+                Total: <span id="total"></span> {{ totalPrice }} birr
+            </td>
+        </tr>
+    </table>
+    <form (ngSubmit)="placeOrder(template)" [formGroup]="orderForm">
+        <select name="order-type" formControlName="orderType" id="" class="select-box" style="margin-right: 20px;" (change)="onOrderTypeSelect($event.target.value)">
+            <option value="" selected disabled>Order Type</option>
+            <option value="takeaway">Take Away</option>
+            <option value="inperson">In Person</option>
+        </select> <br><br>
+        <select name="location" formControlName="location" id="location-select" class="select-box" (change)="onLocationSelect($event.target.value)" style="margin-right: 20px;display: none;">
+            <option value="" selected disabled>Choose Delivered Location</option>
+            <option value="current-location">Get Current Location</option>
+            <option value="another-location">Choose An Other Location</option>
+        </select><br>
+        <input type="submit" id="order-button" name="order" value="Order" style="float: right;margin-right:10px" />
+    </form>
+</div>
+
+<div class="w3-text-large w3-center w3-text-teal w3-margin-top" *ngIf="menus.length==0">
+    No Items In The Cart.
+</div>

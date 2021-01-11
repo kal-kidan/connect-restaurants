@@ -78,6 +78,7 @@ export class CartComponent implements OnInit {
     })
 
     this.request.placeOrder(this.order, orderItems).subscribe((res)=>{
+      this.menus = [];
       console.log(res);
     }, 
     (err)=>{

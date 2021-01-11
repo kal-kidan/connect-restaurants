@@ -52,16 +52,13 @@ export class HeaderComponent implements OnInit {
     })
   }
   showNotification(){
-    console.log("clicked");
-    
-    document.getElementById("notificationCard").style.display="block"
-    if( document.getElementById("notificationCard").style.display == "none"){
-      document.getElementById("notificationCard").style.display="block"
+    var element=document.getElementById('notificationCard');
+    if (element.className.indexOf("w3-hide")>0) {
+       element.className=element.className.replace("w3-hide","w3-show");
     }
-    else{
-      document.getElementById("notificationCard").style.display="none"
+    else {
+      element.className=element.className.replace("w3-show","w3-hide");
     }
-    ;
   }
   w3_open() {
     document.getElementById("sidebarofcafereg").style.display = "block";
