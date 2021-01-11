@@ -30,7 +30,7 @@ import { MyaccountComponent } from './vendor/myaccount/myaccount.component';
 import { ChooseLocationComponent } from './customer/choose-location/choose-location.component';
 import { OrderHistoryComponent } from './vendor/order-history/order-history.component';
 import { ViewLocationComponent } from './view-location/view-location.component';
-
+import { MomentModule } from 'ngx-moment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +59,7 @@ import { ViewLocationComponent } from './view-location/view-location.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MomentModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot() 

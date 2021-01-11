@@ -7,7 +7,7 @@
                 <i class='fa fa-user' style='font-size:20px; '></i> <br>
                 <span>
                     {{order.firstName}} {{order.lastName}} <br>
-                    <span colspan='3'> Date: {{order.created_at}}</span>
+                    <span colspan='3'> Date: {{order.created_at | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm:ss a'}}</span>
                 </span>
             </div>
             <div class='w3-col l6 m6 s12'>
@@ -38,7 +38,7 @@
                         <td colspan='3'> Total: {{order.total}} ETB</td>
                     </tr>
                 </table>
-                <button type='button' class='seen-button' style='float:left;margin-bottom:20px;' data-orderId='$customer_id'>Seen</button>
+                <button type='button' class='seen-button' style='float:left;margin-bottom:20px;' (click)="markAsServed()" data-orderId='$customer_id'>Mark As Served</button>
             </div>
             <button class='w3-margin-top showOrder' (click)="showOrders(order.id, seen)" id="button{{order.id}}">Show
                 Order</button>

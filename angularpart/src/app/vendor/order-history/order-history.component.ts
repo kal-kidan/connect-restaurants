@@ -68,6 +68,8 @@ export class OrderHistoryComponent implements OnInit {
     }); 
 
   }
-   
+  markAsServed(order_id){
+
+  }
 
 }
