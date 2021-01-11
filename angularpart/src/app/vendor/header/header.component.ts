@@ -12,14 +12,16 @@ export class HeaderComponent implements OnInit {
   public cafename;
   public Data;
   public id;
-  public notificationNumber;
+  public notificationNumber:any;
   ngOnInit() {
      this.requestHandler.getUser().
         subscribe((data:any)=>{
             this.Data =data;
             this.cafename = this.Data.cafename;
             this.id = this.Data.id; 
-            setInterval(this.updateNotification, 5000, data.id);
+            setInterval(()=>{
+              this.updateNotification(data.id);
+            }, 2000);
          },
          (error)=>{
            console.log(error);
@@ -28,13 +30,38 @@ export class HeaderComponent implements OnInit {
     
   }
   updateNotification(vendor_id){ 
-    // this.requestHandler.getOrderCount(vendor_id).subscribe((orderCount)=>{ 
-    //   if(orderCount>0){ 
-    //     this.notificationNumber = orderCount;
-    //   } 
-    // }, (err)=>{
-    //   console.log(err);  
-    // })
+    this.requestHandler.getOrderCount(vendor_id).subscribe((orderCount:any)=>{
+      let audio = new Audio();
+        audio.src = "assets/audio/alert.mp3";
+      if(this.notificationNumber == '' && orderCount>0){
+        audio.load();
+        audio.play();
+      }
+      if(parseInt(orderCount) > parseInt(this.notificationNumber)){
+        audio.load();
+        audio.play();
+      } 
+      if(orderCount>0){ 
+        this.notificationNumber = orderCount;
+      } 
+      else{
+        this.notificationNumber = '';
+      }
+    }, (err)=>{
+      console.log(err);  
+    })
+  }
+  showNotification(){
+    console.log("clicked");
+    
+    document.getElementById("notificationCard").style.display="block"
+    if( document.getElementById("notificationCard").style.display == "none"){
+      document.getElementById("notificationCard").style.display="block"
+    }
+    else{
+      document.getElementById("notificationCard").style.display="none"
+    }
+    ;
   }
   w3_open() {
     document.getElementById("sidebarofcafereg").style.display = "block";
