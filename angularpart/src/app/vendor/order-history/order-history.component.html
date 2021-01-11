@@ -12,7 +12,7 @@
             </div>
             <div class='w3-col l6 m6 s12'>
                 <span> Phone Number: {{order.phoneNumber}} | 
-                     <button *ngIf="order.order_type=='takeaway'"> View On Map </button>
+                     <a href="https://google.com/maps?q={{order.latitude}}, {{order.longitude}}" target="blank" class="w3-btn" *ngIf="order.order_type=='takeaway'">View On Map </a> 
                      <i *ngIf="order.order_type=='inperson'"> Address:  {{order.address}} </i>
                      </span> <br>
                 <span style="color:black">Order Type: {{order.order_type}}</span>

@@ -29,6 +29,7 @@ import { CustomerHeaderComponent } from './customer/customer-header/customer-hea
 import { MyaccountComponent } from './vendor/myaccount/myaccount.component';
 import { ChooseLocationComponent } from './customer/choose-location/choose-location.component';
 import { OrderHistoryComponent } from './vendor/order-history/order-history.component';
+import { ViewLocationComponent } from './view-location/view-location.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { OrderHistoryComponent } from './vendor/order-history/order-history.comp
     CustomerHeaderComponent,
     MyaccountComponent,
     ChooseLocationComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    ViewLocationComponent
   ],
   imports: [
     BrowserModule,
