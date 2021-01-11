@@ -84,6 +84,17 @@ class OrderController extends Controller
         $orderNumber = $orders->count();
         return response()->json($orderNumber);        
     }
+
+    public function markAsServed($order_id){
+       try {
+        $orders = Order::where('order_id', $order_id)
+        ->update(['order_delivered' => 1]); 
+         return response()->json(["status"=>true, "message"=>"order marked as served"]);  
+       } catch (Exception $e) {
+        return response()->json(["status"=>false, $e->getMessage()], 500);  
+       }      
+    }
+    
 }
 
 
