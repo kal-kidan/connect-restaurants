@@ -204,4 +204,12 @@ public rootUrl="http://localhost:8000/api";
   },
   );
  }
+
+ updateSeen(order_id){
+  return this._http.patch(`${this.rootUrl}/vendor/seen/${order_id}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  });
+ }
 }

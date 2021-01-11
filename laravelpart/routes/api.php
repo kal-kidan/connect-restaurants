@@ -37,6 +37,7 @@ Route::group([
     Route::post('vendor/addschedule', 'ScheduleController@addSchedule');
     Route::delete('vendor/deleteschedule', 'ScheduleController@deleteSchedule');
     Route::patch('vendor/updatestatus', 'ScheduleController@updateStatus');
+    Route::patch('vendor/seen/{id}', 'OrderController@updateSeen');
     Route::get('vendor/order-history/{id}', 'OrderController@getVendorOrders');
     Route::get('order-item/{id}', 'OrderController@getOrderItems');
     Route::get('vendor/schedule', 'ScheduleController@getSchedules');
