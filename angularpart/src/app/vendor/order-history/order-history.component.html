@@ -36,8 +36,9 @@
                 </table>
                 <button type='button' class='seen-button' style='float:left;margin-bottom:20px;' data-orderId='$customer_id'>Seen</button>
             </div>
-            <button class='w3-margin-top showOrder' (click)="showOrders(order.id)" id="button{{order.id}}">Show
+            <button class='w3-margin-top showOrder' (click)="showOrders(order.id, seen)" id="button{{order.id}}">Show
                 Order</button>
+            <span id="newBadge" *ngIf="!order.seen" class="w3-round-xlarge">new</span>
         </div>
 
     </div><br>

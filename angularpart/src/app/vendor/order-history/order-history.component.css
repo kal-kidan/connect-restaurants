@@ -33,6 +33,11 @@ table thead {
     color: #2e5b5d;
 }
 
-.nono {
-    color: #4e9ea2;
+#newBadge {
+    background: orangered;
+    color: white;
+    float: right;
+    margin-right: 7px;
+    padding-left: 8px;
+    padding-right: 8px;
 }

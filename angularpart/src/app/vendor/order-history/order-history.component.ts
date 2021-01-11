@@ -32,7 +32,10 @@ export class OrderHistoryComponent implements OnInit {
     return orderItems;
   }
 
-  showOrders(orderId){
+  showOrders(orderId, seen){
+    if(!seen){
+        console.log("not seen");
+    }
     this.request.getOrderItems(orderId).subscribe((data)=>{ 
       let propertyName = "orderId" + orderId;
       this.orderItems[propertyName] = data; 
