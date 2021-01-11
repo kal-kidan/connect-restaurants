@@ -76,6 +76,14 @@ class OrderController extends Controller
         $order->save();
         return response()->json(["status"=>true]);
     }
+
+    public function getNumberOfOrders($vendor_id){
+        $orders = Order::where('vendor_id', $vendor_id)
+                    ->where('seen', 0)
+                    ->get();
+        $orderNumber = $orders->count();
+        return response()->json($orderNumber);        
+    }
 }
 
 
