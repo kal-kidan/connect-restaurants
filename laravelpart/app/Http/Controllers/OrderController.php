@@ -69,6 +69,13 @@ class OrderController extends Controller
          $orderItems = OrderItem::where('order_id', $orderId)->get();
          return response()->json($orderItems);
      }
+
+     public function updateSeen($orderId){ 
+        $order = Order::find('id', $orderId);
+        $order->seen = 1;
+        $order->save();
+        return response()->json(["status"=>true]);
+    }
 }
 
 
