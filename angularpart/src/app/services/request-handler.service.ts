@@ -221,4 +221,13 @@ public rootUrl="http://localhost:8000/api";
   },
   );
  }
+
+ markAsServe(order_id){
+  return this._http.patch(`${this.rootUrl}/vendor/markasserve/${order_id}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  });
+ }
 }
+
