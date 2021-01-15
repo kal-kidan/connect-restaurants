@@ -2,6 +2,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { VistorService } from 'src/app/services/vistor.service';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-customer-home',
@@ -16,13 +17,15 @@ export class CustomerHomeComponent implements OnInit {
   vendors;
   latitude;
   longitude;  
+  user_id;
   routeUrl = "http://127.0.0.1:8000/";  
-  constructor(private request: RequestHandlerService) { }
+  constructor(private request: RequestHandlerService, private tokenService: TokenService) { }
  
   ngOnInit() {
     this.searchForm = new FormGroup({
       searchedItem: new FormControl('')
    });
+   this.user_id = this.tokenService.getData().id;
    if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position)=>{
       console.log(position);
@@ -54,7 +57,16 @@ export class CustomerHomeComponent implements OnInit {
 
   // });
 }
-  
+  toggleFavorite(vendor_id){
+    let data = {user_id: this.user_id, vendor_id}
+    this.request.toggleFavorite(data).subscribe((res)=>{
+      console.log(res);
+      
+    }, (err)=>{
+      console.log(err);
+      
+    })
+  }
 
   showsideBar() {
     this.showSideBar = true;

@@ -23,7 +23,7 @@
             <!-- <p style='font-size:14px'> <i class='fa fa-thumbs-up w3-text-blue'> </i>  likes </p> -->
             <small> Address:- {{vendor.formatted}} </small> <br>
             <small> Phone Number:- {{vendor.phonenumber}} </small> <br>
-            <i class="fa fa-heart" title="add to favorite" id="add-to-favorite"></i>
+            <i class="fa fa-heart" title="add to favorite" (click)="toggleFavorite(vendor.user_id)" id="add-to-favorite"></i>
             <a routerLink='/vendor/{{vendor.user_id}}' style='color:blue' target="blank"> Visit Profile </a>
         </div>
     </div>

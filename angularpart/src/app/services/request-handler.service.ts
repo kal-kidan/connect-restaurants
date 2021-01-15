@@ -247,5 +247,11 @@ search(query){
   },
   );
 }
+
+toggleFavorite(data){
+  return this._http.post(`${this.rootUrl}/user/favorite`, data, {headers:{
+    Authorization: `Bearer ${this.getToken()}`
+  }});
+}
 }
 
