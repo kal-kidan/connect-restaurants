@@ -1,0 +1,21 @@
+<app-customer-header></app-customer-header>
+<br><br><br>
+
+<span id="breakspan"></span>
+<Div *ngIf="noSearchResult" class="w3-text-teal w3-margin-left"> No Search Result Found.</Div>
+<div class="" *ngFor="let vendor of vendors">
+    <div class='w3-row w3-card-4 w3-margin'>
+        <div class='w3-col s10 l4 m4 w3-margin '>
+            <img src='{{routeUrl}}{{vendor.coverimage}}' width='100%' alt='no'>
+        </div>
+        <div class='w3-col s10 l7 m7 w3-margin-left'>
+            <h3 class='w3-text-teal'>{{vendor.cafename.toUpperCase()}} </h3>
+            <p> {{vendor.aboutus}}</p>
+            <!-- <p style='font-size:14px'> <i class='fa fa-thumbs-up w3-text-blue'> </i>  likes </p> -->
+            <small> Address:- {{vendor.formatted}} </small> <br>
+            <small> Phone Number:- {{vendor.phonenumber}} </small> <br>
+            <i class="fa fa-heart" title="add to favorite" id="add-to-favorite"></i>
+            <a routerLink='/vendor/{{vendor.user_id}}' style='color:blue' target="blank"> Visit Profile </a>
+        </div>
+    </div>
+</div>

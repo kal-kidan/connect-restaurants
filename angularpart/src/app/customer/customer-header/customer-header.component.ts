@@ -2,6 +2,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {RequestHandlerService} from './../../services/request-handler.service';
 import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-header',
@@ -10,7 +11,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class CustomerHeaderComponent implements OnInit {
 
-  constructor(private request: RequestHandlerService, private tokenService: TokenService) { }
+  constructor(private request: RequestHandlerService, private tokenService: TokenService, private route: Router) { }
   public searchForm;
   public searchInputVisible = false;
   public showSideBar = false;
@@ -18,7 +19,7 @@ export class CustomerHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      searchItem: new FormControl('')
+      searchedItem: new FormControl('')
    });
 
    this.request.getUser().subscribe((res)=>{
@@ -37,5 +38,10 @@ export class CustomerHeaderComponent implements OnInit {
 
   closeSideBar(){
     this.showSideBar = !this.showSideBar;
+  }
+
+  search(){
+   this.route.navigate(['/search', this.searchForm.get("searchedItem").value])
+    
   }
 }

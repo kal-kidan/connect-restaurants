@@ -238,5 +238,14 @@ public rootUrl="http://localhost:8000/api";
     }
   });
 }
+
+search(query){
+  return this._http.get(`${this.rootUrl}/vendor/query/${query}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  },
+  );
+}
 }
 

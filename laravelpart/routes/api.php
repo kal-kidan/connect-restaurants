@@ -39,6 +39,7 @@ Route::group([
     Route::patch('vendor/seen/{id}', 'OrderController@updateSeen');
     Route::patch('vendor/markasserve/{order_id}', 'OrderController@markAsServed');
     Route::get('vendor/countorders/{vendor_id}', 'OrderController@getNumberOfOrders');
+    Route::get('vendor/query/{search_item}', 'SearchController@searchRestaurants');
     Route::get('vendor/order-history/{id}', 'OrderController@getVendorOrders');
     Route::get('order-item/{id}', 'OrderController@getOrderItems');
     Route::get('vendor/schedule', 'ScheduleController@getSchedules');

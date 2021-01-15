@@ -19,6 +19,7 @@ import { MyaccountComponent } from './vendor/myaccount/myaccount.component';
 import { ChooseLocationComponent } from './customer/choose-location/choose-location.component';
 import { OrderHistoryComponent } from './vendor/order-history/order-history.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { SearchComponent } from './customer/search/search.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -28,8 +29,9 @@ const routes: Routes = [
   {path: 'admin-login', component: AdminLoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'customer-home', component: CustomerHomeComponent, canActivate:[AfterLoginService]},
-  {path: 'admin', component: AdminComponent},
+  {path: 'admin', component: AdminComponent, canActivate:[AfterLoginService]},
   {path: 'vendor-home', component: HomeVendorComponent, canActivate:[AfterLoginService]},
+  {path:'search/:q',component:SearchComponent, canActivate:[AfterLoginService]},
   {path: 'menu', component: MenuComponent, canActivate:[AfterLoginService]},
   {path: 'vendor-signup', component: VendorSignupComponent },
   {path:'schedule',component:ScheduleComponent, canActivate:[AfterLoginService]},

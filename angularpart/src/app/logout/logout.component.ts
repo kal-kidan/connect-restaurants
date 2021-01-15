@@ -13,7 +13,7 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit() {
     this.tokenService.romove()
-    this.router.navigate(['login'])
+    this.router.navigate(['signin'])
   }
 
 }

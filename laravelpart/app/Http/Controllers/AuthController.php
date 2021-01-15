@@ -141,6 +141,16 @@ class AuthController extends Controller
                 'coverImage'=> auth()->user()->coverimage
             ]);
         }
+        else if(auth()->user()->role=="admin"){
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'bearer',
+                'expires_in' => auth()->factory()->getTTL() * 60,
+                'user' => auth()->user()->email,
+                'role' => auth()->user()->role,
+                'id' => auth()->user()->id
+            ]);
+        }
 
     }
 }

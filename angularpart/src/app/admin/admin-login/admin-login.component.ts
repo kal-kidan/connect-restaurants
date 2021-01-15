@@ -17,7 +17,7 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group(
       {
-        username: ['',[Validators.required]],
+        email: ['',[Validators.required]],
         password: ['',[Validators.required]] 
       }
      )
@@ -25,12 +25,11 @@ export class AdminLoginComponent implements OnInit {
 
   login(){
     this.request.customerLogin(this.loginForm.value).subscribe(
-      data=>{ 
+      data=>{  
         this.handleResponse(data);   
-        if(data['role']=="customer"){ 
+        if(data['role']=="admin"){ 
           this.router.navigate(['admin']);
         }
-
       },
       error=>{
         this.loginError=error.error.error; 

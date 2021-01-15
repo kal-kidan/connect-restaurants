@@ -2,8 +2,8 @@
     <div class=" w3-center">
         <div class="w3-padding-large w3-round-xlarge  ">
             <i class="fa fa-user" style="font-size:40px;color:#E93E21;border:2px solid #E93E21;border-radius:40%;padding:20px;"></i> <br> <br>
-            <form [formGroup]="loginForm" (ngSubmit)="login">
-                <input type="email" formControlName="username" value="" class="w3-round " placeholder="username"> <br> <br>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <input type="email" formControlName="email" value="" class="w3-round " placeholder="email"> <br> <br>
                 <input type="password" formControlName="password" value="" class="w3-round " placeholder="password"> <br> <br>
                 <input type="submit" name="login" value="log in" style="margin-left:20px;background-color:#82B440;" class="w3-btn w3-round w3-text-white "> <br> <br>
             </form>

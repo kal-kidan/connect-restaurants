@@ -21,10 +21,10 @@
     <div class="w3-bar-item w3-text-white " id="cafeName" (click)="list()">
         <i class="fa fa-user w3-padding-small w3-text-teal  w3-circle"></i>
     </div>
-    <form [formGroup]="searchForm">
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
         <button type="button" class="w3-bar-item" id="search" (click)="showSearchInput()">
       <i class="fa fa-search w3-text-white"></i>
     </button>
-        <input *ngIf="searchInputVisible" type="search" formControlName="searchedItem" class="w3-bar-item w3-animate-top" id="searchInput" onkeyup="showResults()" placeholder="search" autocomplete="on">
+        <input *ngIf="searchInputVisible" type="search" formControlName="searchedItem" class="w3-bar-item w3-animate-top" id="searchInput" placeholder="search" autocomplete="on">
     </form>
 </header>
