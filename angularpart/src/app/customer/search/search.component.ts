@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.request.search(this.route.snapshot.params.q).subscribe((res:any)=>{
       this.vendors = res;
-      if(res.length < 0){
+      if(res.length == 0){
         this.noSearchResult = true;
       }
       console.log(res);
