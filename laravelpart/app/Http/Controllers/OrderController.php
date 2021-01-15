@@ -62,6 +62,7 @@ class OrderController extends Controller
         $orders = Order::where('vendor_id', $vendor_id)
         ->join('users', 'users.id', '=', 'orders.user_id')
         ->select('orders.*', 'users.firstName', 'users.lastName', 'users.address', 'users.phoneNumber', 'users.email')
+        ->orderBy('created_at', 'desc')
         ->get();
         return response()->json($orders);
     }
@@ -87,7 +88,7 @@ class OrderController extends Controller
 
     public function markAsServed($order_id){
        try {
-        $orders = Order::where('order_id', $order_id)
+        $orders = Order::where('id', $order_id)
         ->update(['order_delivered' => 1]); 
          return response()->json(["status"=>true, "message"=>"order marked as served"]);  
        } catch (Exception $e) {
