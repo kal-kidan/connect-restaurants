@@ -229,5 +229,14 @@ public rootUrl="http://localhost:8000/api";
     }
   });
  }
+
+ updateUserData(user_id, data){
+  const id = this.token.getData().id;
+  return this._http.patch(`${this.rootUrl}/user/data/${user_id}`,data,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  });
+}
 }
 

@@ -31,6 +31,7 @@ import { ChooseLocationComponent } from './customer/choose-location/choose-locat
 import { OrderHistoryComponent } from './vendor/order-history/order-history.component';
 import { ViewLocationComponent } from './view-location/view-location.component';
 import { MomentModule } from 'ngx-moment';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { MomentModule } from 'ngx-moment';
     MyaccountComponent,
     ChooseLocationComponent,
     OrderHistoryComponent,
-    ViewLocationComponent
+    ViewLocationComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,

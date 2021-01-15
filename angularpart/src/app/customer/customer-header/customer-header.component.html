@@ -2,7 +2,7 @@
     <div class="" id="sidebarofcafereg" *ngIf="showSideBar">
         <div class="w3-sidebar w3-black w3-bar-block w3-animate-left w3-card" style="width:50%">
             <div class=" w3-btn w3-large w3-bar-item w3-text-white" style="color:#82B440;">
-                <i class="fa fa-user w3-padding-small  w3-text-teal  w3-circle"></i>
+                <i class="fa fa-user w3-padding-small  w3-text-teal  w3-circle"></i> {{user.firstname}} {{user.lastname}}
                 <span (click)="closeSideBar()" class="fa fa-times w3-hover-text-red w3-btn w3-large" style="color:red;float:right; ">
                 </span>
             </div>
@@ -25,6 +25,6 @@
         <button type="button" class="w3-bar-item" id="search" (click)="showSearchInput()">
       <i class="fa fa-search w3-text-white"></i>
     </button>
-        <input *ngIf="searchInputVisible" type="search" formControlName="searchedItem" class="w3-bar-item w3-animate-top" id="searchInput" onkeyup="showResults()" placeholder="search" autocomplete="off">
+        <input *ngIf="searchInputVisible" type="search" formControlName="searchedItem" class="w3-bar-item w3-animate-top" id="searchInput" onkeyup="showResults()" placeholder="search" autocomplete="on">
     </form>
 </header>
