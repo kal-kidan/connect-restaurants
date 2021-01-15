@@ -1,8 +1,10 @@
-import { AfterViewInit, ViewChild, ElementRef, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AfterViewInit, ViewChild, ElementRef, Component, OnInit, TemplateRef } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import  * as L from 'leaflet';
 import 'mapbox-gl-leaflet';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { RequestHandlerService } from 'src/app/services/request-handler.service';
+import { TokenService } from 'src/app/services/token.service';
 import { VistorService } from 'src/app/services/vistor.service';
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -17,6 +19,7 @@ const iconDefault = L.icon({
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41]
 });
+
 L.Marker.prototype.options.icon = iconDefault
 @Component({
   selector: 'app-myaccount',
@@ -26,28 +29,43 @@ L.Marker.prototype.options.icon = iconDefault
 export class MyaccountComponent implements OnInit , AfterViewInit{
 private locationForm;
 private nameForm;
-private accountForm;
+private phoneForm;
 private aboutForm;
+public addressSuccessMessage='';
+public phoneSuccessMessage='';
+public aboutSuccessMessage='';
+public nameSuccessMessage='';
+public locationSuccessMessage='';
 private map: L.Map;
-
+public modalRef: BsModalRef;
 @ViewChild('map', {static: false})
 private mapContainer: ElementRef<HTMLElement>;
 public latitude;
 public longitude;
-  constructor(private visitorService: VistorService, private request: RequestHandlerService) { }
+public id;
+  constructor(private visitorService: VistorService, private request: RequestHandlerService, private tokenService: TokenService, private modalService: BsModalService) { }
 
   ngOnInit() {
+    this.id = this.tokenService.getData().id;
     this.locationForm = new FormGroup({
-      location: new FormControl()
+      location: new FormControl('', {
+        validators: Validators.required 
+     })
    });
    this.nameForm = new FormGroup({
-    cafeName: new FormControl()
+    cafeName: new FormControl('', {
+      validators: Validators.required 
+   })
    });
-   this.accountForm = new FormGroup({
-    bankAccount: new FormControl()
+   this.phoneForm = new FormGroup({
+    phoneNumber: new FormControl('', {
+      validators: Validators.required 
+   })
    });
    this.aboutForm = new FormGroup({
-    aboutCafe: new FormControl()
+    aboutCafe: new FormControl('', {
+      validators: Validators.required 
+   })
    });
  
   }
@@ -100,12 +118,51 @@ public longitude;
     }
 }
 
-updateLocation(){  
+updateLocation(template){ 
+  let loc:any; 
   this.visitorService.getGEOLocation(localStorage.getItem("latitude"), localStorage.getItem("longitude")).subscribe((res:any)=>{
-    this.request.addLocaton(res.features[0].properties).subscribe((res)=>{
-      console.log(res);
+    loc = res.features[0].properties; 
+    this.request.addLocaton(res.features[0].properties).subscribe((res:any)=>{ 
+      this.locationSuccessMessage = res.message + " to " + loc.formatted;
+      return this.openModal(template);
     })
     
+  })
+}
+
+public openModal(template: TemplateRef<any>) {
+  this.modalRef = this.modalService.show(template); // {3}
+}
+
+updateData(name){
+  let data;
+  if(name == "address"){
+    data = {name, value: this.locationForm.get('location').value}
+  }
+  if(name == "cafename"){
+    data = {name, value: this.nameForm.get('cafeName').value}
+  }
+  if(name == "phonenumber"){
+    data = {name, value: this.phoneForm.get('phoneNumber').value}
+  }
+  if(name == "aboutus"){
+    data = {name, value: this.aboutForm.get('aboutCafe').value}
+  } 
+  this.request.updateUserData(this.id, data).subscribe((res:any)=>{
+    if(name == "address"){
+      this.addressSuccessMessage = res.message;
+    }
+    if(name == "cafename"){
+      this.nameSuccessMessage = res.message;
+    }
+    if(name == "phonenumber"){
+      this.phoneSuccessMessage = res.message;
+    }
+    if(name == "aboutus"){
+      this.aboutSuccessMessage = res.message;
+    }   
+  }, (err)=>{
+    console.log(err); 
   })
 }
 }

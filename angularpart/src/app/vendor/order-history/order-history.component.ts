@@ -69,7 +69,11 @@ export class OrderHistoryComponent implements OnInit {
 
   }
   markAsServed(order_id){
-
+    this.request.markAsServe(order_id).subscribe((res)=>{
+      console.log(res);
+    }, (err)=>{
+      console.log(err);
+    })
   }
 
 }

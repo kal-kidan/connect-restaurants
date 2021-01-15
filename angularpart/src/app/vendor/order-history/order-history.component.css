@@ -1,15 +1,18 @@
-tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.342);
 }
 
-tbody tr:nth-child(odd) {
+table tr:nth-child(odd) {
     background-color: #31438526;
 }
 
 table thead {
     background-color: #2e6d3fc7;
-    ;
     color: white;
+}
+
+.total {
+    background-color: rgba(255, 255, 255, 0.342);
 }
 
 .showOrder,

@@ -1,28 +1,39 @@
-.updateData{
-    margin:20px;
-    background:white;
-    padding:20px;
-   }
-   .inputs{
-     padding:5px;
-     border:1px solid #00a4f2;
-   }
-   .updateButton{
-    background-color:#4768b0;
-    border:none;color:white;
-   }
-    @media (max-width:430px) {
-       .inputs{
-          max-width:100%;
-                 }
-   }
-   .errorMessage{
-     background-color:#f85b78ad;
-     padding:1px;
-     color:white;
-     border:2px dashed #f83d3d80;
-     display:none;
-   }
-   .errorSpan{
-     margin-left:10px;
-   }
+.updateData {
+    margin: 20px;
+    background: white;
+    padding: 20px;
+}
+
+.inputs {
+    padding: 5px;
+    border: 1px solid #00a4f2;
+}
+
+.updateButton {
+    background-color: #4768b0;
+    border: none;
+    color: white;
+}
+
+@media (max-width:430px) {
+    .inputs {
+        max-width: 100%;
+    }
+}
+
+.errorMessage {
+    background-color: #f85b78ad;
+    padding: 1px;
+    color: white;
+    border: 1px dashed #f83d3d80;
+}
+
+.errorSpan {
+    margin-left: 10px;
+}
+
+.error {
+    color: red;
+    float: left;
+    margin-left: 5px;
+}

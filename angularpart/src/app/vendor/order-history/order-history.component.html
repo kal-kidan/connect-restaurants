@@ -26,19 +26,18 @@
                         <td> Notes </td>
                     </thead>
                     <tbody *ngFor="let orderItem of orderItems['orderId' + order.id]">
-                        <tr>
+                        <tr style="border-bottom: solid gray 1px;">
                             <td> {{orderItem.name}} </td>
                             <td> {{orderItem.price}} </td>
                             <td> {{orderItem.quantity}} </td>
-                            <td rowspan='orderItem.length'> {{order.note}}</td>
+                            <td [rowSpan]="orderItem.length"> {{order.note}}</td>
                         </tr>
-                        <hr>
                     </tbody>
-                    <tr>
+                    <tr class="total">
                         <td colspan='3'> Total: {{order.total}} ETB</td>
                     </tr>
                 </table>
-                <button type='button' class='seen-button' style='float:left;margin-bottom:20px;' (click)="markAsServed()" data-orderId='$customer_id'>Mark As Served</button>
+                <button type='button' class='seen-button' style='float:left;margin-bottom:20px;' (click)="markAsServed(order.id)" data-orderId='$customer_id'>Mark As Served</button>
             </div>
             <button class='w3-margin-top showOrder' (click)="showOrders(order.id, seen)" id="button{{order.id}}">Show
                 Order</button>

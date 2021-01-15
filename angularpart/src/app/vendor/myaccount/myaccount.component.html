@@ -1,52 +1,75 @@
 <app-header>
 </app-header>>
+<ng-template #template>
+    <div class="modal-header" style="padding:15px">
+        <h4 class="modal-title pull-left" style="font-size:22px">Success Message!</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        {{locationSuccessMessage}}
+    </div>
+</ng-template>
 
 <div style="background-color:#0000000d">
     <br><br>
-    <button (click)="updateLocation()" class="updateButton">Update Location</button>
+    <button (click)="updateLocation(template)" class="updateButton">Update Location</button>
     <div class="map-container" #map style="padding: 200px;">
-
     </div>
     <div class="updateData">
-        <div class="errorMessage" id="errorMessage">
-            <span class="errorSpan"> </span>
+        <div *ngIf="addressSuccessMessage" class="alert alert-info" role="alert">
+            {{addressSuccessMessage}}
+        </div>
+        <div *ngIf="locationForm.get('location').invalid && locationForm.get('location').touched" class="errorMessage">
+            <small *ngIf="locationForm.get('location').invalid"> this field is required </small>
         </div><br>
-        <form [formGroup]="locationForm">
-            <input type="text" formControlName="location" value="" placeholder="add your location here" class="inputs"> <br> <br>
-            <input type="submit" name="updateLocation" value="update" class="updateButton">
+        <small> This is the address that is going to be displayed on your profile.</small>
+        <form [formGroup]="locationForm" (ngSubmit)="updateData('address')">
+            <input type="text" formControlName="location" value="" placeholder="add address (optional)" class="inputs"> <br> <br>
+            <input type="submit" name="updateLocation" value="update" [disabled]="locationForm.get('location').invalid" class="updateButton">
         </form>
     </div>
 
     <div class="updateData">
-        <div class="errorMessage" id="errorMessage">
-            <span class="errorSpan"></span>
+        <div *ngIf="nameSuccessMessage" class="alert alert-info" role="alert">
+            {{nameSuccessMessage}}
+        </div>
+        <div *ngIf="nameForm.get('cafeName').invalid && nameForm.get('cafeName').touched" class="errorMessage">
+            <small *ngIf="nameForm.get('cafeName').invalid"> this field is required </small>
         </div><br>
-        <form [formGroup]="nameForm">
-            <input type="text" formControlName="cafeName" value="" placeholder="enter you cafe name" class="inputs"> <br> <br>
-            <input type="submit" name="updateCafeName" value="update" class="updateButton">
+        <form [formGroup]="nameForm" (ngSubmit)="updateData('cafename')">
+            <input type="text" formControlName="cafeName" value="" placeholder="enter you cafe name" class="inputs" required> <br> <br>
+            <input type="submit" name="updateCafeName" value="update" [disabled]="nameForm.get('cafeName').invalid" class="updateButton">
         </form>
     </div>
 
     <div class="updateData">
-        <div class="errorMessage" id="errorMessage">
-            <span class="errorSpan"> </span>
-        </div><br>
-        <form [formGroup]="accountForm">
-            <input type="text" formControlName="bankAccount" value="" placeholder="add bank account number" class="inputs"> <br>
+        <div *ngIf="phoneSuccessMessage" class="alert alert-info" role="alert">
+            {{phoneSuccessMessage}}
+        </div>
+        <div *ngIf="phoneForm.get('phoneNumber').invalid && phoneForm.get('phoneNumber').touched" class="errorMessage">
+            <small *ngIf="phoneForm.get('phoneNumber').invalid"> this field is required </small>
+        </div> <br>
+        <form [formGroup]="phoneForm" (ngSubmit)="updateData('phonenumber')">
+            <input type="text" formControlName="phoneNumber" value="" placeholder="phone number" class="inputs"> <br>
             <br>
-            <input type="submit" name="updateAccountNumber" value="update" class="updateButton">
+            <input type="submit" name="updatePhoneNumber" [disabled]="phoneForm.get('phoneNumber').invalid" value="update" class="updateButton">
         </form>
     </div>
 
     <div class="updateData">
-        <div class="errorMessage" id="errorMessage">
-            <span class="errorSpan"> </span>
-        </div><br>
-        <form [formGroup]="aboutForm">
-            <textarea id="aboutCafe" formControlName="aboutCafe" rows="3" cols="40" placeholder="about your cafe up to 255 charachters " class="inputs">
+        <div *ngIf="aboutSuccessMessage" class="alert alert-info" role="alert">
+            {{aboutSuccessMessage}}
+        </div>
+        <div *ngIf="aboutForm.get('aboutCafe').invalid && aboutForm.get('aboutCafe').touched" class="errorMessage">
+            <small *ngIf="aboutForm.get('aboutCafe').invalid"> this field is required </small>
+        </div> <br>
+        <form [formGroup]="aboutForm" (ngSubmit)="updateData('aboutus')">
+            <textarea id="aboutCafe" formControlName="aboutCafe" rows="3" cols="40" placeholder="about your cafe.. " class="inputs">
             </textarea>
             <br> <br>
-            <input type="submit" name="updateAboutCafe" value="update" class="updateButton">
+            <input type="submit" name="updateAboutCafe" [disabled]="aboutForm.get('aboutCafe').invalid" value="update" class="updateButton">
         </form>
     </div>
 
