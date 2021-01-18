@@ -54,4 +54,5 @@ Route::group([
     Route::get('cart/totalprice/user/{id}', 'CartController@getTotalPrice');
     Route::post('user/order', 'OrderController@placeOrder'); 
     Route::patch('user/data/{id}', 'AccountManagementController@updateUserData'); 
+    Route::get('user/favorite-vendors/{user_id}', 'FavoriteController@getFavoriteVendors'); 
 });

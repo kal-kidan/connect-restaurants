@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Favorite;
+use Illuminate\Support\Facades\DB;
 class FavoriteController extends Controller
 {
     public function toggelFavorite(Request $request){
@@ -25,5 +26,17 @@ class FavoriteController extends Controller
        }catch(Exception $e){
             return response()->json(["error"=>true, "message"=>$e->getMessage()]);
        }
+    }
+
+    public function getFavoriteVendors($user_id){
+        $vendors = DB::table("favorites")
+        ->where('favorites.user_id', $user_id)
+        ->join('users', 'favorites.vendor_id', '=', 'users.id') 
+        ->select(["favorites.is_favorite","users.cafename", "users.address", "users.phonenumber",
+         "users.coverimage", "users.aboutus", "users.status", "users.id"
+         ])
+         ->get();
+         return response()->json($vendors);
+         
     }
 }
