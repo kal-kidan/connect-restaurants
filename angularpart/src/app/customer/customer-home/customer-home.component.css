@@ -245,3 +245,7 @@ a {
     color: #82B440;
     cursor: pointer;
 }
+
+.gray-color {
+    color: gray;
+}

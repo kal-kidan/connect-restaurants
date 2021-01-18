@@ -1,0 +1,24 @@
+<header id="index_header" class="w3-bar" style="padding:0px;margin:0px;padding-bottom:15px;">
+    <div class="" style="display:none;" id="sidebarofcafereg">
+        <div class="w3-sidebar w3-black w3-bar-block w3-animate-left w3-card" style="width:100%">
+            <div class="fa fa-wrench w3-btn w3-xxlarge w3-bar-item " style="color:#82B440;">
+                My Account
+                <span (click)="w3_close()" class="fa fa-times-circle-o w3-hover-text-red w3-btn w3-xlarge" style="color:teal; ">
+                </span>
+            </div>
+            <a href="/changepassword" class=" fa fa-key w3-btn  w3-bar-item  w3-large w3-hover-text-teal" style="color:#27b5df;">Change Password
+            </a>
+            <a href="/vendors" class=" fa fa-pencil-square w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df">
+                Edit</a>
+            <a href="/user-payment" class="fa fa-credit-card w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df">
+                    Payment</a>
+            <a href="/logout" class=" fa fa-sign-out  w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df">
+                log out</a>
+        </div>
+    </div>
+    <button class=" fa fa-bars w3-btn w3-xlarge w3-bar-item" style="color:#82B440;float:left " (click)="w3_open()"></button>
+    <div class="w3-bar-item w3-text-large " id="logo">
+        Admin <span id="logo_food">Panel </span>
+    </div>
+    <a href="/logout" class="w3-round-large " id="logout">log out</a>
+</header>

@@ -20,6 +20,8 @@ import { ChooseLocationComponent } from './customer/choose-location/choose-locat
 import { OrderHistoryComponent } from './vendor/order-history/order-history.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { SearchComponent } from './customer/search/search.component';
+import { FavoriteVendorsComponent } from './customer/favorite-vendors/favorite-vendors.component';
+import { PaymentPageComponent } from './admin/payment-page/payment-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -29,16 +31,18 @@ const routes: Routes = [
   {path: 'admin-login', component: AdminLoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'customer-home', component: CustomerHomeComponent, canActivate:[AfterLoginService]},
+  {path: 'user-payment', component: PaymentPageComponent, canActivate:[AfterLoginService]},
   {path: 'admin', component: AdminComponent, canActivate:[AfterLoginService]},
   {path: 'vendor-home', component: HomeVendorComponent, canActivate:[AfterLoginService]},
   {path:'search/:q',component:SearchComponent, canActivate:[AfterLoginService]},
+  {path:'favorites',component:FavoriteVendorsComponent, canActivate:[AfterLoginService]},
   {path: 'menu', component: MenuComponent, canActivate:[AfterLoginService]},
   {path: 'vendor-signup', component: VendorSignupComponent },
   {path:'schedule',component:ScheduleComponent, canActivate:[AfterLoginService]},
   {path:'vendor/:id',component:ProfileComponent, canActivate:[AfterLoginService]},
   {path:'cart',component: CartComponent,  canActivate:[AfterLoginService]},
   {path:'account',component: MyaccountComponent, canActivate:[AfterLoginService]},
-  {path:' ',component: OrderHistoryComponent, canActivate:[AfterLoginService]},
+  {path:'vendor-order-history',component: OrderHistoryComponent, canActivate:[AfterLoginService]},
   {path:'choose-location',component: ChooseLocationComponent, canActivate:[AfterLoginService]},
   { path: 'pagenotfound', component: PagenotfoundComponent },
   { path: '**', component: PagenotfoundComponent }

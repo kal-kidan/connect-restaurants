@@ -1,17 +1,7 @@
 <app-customer-header></app-customer-header>
 <br><br><br>
-
-<div id="searchKeywords">
-    <ul id="autocompleteList" class="w3-card">
-        <li id="list1" onclick="setInput('list1')"></li>
-        <li id="list2" onclick="setInput('list2')"></li>
-        <li id="list3" onclick="setInput('list3')"></li>
-        <li id="list4" onclick="setInput('list4')"></li>
-        <li id="list5" onclick="setInput('list5')"></li>
-    </ul>
-</div>
 <span id="breakspan"></span>
-<h2 class="w3-text-teal w3-margin-left">Restaurants Near You</h2>
+<h2 class="w3-text-teal w3-margin-left">Favorites</h2>
 <div class="" *ngFor="let vendor of vendors">
     <div class='w3-row w3-card-4 w3-margin'>
         <div class='w3-col s10 l4 m4 w3-margin '>
@@ -21,10 +11,10 @@
             <h3 class='w3-text-teal'>{{vendor.cafename.toUpperCase()}} </h3>
             <p> {{vendor.aboutus}}</p>
             <!-- <p style='font-size:14px'> <i class='fa fa-thumbs-up w3-text-blue'> </i>  likes </p> -->
-            <small> Address:- {{vendor.formatted}} </small> <br>
+            <small> Address:- {{vendor.address}} </small> <br>
             <small> Phone Number:- {{vendor.phonenumber}} </small> <br>
             <i class="fa fa-heart" title="add to favorite" (click)="toggleFavorite(vendor.user_id)" id="add-to-favorite" [class.w3-text-gray]="!vendor.is_favorite" [class.gray-color]="!this.favoriteActive"></i>
-            <a routerLink='/vendor/{{vendor.user_id}}' style='color:blue' target="blank"> Visit Profile </a>
+            <a routerLink='/vendor/{{vendor.id}}' style='color:blue' target="blank"> Visit Profile </a>
         </div>
     </div>
 </div>

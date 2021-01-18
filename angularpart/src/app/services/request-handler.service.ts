@@ -253,5 +253,14 @@ toggleFavorite(data){
     Authorization: `Bearer ${this.getToken()}`
   }});
 }
+
+getFavoriteVendors(user_id){
+  return this._http.get(`${this.rootUrl}/user/favorite-vendors/${user_id}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  },
+  );
+ }
 }
 

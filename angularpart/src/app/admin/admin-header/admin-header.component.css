@@ -1,0 +1,47 @@
+input:focus {
+    outline: none;
+    border: 1px solid #E93E21;
+}
+
+span {
+    margin-left: 7px;
+}
+
+input,
+select {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+#logout {
+    float: right;
+    background-color: #82B440;
+    margin: 5px;
+    padding: 4px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+#logout:hover {
+    color: #667f66;
+}
+
+#messageX:hover {
+    cursor: pointer;
+}
+
+.hideMessage {
+    display: none;
+}
+
+.error {
+    color: red;
+    float: left;
+    margin-left: 20px;
+}

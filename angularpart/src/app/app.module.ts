@@ -33,6 +33,9 @@ import { ViewLocationComponent } from './view-location/view-location.component';
 import { MomentModule } from 'ngx-moment';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { SearchComponent } from './customer/search/search.component';
+import { FavoriteVendorsComponent } from './customer/favorite-vendors/favorite-vendors.component';
+import { PaymentPageComponent } from './admin/payment-page/payment-page.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +59,10 @@ import { SearchComponent } from './customer/search/search.component';
     OrderHistoryComponent,
     ViewLocationComponent,
     AdminLoginComponent,
-    SearchComponent
+    SearchComponent,
+    FavoriteVendorsComponent,
+    PaymentPageComponent,
+    AdminHeaderComponent
   ],
   imports: [
     BrowserModule,

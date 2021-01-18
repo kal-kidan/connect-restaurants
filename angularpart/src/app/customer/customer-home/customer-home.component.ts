@@ -19,6 +19,7 @@ export class CustomerHomeComponent implements OnInit {
   longitude;  
   user_id;
   routeUrl = "http://127.0.0.1:8000/";  
+  favoriteActive=false;
   constructor(private request: RequestHandlerService, private tokenService: TokenService) { }
  
   ngOnInit() {
@@ -33,6 +34,12 @@ export class CustomerHomeComponent implements OnInit {
       this.longitude = position.coords.longitude;
       this.request.getNearestVendors(this.latitude, this.longitude).subscribe((res: any) => {
         this.vendors = res; 
+        if(res.is_favorite){
+          this.favoriteActive = true;
+        }
+        else{
+          this.favoriteActive = false;
+        }
       console.log(res); 
 
   })
@@ -60,6 +67,7 @@ export class CustomerHomeComponent implements OnInit {
   toggleFavorite(vendor_id){
     let data = {user_id: this.user_id, vendor_id}
     this.request.toggleFavorite(data).subscribe((res)=>{
+      this.favoriteActive = ! this.favoriteActive;
       console.log(res);
       
     }, (err)=>{
