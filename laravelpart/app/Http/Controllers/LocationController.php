@@ -47,8 +47,9 @@ class LocationController extends Controller
    public function getNearestLocation($lat, $lon){ 
     $users = DB::table("geo_locations")
             ->join('users', 'users.id', '=', 'geo_locations.user_id')
+            ->leftJoin('favorites', 'favorites.vendor_id', '=', 'geo_locations.user_id')
             ->select(["geo_locations.*", "users.cafename", "users.address", "users.phonenumber",
-             "users.coverimage", "users.aboutus", "users.status"
+             "users.coverimage", "users.aboutus", "users.status", "favorites.is_favorite"
             ,DB::raw("(6371 * acos(cos(radians(" . $lat . ")) 
             * cos(radians(geo_locations.latitude)) 
             * cos(radians(geo_locations.longitude) - radians(" . $lon . ")) 
