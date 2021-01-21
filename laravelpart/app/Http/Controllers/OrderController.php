@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Order;
 use App\Cart;
 use App\OrderItem;
+use App\Credit;
 class OrderController extends Controller
 {
     public function placeOrder(Request $request){
@@ -41,13 +42,21 @@ class OrderController extends Controller
         }
        }
         try { 
+        $balance =  Credit::where('user_id', $request->order['user_id'])->first();
+        if(!$balance){
+            return response()->json(["error"=>"true", "message"=>"You haven't added any balance yet, please contact adminstrators to add your credit."], 400);
+        }
+        else if($balance->amount<$request->order['total']){
+            return response()->json(["error"=>"true", "message"=>"You don't have enough balance, please contact adminstrators to add your credit."], 400);
+        }
          $deletedRow = Cart::where('user_id', '=', $request->order['user_id'])->delete(); 
          $order = Order::create($request->order);  
         if($order){
             $orderItems = [];
             for ($i=0; $i < count($request->orderItems); $i++) { 
                 OrderItem::create(["order_id"=>$order['id'], "menu_id"=>$request->orderItems[$i]['menu_id'], "price"=>$request->orderItems[$i]['price'], "name"=>$request->orderItems[$i]['name'], "quantity"=>$request->orderItems[$i]['quantity']]);
-            }   
+            }  
+            Credit::find($balance->id)->update(['amount' => $balance->amount-$request->order['total']]);
             return response()->json(["status"=>true, "message"=>"order placed successfully", "order"=>$order]);
         }
         else{

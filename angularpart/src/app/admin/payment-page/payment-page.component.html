@@ -1,18 +1,37 @@
 <app-admin-header></app-admin-header> <br><br><br>
+<div class="alert alert-primary w3-margin" role="alert" *ngIf="addAmountSuccessMessage">
+    {{addAmountSuccessMessage}}
+    <span style="float:right;cursor:pointer" (click)="addAmountSuccessMessage=''">&times;</span>
+</div>
+<div class="alert alert-danger w3-margin" role="alert" *ngIf="addAmountErrorMessage">
+    {{addAmountErrorMessage}}
+    <span style="float:right;cursor:pointer" (click)="addAmountErrorMessage=''">&times;</span>
+</div>
 <div class="form-group w3-margin w3-border w3-padding">
-    <input class="form-control w3-margin" type="number" placeholder="User Id">
-    <input class="form-control w3-margin" type="text" placeholder="Amount">
-    <input type="submit" value="Add Amount" class="btn w3-teal">
+    <form [formGroup]="addAmountForm" (ngSubmit)="addAmount()">
+        <input required formControlName="user_id" class="form-control w3-margin" type="number" placeholder="User Id">
+        <input required formControlName="amount" class="form-control w3-margin" type="text" placeholder="Amount">
+        <input type="submit" value="Add Amount" class="btn w3-teal">
+    </form>
 </div> <br>
-
+<div class="alert alert-primary w3-margin" role="alert" *ngIf="dropAmountSuccessMessage">
+    {{dropAmountSuccessMessage}}
+    <span style="float:right;cursor:pointer" (click)="dropAmountSuccessMessage=''">&times;</span>
+</div>
+<div class="alert alert-danger w3-margin" role="alert" *ngIf="dropAmountErrorMessage">
+    {{dropAmountErrorMessage}}
+    <span style="float:right;cursor:pointer" (click)="dropAmountErrorMessage=''">&times;</span>
+</div>
 <div class="form-group w3-margin w3-border w3-padding">
-    <input class="form-control w3-margin" type="number" placeholder="User Id">
-    <input class="form-control w3-margin" type="text" placeholder="Amount">
-    <input type="submit" value="Drop Amount" class="btn w3-teal">
+    <form [formGroup]="dropAmountForm" (ngSubmit)="dropAmount()">
+        <input required formControlName="user_id" class="form-control w3-margin" type="number" placeholder="User Id">
+        <input required formControlName="amount" class="form-control w3-margin" type="text" placeholder="Amount">
+        <input type="submit" value="Drop Amount" class="btn btn-danger">
+    </form>
 </div><br>
 
 <div class="form-group w3-margin w3-border w3-padding">
     <input class="form-control w3-margin" type="number" placeholder="User Id">
     <input class="form-control w3-margin" type="text" placeholder="Amount">
-    <input type="submit" value="WithDraw" class="btn w3-teal">
+    <input type="submit" value="Withdraw" class="btn btn-info">
 </div>

@@ -262,5 +262,17 @@ getFavoriteVendors(user_id){
   },
   );
  }
+ 
+addAmount(data){
+  return this._http.post(`${this.rootUrl}/admin/credit`, data, {headers:{
+    Authorization: `Bearer ${this.getToken()}`
+  }});
+}
+
+dropAmount(data){
+  return this._http.patch(`${this.rootUrl}/admin/credit`, data, {headers:{
+    Authorization: `Bearer ${this.getToken()}`
+  }});
+}
 }
 

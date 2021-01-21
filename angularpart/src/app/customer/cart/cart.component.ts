@@ -82,7 +82,10 @@ export class CartComponent implements OnInit {
       console.log(res);
     }, 
     (err)=>{
-      console.log(err);  
+      this.message = err.error.message;
+      console.log(err); 
+      return this.openModal(template);
+      
     })
   }
 

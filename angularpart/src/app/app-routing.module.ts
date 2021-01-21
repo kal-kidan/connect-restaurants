@@ -22,6 +22,7 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { SearchComponent } from './customer/search/search.component';
 import { FavoriteVendorsComponent } from './customer/favorite-vendors/favorite-vendors.component';
 import { PaymentPageComponent } from './admin/payment-page/payment-page.component';
+import { AfterLoginForVendorService } from './after-login-for-vendor.service';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -33,16 +34,16 @@ const routes: Routes = [
   {path: 'customer-home', component: CustomerHomeComponent, canActivate:[AfterLoginService]},
   {path: 'user-payment', component: PaymentPageComponent, canActivate:[AfterLoginService]},
   {path: 'admin', component: AdminComponent, canActivate:[AfterLoginService]},
-  {path: 'vendor-home', component: HomeVendorComponent, canActivate:[AfterLoginService]},
+  {path: 'vendor-home', component: HomeVendorComponent, canActivate:[AfterLoginForVendorService]},
   {path:'search/:q',component:SearchComponent, canActivate:[AfterLoginService]},
   {path:'favorites',component:FavoriteVendorsComponent, canActivate:[AfterLoginService]},
-  {path: 'menu', component: MenuComponent, canActivate:[AfterLoginService]},
+  {path: 'menu', component: MenuComponent, canActivate:[AfterLoginForVendorService]},
   {path: 'vendor-signup', component: VendorSignupComponent },
-  {path:'schedule',component:ScheduleComponent, canActivate:[AfterLoginService]},
+  {path:'schedule',component:ScheduleComponent, canActivate:[AfterLoginForVendorService]},
   {path:'vendor/:id',component:ProfileComponent, canActivate:[AfterLoginService]},
   {path:'cart',component: CartComponent,  canActivate:[AfterLoginService]},
-  {path:'account',component: MyaccountComponent, canActivate:[AfterLoginService]},
-  {path:'vendor-order-history',component: OrderHistoryComponent, canActivate:[AfterLoginService]},
+  {path:'account',component: MyaccountComponent, canActivate:[AfterLoginForVendorService]},
+  {path:'vendor-order-history',component: OrderHistoryComponent, canActivate:[AfterLoginForVendorService]},
   {path:'choose-location',component: ChooseLocationComponent, canActivate:[AfterLoginService]},
   { path: 'pagenotfound', component: PagenotfoundComponent },
   { path: '**', component: PagenotfoundComponent }

@@ -55,4 +55,6 @@ Route::group([
     Route::post('user/order', 'OrderController@placeOrder'); 
     Route::patch('user/data/{id}', 'AccountManagementController@updateUserData'); 
     Route::get('user/favorite-vendors/{user_id}', 'FavoriteController@getFavoriteVendors'); 
+    Route::post('admin/credit', 'CreditController@addAmount');
+    Route::patch('admin/credit', 'CreditController@dropAmount');
 });
