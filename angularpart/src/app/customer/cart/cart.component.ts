@@ -93,15 +93,15 @@ export class CartComponent implements OnInit {
     if(selectedValue == "current-location"){
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position)=>{ 
-          this.latitude = position.coords.latitude;
-          this.longitude = position.coords.longitude;
+          this.latitude = position.coords.latitude - 0.136838;
+          this.longitude = position.coords.longitude + 0.062129;
           localStorage.setItem("order-latitude", this.latitude);
           localStorage.setItem("order-longitude", this.longitude);
         });
       }
     }
     else if(selectedValue == "another-location"){
-      this.route.navigate(['/choose-location']);
+      this.route.navigate([]).then(result => {  window.open( '/choose-location', '_blank'); });;
     } 
     
   }

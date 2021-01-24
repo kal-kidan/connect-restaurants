@@ -36,6 +36,8 @@ import { SearchComponent } from './customer/search/search.component';
 import { FavoriteVendorsComponent } from './customer/favorite-vendors/favorite-vendors.component';
 import { PaymentPageComponent } from './admin/payment-page/payment-page.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { CustomerOrderHistoryComponent } from './customer/customer-order-history/customer-order-history.component';
+import { AccountSettingComponent } from './customer/account-setting/account-setting.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,9 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
     SearchComponent,
     FavoriteVendorsComponent,
     PaymentPageComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    CustomerOrderHistoryComponent,
+    AccountSettingComponent
   ],
   imports: [
     BrowserModule,

@@ -61,7 +61,7 @@ public emailError={error:false,message:''};
     if(data.role == "customer"){
       setTimeout(()=>{
         this.router.navigate(['customer-home']);
-      },4000);
+      },1000);
     }
   }
 

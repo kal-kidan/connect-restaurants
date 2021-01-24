@@ -46,6 +46,7 @@ Route::group([
     Route::get('vendor/getstatus', 'ScheduleController@getStatus');
     Route::get('vendor/{id}', 'VendorController@getAllInfo');
     Route::put('user/location', 'LocationController@addLocation');
+    Route::get('user/order-history/{id}', 'OrderController@getCustomerOrders');
     Route::post('user/favorite', 'FavoriteController@toggelFavorite');
     Route::get('user/nearest-vendor/{latitude}/{logitude}', 'LocationController@getNearestLocation');
     Route::post('user/cart', 'CartController@add');

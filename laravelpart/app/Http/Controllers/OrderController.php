@@ -75,6 +75,14 @@ class OrderController extends Controller
         ->get();
         return response()->json($orders);
     }
+    public function getCustomerOrders($user_id){ 
+        $orders = Order::where('user_id', $user_id)
+        ->join('users', 'users.id', '=', 'orders.vendor_id')
+        ->select('orders.*', 'users.cafename', 'users.address', 'users.phoneNumber')
+        ->orderBy('created_at', 'desc')
+        ->get();
+        return response()->json($orders);
+    }
     public function getOrderItems($orderId){ 
          $orderItems = OrderItem::where('order_id', $orderId)->get();
          return response()->json($orderItems);

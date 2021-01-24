@@ -274,5 +274,13 @@ dropAmount(data){
     Authorization: `Bearer ${this.getToken()}`
   }});
 }
+getCustomerOrders(user_id){
+  return this._http.get(`${this.rootUrl}/user/order-history/${user_id}`,{
+    headers:{
+      Authorization: `Bearer ${this.getToken()}`
+    }
+  },
+  );
+ }
 }
 

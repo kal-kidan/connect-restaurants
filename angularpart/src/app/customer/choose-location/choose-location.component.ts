@@ -28,7 +28,7 @@ export class ChooseLocationComponent implements OnInit {
   private mapContainer: ElementRef<HTMLElement>;
   public latitude;
   public longitude;
-
+  public successMessage;
   constructor(private route:Router) { }
 
   ngOnInit() {
@@ -39,8 +39,8 @@ export class ChooseLocationComponent implements OnInit {
     const mapStyle = "https://maps.geoapify.com/v1/styles/osm-carto/style.json";
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position)=>{ 
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
+        this.latitude = position.coords.latitude  - 0.136838;;
+        this.longitude = position.coords.longitude + 0.062129;
         localStorage.setItem("moved-latitude", this.latitude);
         localStorage.setItem("moved-longitude", this.longitude);
         const initialState = { 
@@ -88,7 +88,7 @@ updateLocation(){
  let choosedLongitude = localStorage.getItem("moved-longitude");
  localStorage.setItem("order-latitude", choosedLatitude);
  localStorage.setItem("order-longitude", choosedLongitude);
- this.route.navigate(['/cart']);
+ this.successMessage = "you have successfuly set your location."
 }
 
 }

@@ -74,8 +74,8 @@ public id;
     const mapStyle = "https://maps.geoapify.com/v1/styles/osm-carto/style.json";
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position)=>{ 
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
+        this.latitude = position.coords.latitude - 0.136838;
+        this.longitude = position.coords.longitude + 0.062129 ;
         localStorage.setItem("latitude", this.latitude);
         localStorage.setItem("longitude", this.longitude);
         const initialState = { 

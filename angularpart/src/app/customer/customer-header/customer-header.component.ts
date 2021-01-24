@@ -15,7 +15,7 @@ export class CustomerHeaderComponent implements OnInit {
   public searchForm;
   public searchInputVisible = false;
   public showSideBar = false;
-  public user = {};
+  public user ;
 
   ngOnInit() {
     this.searchForm = new FormGroup({

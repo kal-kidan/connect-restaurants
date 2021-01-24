@@ -1,18 +1,22 @@
 <header id="index_header" class="w3-bar" style="padding:0px;margin:0px;padding-bottom:15px; ">
     <div class="" style="display:none;" id="sidebarofcafereg">
-        <div class="w3-sidebar w3-black w3-bar-block w3-animate-left w3-card" style="width:50%">
-            <div class=" w3-btn w3-large w3-bar-item  w3-text-white" style="color:#82B440;">
-                <i class="fa fa-coffee w3-padding-small w3-border w3-border-teal w3-circle"></i> {{cafename}}
-                <span (click)="w3_close()" class="fa fa-times  w3-hover-text-red w3-btn w3-large" style="float:right">
-            </span>
+        <div class="w3-sidebar w3-black w3-bar-block w3-animate-left w3-card" style="width: 300px;">
+            <div class=" w3-btn w3-large w3-bar-item  w3-text-white" style="background-color:#82B440; color: white; padding-top: 10px; padding-bottom: 10px;">
+                <div>
+                    <span (click)="w3_close()" class="fa fa-times  w3-hover-text-red w3-btn w3-large" style="float:right"></span>
+                    <i class="fa fa-coffee w3-padding-small w3-border w3-border-teal w3-circle"></i> {{cafename}}
+                </div>
             </div>
-            <a href="/vendor-order-history" class=" fa fa-cutlery w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> Orders</a>
-            <a href="/account" class=" fa fa-pencil-square w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> My account</a>
-            <a routerLink="/vendor/{{id}}" class="fa fa-user w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> Profile</a>
-            <a href="/password" class=" fa fa-key w3-btn  w3-bar-item  w3-large w3-hover-text-teal" style="color:#27b5df;"> Change Password </a>
-            <a href="/logout" class=" fa fa-sign-out  w3-btn w3-large w3-bar-item w3-hover-text-teal" style="color:#27b5df"> log out</a>
-
+            <div style="color:white; font-size: 22px !important; margin-top: 50px;">
+                <a href="/vendor-order-history" class=" fa fa-cutlery w3-btn w3-bar-item w3-hover-text-teal" style="margin-bottom: 30px"> Orders</a>
+                <a href="/account" class=" fa fa-pencil-square w3-btn w3-bar-item w3-hover-text-teal" style="margin-bottom: 30px"> My account</a>
+                <a routerLink="/vendor/{{id}}" class="fa fa-user w3-btn w3-bar-item w3-hover-text-teal" style="margin-bottom: 30px"> Profile</a>
+                <a href="/password" class=" fa fa-key w3-btn  w3-bar-item w3-hover-text-teal" style="margin-bottom: 30px"> Change Password </a>
+                <a href="/logout" class=" fa fa-sign-out  w3-btn w3-bar-item w3-hover-text-teal" style="margin-bottom: 30px"> Log Out</a>
+            </div>
+            <div style="background-color:#82B440; width: 300px; height: 30px;position: fixed; left: 0; bottom: 0;"></div>
         </div>
+
     </div>
     <button class=" fa fa-bars w3-btn w3-xlarge w3-bar-item" style="color:#82B440;float:left " (click)="w3_open()">  </button>
     <!-- notification -->

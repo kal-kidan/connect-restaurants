@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   menus=[]
   display = false
   id: Number
+  menuLink;
   likeStyle={'font-size':'18px', 'cursor': 'pointer'}
   totalLikes;
   statusClass = "w3-green w3-round  w3-text-white" || "closed w3-round w3-text-white"
@@ -28,6 +29,7 @@ export class ProfileComponent implements OnInit {
       this.request.getVendorInfo(this.id).subscribe(
         (data: any)=>{
           this.vendor = data.user[0]
+          this.menuLink = `/vendor/${data.user[0].id}`
           this.schedules = data.schedules
           this.menus = data.menus
           this.display = true;

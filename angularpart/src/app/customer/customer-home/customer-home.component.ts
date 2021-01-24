@@ -28,10 +28,11 @@ export class CustomerHomeComponent implements OnInit {
    });
    this.user_id = this.tokenService.getData().id;
    if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position)=>{
-      console.log(position);
-      this.latitude = position.coords.latitude;
-      this.longitude = position.coords.longitude;
+    navigator.geolocation.getCurrentPosition((position)=>{ 
+      this.latitude = position.coords.latitude - 0.136838;
+      this.longitude = position.coords.longitude + 0.062129;
+      console.log(this.latitude, this.longitude);
+      
       this.request.getNearestVendors(this.latitude, this.longitude).subscribe((res: any) => {
         this.vendors = res; 
         if(res.is_favorite){
